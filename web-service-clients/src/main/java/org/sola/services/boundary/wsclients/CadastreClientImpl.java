@@ -314,7 +314,6 @@ public class CadastreClientImpl extends AbstractWSClientImpl implements Cadastre
     @Override
     public NewCadastreObjectIdentifier getNewCadastreObjectIdentifier(
             byte[] geom, String cadastreObjectType) throws WebServiceClientException {
-        String geomString = new String (geom);
         NewCadastreObjectIdentifier result = null;
         final String methodName = CadastreClient.GET_NEW_CADASTRE_OBJECT_IDENTIFIER;
         try {
