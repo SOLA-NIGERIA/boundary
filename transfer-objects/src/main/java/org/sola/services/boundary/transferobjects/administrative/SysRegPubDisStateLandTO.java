@@ -25,6 +25,8 @@ public class SysRegPubDisStateLandTO extends AbstractIdTO {
     private BigDecimal agricultural;
     private BigDecimal industrial;
     private String publicNotificationDuration;
+    private String name;
+    
 
     public String getPublicNotificationDuration() {
         return publicNotificationDuration;
@@ -125,4 +127,13 @@ public class SysRegPubDisStateLandTO extends AbstractIdTO {
     public void setSize(BigDecimal size) {
         this.size = size;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 }

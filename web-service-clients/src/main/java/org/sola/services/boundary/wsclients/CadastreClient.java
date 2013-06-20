@@ -35,6 +35,7 @@ import org.sola.webservices.cadastre.NewCadastreObjectIdentifier;
 import org.sola.webservices.transferobjects.ValidationResult;
 import org.sola.webservices.transferobjects.cadastre.CadastreObjectNodeTO;
 import org.sola.webservices.transferobjects.cadastre.CadastreObjectTO;
+import org.sola.webservices.transferobjects.cadastre.SpatialUnitGroupTO;
 import org.sola.webservices.transferobjects.cadastre.SpatialValueAreaTO;
 import org.sola.webservices.transferobjects.transaction.TransactionBulkOperationSpatialTO;
 import org.sola.webservices.transferobjects.transaction.TransactionCadastreChangeTO;
@@ -127,7 +128,18 @@ public interface CadastreClient extends AbstractWSClient {
     public static final String GET_SPATIAL_VALUE_AREA = SERVICE_NAME + "getSpatialValueArea";
  
     public static final String GET_NEW_CADASTRE_OBJECT_IDENTIFIER = SERVICE_NAME + "getNewCadastreObjectIdentifier";
-
+    
+     /**
+     * Cadastre.getSpatialUnitGroupByParts - Identifier for the
+     * getSpatialUnitGroupByParts method
+     */
+    public static final String GET_SPATIAL_UNIT_GROUP_BY_PARTS = SERVICE_NAME + "getSpatialUnitGroupByParts";
+    /**
+     * Cadastre.getSpatialUnitGroupByParts - Identifier for the
+     * getSpatialUnitGroupByParts method
+     */
+    public static final String GET_SPATIAL_UNIT_GROUP_BY_ALL_PARTS = SERVICE_NAME + "getSpatialUnitGroupByAllParts";
+   
     /**
      * Returns a maximum of 10 cadastre objects that have a name first part and/or name last part
      * that matches the specified search string. This method supports partial matches and is case
@@ -258,4 +270,31 @@ public interface CadastreClient extends AbstractWSClient {
     
     
    NewCadastreObjectIdentifier getNewCadastreObjectIdentifier(byte[] geom, String cadastreObjectType);
+   
+   /**
+     * Returns a maximum of 10 cadastre objects that have a name first part and/or name last part
+     * that matches the specified search string. This method supports partial matches and is case
+     * insensitive.
+     *
+     * @param searchString The search string to use
+     * @return The list of spatial unit group matching the search string
+     * @throws WebServiceClientException
+     */
+    List<SpatialUnitGroupTO> getSpatialUnitGroupByParts(String searchString)
+            throws WebServiceClientException;
+
+    /**
+     * Returns a maximum of 10 SpatialUnitGroup 
+     * that have a name that matches the
+     * specified search string. This method supports partial matches and is case
+     * insensitive.
+     *
+     * @param searchString The search string to use
+     * @return The list of cadastre objects matching the search string
+     * @throws WebServiceClientException
+     */
+    List<SpatialUnitGroupTO> getSpatialUnitGroupByAllParts(String searchString)
+            throws WebServiceClientException;
+
+    
 }

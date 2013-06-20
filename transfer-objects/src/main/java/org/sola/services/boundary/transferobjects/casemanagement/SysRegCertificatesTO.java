@@ -18,7 +18,8 @@ public class SysRegCertificatesTO extends AbstractIdTO {
     private String nameLastpart;
     private String baUnitId;
     private String nr;
-
+    private String name;
+    
     public String getBaUnitId() {
         return baUnitId;
     }
@@ -50,5 +51,11 @@ public class SysRegCertificatesTO extends AbstractIdTO {
     public void setNr(String nr) {
         this.nr = nr;
     }
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

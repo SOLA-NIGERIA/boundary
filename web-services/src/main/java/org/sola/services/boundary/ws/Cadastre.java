@@ -38,6 +38,7 @@ import javax.jws.WebService;
 import javax.xml.ws.WebServiceContext;
 import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectNodeTO;
 import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectTO;
+import org.sola.services.boundary.transferobjects.cadastre.SpatialUnitGroupTO;
 import org.sola.services.boundary.transferobjects.cadastre.SpatialValueAreaTO;
 import org.sola.services.boundary.transferobjects.transaction.TransactionBulkOperationSpatialTO;
 import org.sola.services.boundary.transferobjects.transaction.TransactionCadastreChangeTO;
@@ -555,4 +556,62 @@ public class Cadastre extends AbstractWebService {
         return (NewCadastreObjectIdentifier) result[0];
     }
     
+    /**
+     * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getSpatialUnitGroupByParts(java.lang.String)
+     * CadastreEJB.getCadastreObjectByParts}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetSpatialUnitGroupByParts")
+    public List<SpatialUnitGroupTO> GetSpatialUnitGroupByParts(
+            @WebParam(name = "searchString") String searchString)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String searchStringTmp = searchString;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        cadastreEJB.getSpatialUnitGroupByParts(searchStringTmp),
+                        SpatialUnitGroupTO.class);
+            }
+        });
+
+        return (List<SpatialUnitGroupTO>) result[0];
+    }
+
+    /**
+     * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getSpatialUnitGroupByAllParts(java.lang.String)
+     * CadastreEJB.getCadastreObjectByAllParts}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetSpatialUnitGroupByAllParts")
+    public List<SpatialUnitGroupTO> GetSpatialUnitGroupByAllParts(
+            @WebParam(name = "searchString") String searchString)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String searchStringTmp = searchString;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        cadastreEJB.getSpatialUnitGroupByAllParts(searchStringTmp),
+                        SpatialUnitGroupTO.class);
+            }
+        });
+
+        return (List<SpatialUnitGroupTO>) result[0];
+    }
+   
 }

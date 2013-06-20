@@ -36,6 +36,7 @@ import org.sola.webservices.cadastre.*;
 import org.sola.webservices.transferobjects.ValidationResult;
 import org.sola.webservices.transferobjects.cadastre.CadastreObjectNodeTO;
 import org.sola.webservices.transferobjects.cadastre.CadastreObjectTO;
+import org.sola.webservices.transferobjects.cadastre.SpatialUnitGroupTO;
 import org.sola.webservices.transferobjects.cadastre.SpatialValueAreaTO;
 import org.sola.webservices.transferobjects.transaction.TransactionCadastreChangeTO;
 import org.sola.webservices.transferobjects.transaction.TransactionCadastreRedefinitionTO;
@@ -431,5 +432,40 @@ public class MockCadastrePort implements Cadastre {
         }
     }
 
-  
+   /**
+     * Response Key = CadastreClient.GET_SPATIAL_UNIT_GROUP_BY_PARTS
+     *
+     * @return default = new ArrayList<SpatialUnitGroupTO>()
+     */
+    @Override
+    public List<SpatialUnitGroupTO> getSpatialUnitGroupByParts(String searchString)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<SpatialUnitGroupTO> defaultResponse = new ArrayList<SpatialUnitGroupTO>();
+        try {
+            return getManager().getResponse(CadastreClient.GET_SPATIAL_UNIT_GROUP_BY_PARTS,
+                    List.class, defaultResponse, searchString);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = CadastreClient.GET_SPATIAL_UNIT_GROUP_BY_ALL_PARTS
+     *
+     * @return default = new ArrayList<SpatialUnitGroupTO>()
+     */
+    @Override
+    public List<SpatialUnitGroupTO> getSpatialUnitGroupByAllParts(String searchString)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<SpatialUnitGroupTO> defaultResponse = new ArrayList<SpatialUnitGroupTO>();
+        try {
+            return getManager().getResponse(CadastreClient.GET_SPATIAL_UNIT_GROUP_BY_ALL_PARTS,
+                    List.class, defaultResponse, searchString);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+
 }

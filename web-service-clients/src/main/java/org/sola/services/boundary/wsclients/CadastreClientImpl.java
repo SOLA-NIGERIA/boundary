@@ -38,6 +38,7 @@ import org.sola.webservices.cadastre.NewCadastreObjectIdentifier;
 import org.sola.webservices.transferobjects.ValidationResult;
 import org.sola.webservices.transferobjects.cadastre.CadastreObjectNodeTO;
 import org.sola.webservices.transferobjects.cadastre.CadastreObjectTO;
+import org.sola.webservices.transferobjects.cadastre.SpatialUnitGroupTO;
 import org.sola.webservices.transferobjects.cadastre.SpatialValueAreaTO;
 import org.sola.webservices.transferobjects.transaction.TransactionCadastreChangeTO;
 import org.sola.webservices.transferobjects.transaction.TransactionCadastreRedefinitionTO;
@@ -326,5 +327,39 @@ public class CadastreClientImpl extends AbstractWSClientImpl implements Cadastre
         }
         return result;
     }
+    
+    @Override
+    public List<SpatialUnitGroupTO> getSpatialUnitGroupByParts(String searchString)
+            throws WebServiceClientException {
+        List<SpatialUnitGroupTO> result = null;
+        final String methodName = CadastreClient.GET_SPATIAL_UNIT_GROUP_BY_PARTS;
+        try {
+            beforeWebMethod(methodName, searchString);
+            result = getPort().getSpatialUnitGroupByParts(searchString);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, searchString);
+        }
+        return result;
+    }
+
+    @Override
+    public List<SpatialUnitGroupTO> getSpatialUnitGroupByAllParts(String searchString)
+            throws WebServiceClientException {
+        List<SpatialUnitGroupTO> result = null;
+        final String methodName = CadastreClient.GET_SPATIAL_UNIT_GROUP_BY_ALL_PARTS;
+        try {
+            beforeWebMethod(methodName, searchString);
+            result = getPort().getSpatialUnitGroupByAllParts(searchString);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, searchString);
+        }
+        return result;
+    }
+
+
 
 }
