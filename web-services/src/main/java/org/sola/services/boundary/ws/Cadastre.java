@@ -29,6 +29,7 @@
  */
 package org.sola.services.boundary.ws;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
@@ -50,6 +51,7 @@ import org.sola.services.common.faults.*;
 import org.sola.services.common.webservices.AbstractWebService;
 import org.sola.services.ejb.cadastre.businesslogic.CadastreEJBLocal;
 import org.sola.services.ejb.cadastre.repository.entities.NewCadastreObjectIdentifier;
+import org.sola.services.ejb.cadastre.repository.entities.SpatialUnitGroup;
 import org.sola.services.ejb.transaction.businesslogic.TransactionEJBLocal;
 import org.sola.services.ejb.transaction.repository.entities.TransactionBulkOperationSpatial;
 import org.sola.services.ejb.transaction.repository.entities.TransactionCadastreChange;
