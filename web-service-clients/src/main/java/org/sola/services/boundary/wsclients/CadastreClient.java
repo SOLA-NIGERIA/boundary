@@ -148,6 +148,10 @@ public interface CadastreClient extends AbstractWSClient {
      */
     public static final String GET_SPATIAL_UNIT_GROUP_BY_ALL_PARTS = SERVICE_NAME + "getSpatialUnitGroupByAllParts";
    
+    public static final String GET_SPATIAL_UNIT_GROUPS  = SERVICE_NAME + "getSpatialUnitGroups";
+
+    public static final String SAVE_SPATIAL_UNIT_GROUPS  = SERVICE_NAME + "saveSpatialUnitGroups";
+ 
     /**
      * Returns a maximum of 10 cadastre objects that have a name first part and/or name last part
      * that matches the specified search string. This method supports partial matches and is case
@@ -303,8 +307,28 @@ public interface CadastreClient extends AbstractWSClient {
      */
     List<SpatialUnitGroupTO> getSpatialUnitGroupByAllParts(String searchString)
             throws WebServiceClientException;
-  
+
+   
+   /**
+    * It retrieves the spatial unit groups that intersect with the filteringGeometry
+    * and that are of the type: hierarchyLevel.
+    * 
+    * @param filteringGeometry
+    * @param hierarchyLevel
+    * @param srid
+    * @return 
+    */
+   List<SpatialUnitGroupTO> getSpatialUnitGroups(
+            byte[] filteringGeometry, Integer hierarchyLevel, int srid);
+   
+   /**
+    * It saves the list of spatial unit groups.
+    * 
+    * @param items 
+    */
+   void saveSpatialUnitGroups(List<SpatialUnitGroupTO> items);
     
     CadastreObjectTO getCadastreObject(String id) throws WebServiceClientException;
      
+
 }

@@ -29,6 +29,7 @@
  */
 package org.sola.services.boundary.ws;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
@@ -50,6 +51,7 @@ import org.sola.services.common.faults.*;
 import org.sola.services.common.webservices.AbstractWebService;
 import org.sola.services.ejb.cadastre.businesslogic.CadastreEJBLocal;
 import org.sola.services.ejb.cadastre.repository.entities.NewCadastreObjectIdentifier;
+import org.sola.services.ejb.cadastre.repository.entities.SpatialUnitGroup;
 import org.sola.services.ejb.transaction.businesslogic.TransactionEJBLocal;
 import org.sola.services.ejb.transaction.repository.entities.TransactionBulkOperationSpatial;
 import org.sola.services.ejb.transaction.repository.entities.TransactionCadastreChange;
@@ -613,8 +615,84 @@ public class Cadastre extends AbstractWebService {
 
         return (List<SpatialUnitGroupTO>) result[0];
     }
-    
-    @WebMethod(operationName = "getCadastreObject")
+   
+
+     /**
+     * See {{@linkplain CadastreEJB#saveSpatialUnitGroups(List<SpatialUnitGroupTO>, String)
+     * CadastreEJB.saveSpatialUnitGroups(byte[], Integer, Integer)}
+     * 
+     * @param items 
+     * @param languageCode 
+     * 
+     * @throws SOLAAccessFault
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws OptimisticLockingFault
+     * @throws SOLAValidationFault
+     */
+
+    @WebMethod(operationName = "SaveSpatialUnitGroups")
+    public void SaveSpatialUnitGroups(
+            @WebParam(name = "items") List<SpatialUnitGroupTO> items,
+            @WebParam(name = "languageCode") String languageCode)
+            throws SOLAValidationFault, OptimisticLockingFault,
+            SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final List<SpatialUnitGroupTO> itemsTmp = items;
+        final String languageCodeTmp = languageCode;
+
+        runUpdateValidation(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                List<String> ids = new ArrayList<String>();
+                for(SpatialUnitGroupTO item: itemsTmp){
+                    ids.add(item.getId());
+                }
+                List<SpatialUnitGroup> spatialUnitGroupListToSave =
+                        GenericTranslator.fromTOList(itemsTmp, SpatialUnitGroup.class, 
+                        cadastreEJB.getSpatialUnitGroupsByIds(ids));
+                cadastreEJB.saveSpatialUnitGroups(spatialUnitGroupListToSave, languageCodeTmp);
+            }
+        });
+    }
+
+     /**
+     * See {{@linkplain CadastreEJB#getSpatialUnitGroups(byte[], Integer, Integer)
+     * CadastreEJB.getSpatialUnitGroups(byte[], Integer, Integer)}
+     * 
+     * @param filteringGeometry 
+     * @param hierarchyLevel 
+     * @param srid 
+     * 
+     * @throws SOLAAccessFault
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     */
+
+     @WebMethod(operationName = "GetSpatialUnitGroups")
+    public List<SpatialUnitGroupTO> GetSpatialUnitGroups(
+            @WebParam(name = "filteringGeometry") final byte[] filteringGeometry,
+            @WebParam(name = "hierarchyLevel") final Integer hierarchyLevel,
+            @WebParam(name = "srid") final int srid)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        cadastreEJB.getSpatialUnitGroups(filteringGeometry, hierarchyLevel, srid),
+                        SpatialUnitGroupTO.class);
+            }
+        });
+
+        return (List<SpatialUnitGroupTO>) result[0];
+    }
+     
+         @WebMethod(operationName = "getCadastreObject")
     public CadastreObjectTO getCadastreObject(@WebParam(name = "id") final String id)
             throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
@@ -631,3 +709,4 @@ public class Cadastre extends AbstractWebService {
         return (CadastreObjectTO) result[0];
     }
 }
+

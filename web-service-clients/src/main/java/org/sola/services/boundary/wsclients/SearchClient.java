@@ -117,13 +117,6 @@ public interface SearchClient extends AbstractWSClient {
     
     public static final String SEARCH_RIGHTS_FOR_EXPORT = SERVICE_NAME + "searchRightsForExport";
     
-         /**
-     * Search.getExtentOfPublicDisplayMap - Identifier for the
-     * getExtentOfPublicDisplayMap method
-     */
-    public static final String GET_EXTENT_OF_PUBLIC_DISPLAY_MAP =
-            SERVICE_NAME + "getExtentOfPublicDisplayMap";
-
      /*
      * DISPUTE
      */
@@ -136,6 +129,14 @@ public interface SearchClient extends AbstractWSClient {
      */
     public static final String SEARCH_CADASTRE_OBJECTS = SERVICE_NAME + "searchCadastreObjects";
    
+         /**
+     * Search.getExtentOfPublicDisplayMap - Identifier for the
+     * getExtentOfPublicDisplayMap method
+     */
+    public static final String GET_EXTENT_OF_PUBLIC_DISPLAY_MAP =
+            SERVICE_NAME + "getExtentOfPublicDisplayMap";
+
+  
 
     /**
      * Returns applications that have a lodged or approved status and are assigned to the currently
@@ -292,7 +293,7 @@ public interface SearchClient extends AbstractWSClient {
      * @return The results of the search
      */
     List<SpatialSearchResultTO> searchSpatialObjects(
-            String queryName, String searchString) throws WebServiceClientException;
+            String queryName, String searchString, int srid) throws WebServiceClientException;
 
     /**
      * Returns the map layer config details from system.config_map_layer table. Also retrieves the

@@ -467,8 +467,41 @@ public class MockCadastrePort implements Cadastre {
             return null;
         }
     }
-      @Override
+
+    /**
+     * Response Key = CadastreClient.GET_SPATIAL_UNIT_GROUPS
+     *
+     * @return default = new ArrayList<SpatialUnitGroupTO>()
+     */    
+    @Override
+    public List<SpatialUnitGroupTO> getSpatialUnitGroups(
+            byte[] filteringGeometry, Integer hierarchyLevel, int srid) 
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<SpatialUnitGroupTO> defaultResponse = new ArrayList<SpatialUnitGroupTO>();
+        
+        try {
+            return getManager().getResponse(CadastreClient.GET_SPATIAL_UNIT_GROUPS,
+                    List.class, defaultResponse, filteringGeometry, hierarchyLevel, srid);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+
+   /**
+     * Response Key = CadastreClient.SAVE_SPATIAL_UNIT_GROUPS
+     *
+     */   
+    @Override
+    public void saveSpatialUnitGroups(
+            List<SpatialUnitGroupTO> items, String languageCode) 
+            throws OptimisticLockingFault, SOLAAccessFault, SOLAFault, 
+            SOLAValidationFault, UnhandledFault {
+    }
+    @Override
     public CadastreObjectTO getCadastreObject(String id) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+
 }

@@ -49,19 +49,19 @@ public class SpatialUnitGroupTO extends AbstractIdTO {
     private String id;
     private String name;
     private String label;
-    private String foundInSpatialId;
+//    private String foundInSpatialId;
     private byte[] geom;
-    private byte[] referencePoint;
+//    private byte[] referencePoint;
     private Integer hierarchyLevel;
-    private Integer seqNr;
+//    private Integer seqNr;
     
-    public String getFoundInSpatialId() {
-        return foundInSpatialId;
-    }
-
-    public void setFoundInSpatialId(String foundInSpatialId) {
-        this.foundInSpatialId = foundInSpatialId;
-    }
+//    public String getFoundInSpatialId() {
+//        return foundInSpatialId;
+//    }
+//
+//    public void setFoundInSpatialId(String foundInSpatialId) {
+//        this.foundInSpatialId = foundInSpatialId;
+//    }
 
     public byte[] getGeom() {
         return geom;
@@ -95,20 +95,20 @@ public class SpatialUnitGroupTO extends AbstractIdTO {
         this.name = name;
     }
 
-    public byte[] getReferencePoint() {
-        return referencePoint;
-    }
-
-    public void setReferencePoint(byte[] referencePoint) {
-        this.referencePoint = referencePoint;
-    }
-
-    public Integer getSeqNr() {
-        return seqNr;
-    }
-
-    public void setSeqNr(Integer seqNr) {
-        this.seqNr = seqNr;
-    }
+//    public byte[] getReferencePoint() {
+//        return referencePoint;
+//    }
+//
+//    public void setReferencePoint(byte[] referencePoint) {
+//        this.referencePoint = referencePoint;
+//    }
+//
+//    public Integer getSeqNr() {
+//        return seqNr;
+//    }
+//
+//    public void setSeqNr(Integer seqNr) {
+//        this.seqNr = seqNr;
+//    }
     
 }
