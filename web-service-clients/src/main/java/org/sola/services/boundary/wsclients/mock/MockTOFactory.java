@@ -490,6 +490,93 @@ public class MockTOFactory {
     }
 
     //</editor-fold>
+    
+       /*
+     * DISPUTE
+     */
+    /**
+     * Creates a default list of dispute actions <p> SQL query to generate list
+     * from DB: </p>
+     * <pre>
+     * select 'result.add(createCode(DisputeActionTO.class, "' || code || '", "' || display_value || '"));'
+     * from administrative.dispute_action
+     * </pre>
+     */
+    public static List<DisputeActionTO> createDisputeAction() {
+        List<DisputeActionTO> result = new ArrayList<DisputeActionTO>();
+        result.add(createCode(DisputeActionTO.class, "notheard", "Not Heard"));
+        result.add(createCode(DisputeActionTO.class, "awaitinginfo", "Awaiting Information"));
+        result.add(createCode(DisputeActionTO.class, "referredtoadr", "Referred to ADR"));
+        return result;
+    }
+
+    /**
+     * Creates a default list of dispute category <p> SQL query to generate list
+     * from DB: </p>
+     * <pre>
+     * select 'result.add(createCode(disputeCategoryTO.class, "' || code || '", "' || display_value || '"));'
+     * from administrative.dispute_category
+     * </pre>
+     */
+    public static List<DisputeCategoryTO> createDisputeCategory() {
+        List<DisputeCategoryTO> result = new ArrayList<DisputeCategoryTO>();
+        result.add(createCode(DisputeCategoryTO.class, "sporadic", "Sporadic"));
+        result.add(createCode(DisputeCategoryTO.class, "regularization", "Regularization"));
+        result.add(createCode(DisputeCategoryTO.class, "unregistered", "Un-Registered"));
+        return result;
+    }
+
+    /**
+     * Creates a default list of dispute status <p> SQL query to generate list
+     * from DB: </p>
+     * <pre>
+     * select 'result.add(createCode(DisputeStatus.class, "' || code || '", "' || display_value || '"));'
+     * from administrative.dispute_status
+     * </pre>
+     */
+    public static List<DisputeStatusTO> createDisputeStatus() {
+        List<DisputeStatusTO> result = new ArrayList<DisputeStatusTO>();
+        result.add(createCode(DisputeStatusTO.class, "pending", "Pending"));
+        result.add(createCode(DisputeStatusTO.class, "resolved", "Resolved"));
+
+        return result;
+    }
+
+    /**
+     * Creates a default list of dispute type <p> SQL query to generate list
+     * from DB: </p>
+     * <pre>
+     * select 'result.add(createCode(DisputeTypeTO.class, "' || code || '", "' || display_value || '"));'
+     * from administrative.dispute_type
+     * </pre>
+     */
+    public static List<DisputeTypeTO> createDisputeType() {
+        List<DisputeTypeTO> result = new ArrayList<DisputeTypeTO>();
+        result.add(createCode(DisputeTypeTO.class, "title", "Title"));
+        result.add(createCode(DisputeTypeTO.class, "boundaries", "Boundaries"));
+        result.add(createCode(DisputeTypeTO.class, "encroachment", "Encroachment"));
+        result.add(createCode(DisputeTypeTO.class, "inheritance", "Inheritance"));
+        result.add(createCode(DisputeTypeTO.class, "other", "Other"));
+        return result;
+    }
+
+    /**
+     * Creates a default list of other authorities <p> SQL query to generate
+     * list from DB: </p>
+     * <pre>
+     * select 'result.add(createCode(OtherAuthoritiesTO.class, "' || code || '", "' || display_value || '"));'
+     * from administrative.other_authorities
+     * </pre>
+     */
+    public static List<OtherAuthoritiesTO> createOtherAuthorities() {
+        List<OtherAuthoritiesTO> result = new ArrayList<OtherAuthoritiesTO>();
+        result.add(createCode(OtherAuthoritiesTO.class, "courtoflaw", "Courts of Law"));
+        result.add(createCode(OtherAuthoritiesTO.class, "localauthority", "Local Authorities"));
+        result.add(createCode(OtherAuthoritiesTO.class, "areachief", "Area Chief"));
+        result.add(createCode(OtherAuthoritiesTO.class, "police", "Police"));
+        result.add(createCode(OtherAuthoritiesTO.class, "other", "Other Authorities"));
+        return result;
+    }
     //<editor-fold defaultstate="collapsed" desc="Security TOs">
     /**
      * Creates a default User, username test

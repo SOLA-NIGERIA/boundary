@@ -37,6 +37,8 @@ import org.sola.webservices.transferobjects.cadastre.CadastreObjectNodeTO;
 import org.sola.webservices.transferobjects.cadastre.CadastreObjectTO;
 import org.sola.webservices.transferobjects.cadastre.SpatialUnitGroupTO;
 import org.sola.webservices.transferobjects.cadastre.SpatialValueAreaTO;
+import org.sola.webservices.transferobjects.search.CadastreObjectSearchParamsTO;
+import org.sola.webservices.transferobjects.search.CadastreObjectSearchResultTO;
 import org.sola.webservices.transferobjects.transaction.TransactionBulkOperationSpatialTO;
 import org.sola.webservices.transferobjects.transaction.TransactionCadastreChangeTO;
 import org.sola.webservices.transferobjects.transaction.TransactionCadastreRedefinitionTO;
@@ -103,6 +105,12 @@ public interface CadastreClient extends AbstractWSClient {
      * method
      */
     public static final String GET_CADASTRE_OBJECTS = SERVICE_NAME + "getCadastreObjects";
+   
+    /**
+     * Cadastre.getCadastreObjects - Identifier for the getCadastreObjects
+     * method
+     */
+    public static final String GET_CADASTRE_OBJECT = SERVICE_NAME + "getCadastreObject";
     /**
      * Cadastre.getCadastreObjectNode - Identifier for the getCadastreObjectNode
      * method
@@ -295,6 +303,8 @@ public interface CadastreClient extends AbstractWSClient {
      */
     List<SpatialUnitGroupTO> getSpatialUnitGroupByAllParts(String searchString)
             throws WebServiceClientException;
-
+  
     
+    CadastreObjectTO getCadastreObject(String id) throws WebServiceClientException;
+     
 }

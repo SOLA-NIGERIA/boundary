@@ -609,4 +609,95 @@ public class MockReferenceDataPort implements ReferenceData {
     public List<LeaseConditionTO> getLeaseConditions(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+      /*
+     * DISPUTE
+     */
+    
+       /**
+     * Response Key = ReferenceDataClient.GET_DISPUTE_ACTIONS
+     *
+     * @return default = MockTOFactory.createDisputeAction()
+     */
+    @Override
+    public List<DisputeActionTO> getDisputeAction(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<DisputeActionTO> defaultResponse = MockTOFactory.createDisputeAction();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_DISPUTE_ACTION,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+          
+            return null;
+            
+        }
+    }
+
+       /**
+     * Response Key = ReferenceDataClient.GET_DISPUTE_CATEGORY
+     *
+     * @return default = MockTOFactory.createDisputeCategory()
+     */
+    @Override
+    public List<DisputeCategoryTO> getDisputeCategory(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<DisputeCategoryTO> defaultResponse = MockTOFactory.createDisputeCategory();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_DISPUTE_CATEGORY,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+    
+       /**
+     * Response Key = ReferenceDataClient.GET_DISPUTE_STATUS
+     *
+     * @return default = MockTOFactory.createDisputeStatus()
+     */
+    @Override
+    public List<DisputeStatusTO> getDisputeStatus(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<DisputeStatusTO> defaultResponse = MockTOFactory.createDisputeStatus();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_DISPUTE_STATUS,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+    
+       /**
+     * Response Key = ReferenceDataClient.GET_DISPUTE_TYPE
+     *
+     * @return default = MockTOFactory.createDisputeType()
+     */
+    @Override
+    public List<DisputeTypeTO> getDisputeType(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<DisputeTypeTO> defaultResponse = MockTOFactory.createDisputeType();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_DISPUTE_TYPE,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+    
+       /**
+     * Response Key = ReferenceDataClient.GET_OTHER_AUTHORITIES
+     *
+     * @return default = MockTOFactory.createOtherAuthorities()
+     */
+    @Override
+    public List<OtherAuthoritiesTO> getOtherAuthorities(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<OtherAuthoritiesTO> defaultResponse = MockTOFactory.createOtherAuthorities();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_OTHER_AUTHORITIES,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            
+             return null;
+        }
+    }
 }

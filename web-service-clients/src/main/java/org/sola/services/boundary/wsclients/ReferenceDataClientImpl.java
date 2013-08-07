@@ -636,4 +636,106 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
         }
         return result;
     }
+    
+    /*
+     * DISPUTE
+     */
+    @Override
+    public List<DisputeActionTO> getDisputeAction() throws WebServiceClientException {
+        return getDisputeAction(getLanguageCode());
+    }
+
+    @Override
+    public List<DisputeActionTO> getDisputeAction(String lang) throws WebServiceClientException {
+        List<DisputeActionTO> result = null;
+        final String methodName = ReferenceDataClient.GET_DISPUTE_ACTION;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getDisputeAction(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
+
+    @Override
+    public List<DisputeCategoryTO> getDisputeCategory() throws WebServiceClientException {
+        return getDisputeCategory(getLanguageCode());
+    }
+
+    @Override
+    public List<DisputeCategoryTO> getDisputeCategory(String lang) throws WebServiceClientException {
+        List<DisputeCategoryTO> result = null;
+        final String methodName = ReferenceDataClient.GET_DISPUTE_CATEGORY;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getDisputeCategory(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
+
+    @Override
+    public List<DisputeStatusTO> getDisputeStatus() throws WebServiceClientException {
+        return getDisputeStatus(getLanguageCode());
+    }
+
+    @Override
+    public List<DisputeStatusTO> getDisputeStatus(String lang) throws WebServiceClientException {
+        List<DisputeStatusTO> result = null;
+        final String methodName = ReferenceDataClient.GET_DISPUTE_STATUS;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getDisputeStatus(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
+
+    @Override
+    public List<DisputeTypeTO> getDisputeType() throws WebServiceClientException {
+        return getDisputeType(getLanguageCode());
+    }
+
+    @Override
+    public List<DisputeTypeTO> getDisputeType(String lang) throws WebServiceClientException {
+        List<DisputeTypeTO> result = null;
+        final String methodName = ReferenceDataClient.GET_DISPUTE_TYPE;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getDisputeType(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
+      @Override
+    public List<OtherAuthoritiesTO> getOtherAuthorities() throws WebServiceClientException {
+        return getOtherAuthorities(getLanguageCode());
+    }
+
+    @Override
+    public List<OtherAuthoritiesTO> getOtherAuthorities(String lang) throws WebServiceClientException {
+        List<OtherAuthoritiesTO> result = null;
+        final String methodName = ReferenceDataClient.GET_OTHER_AUTHORITIES;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getOtherAuthorities(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+            } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
 }

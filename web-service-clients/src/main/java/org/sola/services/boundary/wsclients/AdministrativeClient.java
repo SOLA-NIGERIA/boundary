@@ -120,6 +120,69 @@ public interface AdministrativeClient extends AbstractWSClient {
     public static final String GET_SYS_REG_STATUS = SERVICE_NAME + "getSysRegStatus";
     
     public static final String GET_SYS_REG_PROGRESS = SERVICE_NAME + "getSysRegProgress";
+    
+    /*
+     * DISPUTE
+     */
+    /**
+     * Administrative.getDisputePartyById - Identifier for the getDisputePartyById method
+     */
+    public static final String GET_DISPUTE_PARTY_BY_ID = SERVICE_NAME + "getDisputePartyById";
+    /**
+     * Administrative.getDisputeById - Identifier for the getDisputeById method
+     */
+    public static final String GET_DISPUTE_BY_ID = SERVICE_NAME + "getDisputeById";
+    /**
+     * Administrative.getDisputeCommentsById - Identifier for the getDisputeCommentsById method
+     */
+    public static final String GET_DISPUTE_COMMENTS_BY_ID = SERVICE_NAME + "getDisputeCommentsById";
+    
+     /**
+     * Administrative.getDisputeCommentsByDispute - Identifier for the getDisputeCommentsByDispute method
+     */
+    public static final String GET_DISPUTE_COMMENTS_BY_DISPUTE = SERVICE_NAME + "getDisputeCommentsByDispute";
+
+     /**
+     * Administrative.getDisputePartyByDispute - Identifier for the getDisputePartyByDispute method
+     */
+    public static final String GET_DISPUTE_PARTY_BY_DISPUTE = SERVICE_NAME + "getDisputePartyByDispute";
+   
+    /**
+     * Administrative.getDisputeByNr - Identifier for the getDisputeByNr method
+     */
+    public static final String GET_DISPUTE_BY_NR = SERVICE_NAME + "getDisputeByNr";
+    /**
+     * Administrative.getDisputeByUser - Identifier for the getDisputeByUser
+     * method
+     */
+    public static final String GET_DISPUTE_BY_USER = SERVICE_NAME + "getDisputeByUser";
+    /**
+     * Administrative.getDisputeByService - Identifier for the getDisputeByUser
+     * method
+     */
+    public static final String GET_DISPUTE_BY_SERVICE = SERVICE_NAME + "getDisputeByService";
+    /**
+     * Administrative.getDispute - Identifier for the getDispute method
+     */
+    public static final String GET_DISPUTE = SERVICE_NAME + "getDispute";
+    /**
+     * Administrative.createDispute - Identifier for the createDispute method
+     */
+    public static final String CREATE_DISPUTE = SERVICE_NAME + "createDispute";
+    /**
+     * Administrative.saveDispute - Identifier for the saveDispute method
+     */
+    public static final String SAVE_DISPUTE = SERVICE_NAME + "saveDispute";
+    /**
+     * Administrative.saveDisputeComments - Identifier for the saveDisputeComments method
+     */
+    public static final String SAVE_DISPUTE_COMMENTS = SERVICE_NAME + "saveDisputeComments";
+    /**
+     * Administrative.saveDisputeParty - Identifier for the createDisputeParty method
+     */
+    public static final String SAVE_DISPUTE_PARTY = SERVICE_NAME + "saveDisputeParty";
+    
+    
    
      /**
      * Creates a new BA Unit Area for a BaUnitId 
@@ -297,4 +360,153 @@ public interface AdministrativeClient extends AbstractWSClient {
     
     List<SysRegProgressTO> getSysRegProgress(SysRegManagementParamsTO sysRegManagementParamsTO)
             throws WebServiceClientException;
+    
+     /*
+     * DISPUTE
+     */
+    /**
+     * Retrieves the Dispute matching the supplied identifier.
+     *
+     * @param id The Dispute identifier
+     * @return The Dispute details or null if the identifier is invalid.
+     * @throws WebServiceClientException
+     */
+    DisputeTO getDisputeById(String id) throws WebServiceClientException;
+
+    /**
+     * Retrieves the Dispute matching the supplied identifier.
+     *
+     * @param Nr The Dispute identifier
+     * @return The Dispute details or null if the identifier is invalid.
+     * @throws WebServiceClientException
+     */
+    DisputeTO getDisputeByNr(String Nr) throws WebServiceClientException;
+    
+    /**
+     * Retrieves the Dispute matching the supplied identifier.
+     *
+     * @param User The Dispute identifier
+     * @return The Dispute details or null if the identifier is invalid.
+     * @throws WebServiceClientException
+     */
+    DisputeTO getDisputeByUser(String User) throws WebServiceClientException;
+    
+    /**
+     * Retrieves the Dispute matching the supplied identifier.
+     *
+     * @param Service The Service for the Dispute identifier
+     * @return The Dispute details or null if the identifier is invalid.
+     * @throws WebServiceClientException
+     */
+    DisputeTO getDisputeByService(String Service) throws WebServiceClientException;
+
+    /**
+     * Retrieves the Dispute .
+     *
+     * @return The Dispute details or null if the identifier is invalid.
+     * @throws WebServiceClientException
+     */
+    DisputeTO getDispute(String id) throws WebServiceClientException;
+
+    /**
+     * Creates a new Dispute with a default status of pending .
+     *
+     * <p>Requires the {@linkplain RolesConstants#ADMINISTRATIVE_DISPUTE_SAVE}
+     * role.</p>
+     *
+     *
+     * @param disputeTO The details of the Dispute to create
+     * @return The new Dispute
+     * @see #savedispute(java.lang.String,
+     * org.sola.webservices.transferobjects.administrative.DisputeTO)
+     * saveDispute
+     * @throws WebServiceClientException
+     */
+    DisputeTO createDispute(DisputeTO disputeTO) throws WebServiceClientException;
+
+    /**
+     * Saves any updates to an existing Dispute. Can also be used to create a
+     * new dispute, however this method does not set any default values on the
+     * Dispute like
+     * {@linkplain #createDispute(java.lang.String, org.sola.webservices.transferobjects.administrative.DisputeTO)
+     *
+     * <p>Requires the {@linkplain RolesConstants#ADMINISTRATIVE_DISPUTE_SAVE}
+     * role.</p>
+     *
+     * @param disputeTO The details of the Dispute to create
+     * @return The new Dispute
+     * @see #saveDispute(java.lang.String,
+     * org.sola.webservices.transferobjects.administrative.DisputeTO)
+     * saveDispute
+     * @throws WebServiceClientException
+     */
+    DisputeTO saveDispute(DisputeTO disputeTO) throws WebServiceClientException;
+
+    /**
+     * Saves any updates to an existing Dispute Comments. Can also be used to
+     * create a new dispute comment.
+     *
+     * <p>Requires the {@linkplain RolesConstants#ADMINISTRATIVE_DISPUTE_COMMENTS_SAVE}
+     * role.</p>
+     *
+     * @param disputeTO The details of the Dispute to create
+     * @return The new Dispute
+     * @see #saveBaUnit(java.lang.String,
+     * org.sola.webservices.transferobjects.administrative.DisputeTO)
+     * saveDispute
+     * @throws WebServiceClientException
+     */
+    DisputeCommentsTO saveDisputeComments(DisputeCommentsTO disputeCommentsTO) throws WebServiceClientException;
+    /**
+     * Saves Dispute Party. Can also be used to
+     * create a new dispute party.
+     *
+     * <p>Requires the {@linkplain RolesConstants#ADMINISTRATIVE_DISPUTE_PARTY_SAVE}
+     * role.</p>
+     *
+     * @param disputePartyTO The details of the Dispute to create
+     * @return The new DisputeParty
+     * @see #saveBaUnit(java.lang.String,
+     * org.sola.webservices.transferobjects.administrative.DisputePartyTO)
+     * saveDisputeParty
+     * @throws WebServiceClientException
+     */
+    DisputePartyTO saveDisputeParty(DisputePartyTO disputePartyTO) throws WebServiceClientException;
+    /**
+     * Retrieves the DisputePartyById matching the supplied identifier.
+     *
+     * @param id The DisputePartyById identifier
+     * @return The DisputePartyById details or null if the identifier is invalid.
+     * @throws WebServiceClientException
+     */
+    DisputePartyTO getDisputePartyById(String id) throws WebServiceClientException;
+    /**
+     * Retrieves the DisputeComments matching the supplied identifier.
+     *
+     * @param id The DisputeComments identifier
+     * @return The DisputeComments details or null if the identifier is invalid.
+     * @throws WebServiceClientException
+     */
+    DisputeCommentsTO getDisputeCommentsById(String id) throws WebServiceClientException;
+    
+    
+    /**
+     * Retrieves the DisputeComments matching the supplied identifier.
+     *
+     * @param disputeNr The Dispute identifier
+     * @return The DisputeComments details or null if the identifier is invalid.
+     * @throws WebServiceClientException
+     */
+     DisputeCommentsTO getDisputeCommentsByDispute(String disputeNr) throws WebServiceClientException;
+    
+    
+     /**
+     * Retrieves the DisputeParty matching the supplied identifier.
+     *
+     * @param disputeNr The Dispute identifier
+     * @return The DisputeParty details or null if the identifier is invalid.
+     * @throws WebServiceClientException
+     */
+    List<DisputePartyTO> getDisputePartyByDispute(String disputeNr) throws WebServiceClientException;
+    
 }

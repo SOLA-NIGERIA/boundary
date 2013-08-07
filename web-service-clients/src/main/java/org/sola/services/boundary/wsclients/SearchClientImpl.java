@@ -361,4 +361,38 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         }
         return result;
     }
+    
+     /*
+     * DISPUTE
+     */
+    @Override
+    public List<DisputeSearchResultTO> searchDispute(DisputeSearchParamsTO searchParams) throws WebServiceClientException {
+        List<DisputeSearchResultTO> result = null;
+        final String methodName = SearchClient.SEARCH_DISPUTE;
+        try {
+            beforeWebMethod(methodName, searchParams);
+            result = getPort().searchDispute(searchParams);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, searchParams);
+        }
+        return result;
+    }
+    
+     @Override
+    public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws WebServiceClientException {
+        List<CadastreObjectSearchResultTO> result = null;
+        final String methodName = SearchClient.SEARCH_CADASTRE_OBJECTS;
+        try {
+            beforeWebMethod(methodName, searchParams);
+            result = getPort().searchCadastreObjects(searchParams);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, searchParams);
+        }
+        return result;
+    }
+
 }

@@ -124,6 +124,18 @@ public interface SearchClient extends AbstractWSClient {
     public static final String GET_EXTENT_OF_PUBLIC_DISPLAY_MAP =
             SERVICE_NAME + "getExtentOfPublicDisplayMap";
 
+     /*
+     * DISPUTE
+     */
+    /**
+     * Search.searchDispute - Identifier for the searchDispute method
+     */
+    public static final String SEARCH_DISPUTE = SERVICE_NAME + "searchDispute";
+    /**
+     * Search.searchBaUnit - Identifier for the searchBaUnit method
+     */
+    public static final String SEARCH_CADASTRE_OBJECTS = SERVICE_NAME + "searchCadastreObjects";
+   
 
     /**
      * Returns applications that have a lodged or approved status and are assigned to the currently
@@ -310,4 +322,24 @@ public interface SearchClient extends AbstractWSClient {
      * @return
      */
     public byte[] getExtentOfPublicDisplayMap(String nameLastPart);
+    
+    /*
+     * DISPUTE
+     */
+    
+      /**
+     * Executes a search across all Disputes. Partial, case insensitive matches
+     * of the name  are supported.
+     *
+     * <p>Requires the {@linkplain RolesConstants#ADMINISTRATIVE_SEARCH_DISPUTE_SEARCH}
+     * role.</p>
+     *
+     * @param searchParams The search criteria to use.
+     * @return All Disputes matching the search criteria.
+     * @throws WebServiceClientException
+     */
+    List<DisputeSearchResultTO> searchDispute(DisputeSearchParamsTO searchParams) throws WebServiceClientException;
+    
+    public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws WebServiceClientException;
+
 }

@@ -349,4 +349,210 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     } 
+     
+      /*
+     * DISPUTE
+     */
+    @Override
+    public DisputeTO getDisputeById(String id) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_BY_ID;
+        try {
+            beforeWebMethod(methodName, id);
+            result = getPort().getDisputeById(id);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, id);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeTO getDisputeByNr(String nr) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_BY_NR;
+        try {
+            beforeWebMethod(methodName, nr);
+            result = getPort().getDisputeByNr(nr);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, nr);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeTO getDispute(String id) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE;
+        try {
+            beforeWebMethod(methodName, id);
+            result = getPort().getDispute(id);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, id);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeTO getDisputeByUser(String user) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_BY_USER;
+        try {
+            beforeWebMethod(methodName, user);
+            result = getPort().getDisputeByUser(user);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, user);
+        }
+        return result;
+    }
+    
+    @Override
+    public DisputeTO getDisputeByService(String service) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_BY_SERVICE;
+        try {
+            beforeWebMethod(methodName, service);
+            result = getPort().getDisputeByService(service);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, service);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeTO createDispute(
+            DisputeTO disputeTO) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.CREATE_DISPUTE;
+        try {
+            beforeWebMethod(methodName, disputeTO);
+            result = getPort().createDispute(disputeTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, disputeTO);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeTO saveDispute(
+            DisputeTO disputeTO) throws WebServiceClientException {
+        DisputeTO result = null;
+        final String methodName = AdministrativeClient.SAVE_DISPUTE;
+        try {
+            beforeWebMethod(methodName, disputeTO);
+            result = getPort().saveDispute(disputeTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, disputeTO);
+        }
+        return result;
+    }
+
+    @Override
+    public DisputeCommentsTO saveDisputeComments(
+            DisputeCommentsTO disputeCommentsTO) throws WebServiceClientException {
+        DisputeCommentsTO result = null;
+        final String methodName = AdministrativeClient.SAVE_DISPUTE_COMMENTS;
+        try {
+            beforeWebMethod(methodName, disputeCommentsTO);
+            result = getPort().saveDisputeComments(disputeCommentsTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, disputeCommentsTO);
+        }
+        return result;
+    }
+    
+    @Override
+    public DisputePartyTO saveDisputeParty(
+            DisputePartyTO disputePartyTO) throws WebServiceClientException {
+        DisputePartyTO result = null;
+        final String methodName = AdministrativeClient.SAVE_DISPUTE_PARTY;
+        try {
+            beforeWebMethod(methodName, disputePartyTO);
+            result = getPort().saveDisputeParty(disputePartyTO);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, disputePartyTO);
+        }
+        return result;
+    }
+    
+    @Override
+    public DisputePartyTO getDisputePartyById(String id) throws WebServiceClientException {
+        DisputePartyTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_PARTY_BY_ID;
+        try {
+            beforeWebMethod(methodName, id);
+            result = getPort().getDisputePartyById(id);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, id);
+        }
+        return result;
+    }
+    
+    @Override
+    public DisputeCommentsTO getDisputeCommentsById(String id) throws WebServiceClientException {
+        DisputeCommentsTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_COMMENTS_BY_ID;
+        try {
+            beforeWebMethod(methodName, id);
+            result = getPort().getDisputeCommentsById(id);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, id);
+        }
+        return result;
+    }
+    
+    
+  @Override
+  public DisputeCommentsTO getDisputeCommentsByDispute(String disputeNr) throws WebServiceClientException {
+        
+       DisputeCommentsTO result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_COMMENTS_BY_DISPUTE;
+        try {
+            beforeWebMethod(methodName, disputeNr);
+            result = getPort().getDisputeCommentsByDispute(disputeNr);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, disputeNr);
+        }
+        return result;    
+    }
+  
+  @Override
+  public List<DisputePartyTO> getDisputePartyByDispute(String disputeNr) throws WebServiceClientException {
+        
+       List<DisputePartyTO> result = null;
+        final String methodName = AdministrativeClient.GET_DISPUTE_PARTY_BY_DISPUTE;
+        try {
+            beforeWebMethod(methodName, disputeNr);
+            result = getPort().getDisputePartyByDispute(disputeNr);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, disputeNr);
+        }
+        return result;    
+    }
+  
 }

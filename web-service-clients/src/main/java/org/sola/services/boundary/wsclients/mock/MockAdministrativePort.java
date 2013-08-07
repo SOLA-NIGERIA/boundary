@@ -432,4 +432,215 @@ public class MockAdministrativePort implements Administrative {
             return null;
         }
     }
+     
+     /*
+     * DISSPUTE
+     */
+    /**
+     * Response Key = AdministrativeClient.GET_DISPUTE_BY_ID
+     *
+     * @return default = new DisputeTO()
+     */
+    @Override
+    public DisputeTO getDisputeById(String id) throws SOLAFault, UnhandledFault {
+        DisputeTO defaultResponse = new DisputeTO();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_DISPUTE_BY_ID,
+                    DisputeTO.class, defaultResponse, id);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdministrativeClient.GET_DISPUTE_BY_NR
+     *
+     * @return default = new DisputeTO()
+     */
+    @Override
+    public DisputeTO getDisputeByNr(String nr) throws SOLAFault, UnhandledFault {
+        DisputeTO defaultResponse = new DisputeTO();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_DISPUTE_BY_NR,
+                    DisputeTO.class, defaultResponse, nr);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    @Override
+    public DisputeTO getDisputeByUser(String user) throws SOLAFault, UnhandledFault {
+        DisputeTO defaultResponse = new DisputeTO();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_DISPUTE_BY_USER,
+                    DisputeTO.class, defaultResponse, user);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+    @Override
+    public DisputeTO getDisputeByService(String service) throws SOLAFault, UnhandledFault {
+        DisputeTO defaultResponse = new DisputeTO();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_DISPUTE_BY_SERVICE,
+                    DisputeTO.class, defaultResponse, service);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+    @Override
+    public DisputeTO getDispute(String id) throws SOLAFault, UnhandledFault {
+        DisputeTO defaultResponse = new DisputeTO();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_DISPUTE,
+                    DisputeTO.class, defaultResponse, id);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdministrativeClient.CREATE_DISPUTE
+     *
+     * @return default = disputeTO param
+     */
+    @Override
+    public DisputeTO createDispute(DisputeTO disputeTO)
+            throws OptimisticLockingFault, SOLAAccessFault, SOLAFault, UnhandledFault {
+        DisputeTO defaultResponse = disputeTO;
+        try {
+            return getManager().getResponse(AdministrativeClient.CREATE_BA_UNIT,
+                    DisputeTO.class, defaultResponse, disputeTO);
+        } catch (Exception ex) {
+            processExceptionUpdate(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdministrativeClient.SAVE_DISPUTE
+     *
+     * @return default = DisputeTO param
+     */
+    @Override
+    public DisputeTO saveDispute(DisputeTO disputeTO)
+            throws OptimisticLockingFault, SOLAAccessFault, SOLAFault, UnhandledFault {
+        DisputeTO defaultResponse = disputeTO;
+        try {
+            return getManager().getResponse(AdministrativeClient.SAVE_BA_UNIT,
+                    DisputeTO.class, defaultResponse, disputeTO);
+        } catch (Exception ex) {
+            processExceptionUpdate(ex);
+            return null;
+        }
+    }
+
+    /**
+     * Response Key = AdministrativeClient.SAVE_DISPUTE_COMMENTS
+     *
+     * @return default = saveDisputeCommentsTO param
+     */
+    @Override
+    public DisputeCommentsTO saveDisputeComments(DisputeCommentsTO disputeCommentsTO)
+            throws OptimisticLockingFault, SOLAAccessFault, SOLAFault, UnhandledFault {
+        DisputeCommentsTO defaultResponse = disputeCommentsTO;
+        try {
+            return getManager().getResponse(AdministrativeClient.SAVE_DISPUTE_COMMENTS,
+                    DisputeCommentsTO.class, defaultResponse, disputeCommentsTO);
+        } catch (Exception ex) {
+            processExceptionUpdate(ex);
+            return null;
+        }
+    }
+    
+     /**
+     * Response Key = AdministrativeClient.SAVE_DISPUTE_PARTY
+     *
+     * @return default = DisputePartyTO param
+     */
+    @Override
+    public DisputePartyTO saveDisputeParty(DisputePartyTO disputePartyTO)
+            throws OptimisticLockingFault, SOLAAccessFault, SOLAFault, UnhandledFault {
+        DisputePartyTO defaultResponse = disputePartyTO;
+        try {
+            return getManager().getResponse(AdministrativeClient.SAVE_DISPUTE_PARTY,
+                    DisputePartyTO.class, defaultResponse, disputePartyTO);
+        } catch (Exception ex) {
+            processExceptionUpdate(ex);
+            return null;
+        }
+    }
+    
+     /**
+     * Response Key = AdministrativeClient.GET_DISPUTE_BY_ID
+     *
+     * @return default = new DisputeTO()
+     */
+    @Override
+    public DisputeCommentsTO getDisputeCommentsById(String id) throws SOLAFault, UnhandledFault {
+        DisputeCommentsTO defaultResponse = new DisputeCommentsTO();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_DISPUTE_COMMENTS_BY_ID,
+                    DisputeCommentsTO.class, defaultResponse, id);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+    
+     /**
+     * Response Key = AdministrativeClient.GET_DISPUTE_COMMENTS_BY_DISPUTE
+     *
+     * @return default = new DisputeCommentsTO()
+     */
+    @Override
+    public DisputeCommentsTO getDisputeCommentsByDispute(String disputeNr) throws SOLAFault, UnhandledFault {
+        DisputeCommentsTO defaultResponse = new DisputeCommentsTO();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_DISPUTE_COMMENTS_BY_DISPUTE,
+                    DisputeCommentsTO.class, defaultResponse, disputeNr);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+    
+      /**
+     * Response Key = AdministrativeClient.GET_DISPUTE_PARTY_BY_DISPUTE
+     *
+     * @return default = new DisputePartyTO()
+     */
+    @Override
+    public List<DisputePartyTO> getDisputePartyByDispute(String disputeNr) throws SOLAFault, UnhandledFault {
+        List<DisputePartyTO> defaultResponse = new ArrayList<DisputePartyTO>();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_DISPUTE_PARTY_BY_DISPUTE,
+                    List.class, defaultResponse, disputeNr);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
+    
+     /**
+     * Response Key = AdministrativeClient.GET_DISPUTE_BY_ID
+     *
+     * @return default = new DisputeTO()
+     */
+    @Override
+    public DisputePartyTO getDisputePartyById(String id) throws SOLAFault, UnhandledFault {
+        DisputePartyTO defaultResponse = new DisputePartyTO();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_DISPUTE_PARTY_BY_ID,
+                    DisputePartyTO.class, defaultResponse, id);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        }
+    }
 }

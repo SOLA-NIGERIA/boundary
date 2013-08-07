@@ -27,7 +27,11 @@ package org.sola.services.boundary.wsclients.mock;
 
 import org.sola.services.boundary.wsclients.AdministrativeClient;
 import org.sola.services.boundary.wsclients.AdministrativeClientImpl;
+import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.administrative.Administrative;
+import org.sola.webservices.transferobjects.administrative.DisputeCommentsTO;
+import org.sola.webservices.transferobjects.administrative.DisputeTO;
+
 
 /**
  * Mock implementation of the {@linkplain AdministrativeClient} interface that extends the
@@ -71,4 +75,41 @@ public class MockAdministrativeClient extends AdministrativeClientImpl implement
     public void setCredentials(String userName, char[] password) {
         super.setCredentials(userName, null);
     }
+    @Override
+    public DisputeTO getDisputeById(String id) throws WebServiceClientException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public DisputeTO getDisputeByNr(String Nr) throws WebServiceClientException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public DisputeTO getDisputeByUser(String User) throws WebServiceClientException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+     @Override
+     public DisputeTO getDisputeByService(String Service) throws WebServiceClientException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public DisputeTO getDispute(String id) throws WebServiceClientException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+  
+    
+    @Override
+    public DisputeTO createDispute(DisputeTO disputeTO) throws WebServiceClientException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public DisputeTO saveDispute(DisputeTO disputeTO) throws WebServiceClientException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
 }

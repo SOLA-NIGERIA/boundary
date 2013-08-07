@@ -1,26 +1,30 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations (FAO). All rights
- * reserved.
+ * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted
- * provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,this list of conditions
- * and the following disclaimer. 2. Redistributions in binary form must reproduce the above
- * copyright notice,this list of conditions and the following disclaimer in the documentation and/or
- * other materials provided with the distribution. 3. Neither the name of FAO nor the names of its
- * contributors may be used to endorse or promote products derived from this software without
- * specific prior written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
- * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.services.boundary.wsclients.mock;
@@ -36,11 +40,11 @@ import org.sola.webservices.transferobjects.search.*;
 /**
  * Provides a mock implementation for the
  * {@linkplain org.sola.webservices.search.Search} interface. Uses the
- * {@linkplain MockServiceManager} to obtain the appropriate mock response for each web method.
- * <p>Each method mocked by this class has a public constant defined that can be used to reference a
- * mock response object from the {@linkplain MockServiceManager}. To set a response object for a web
- * method, use the {@linkplain MockServiceManager#setResponse(String, Object)} method referencing
- * the appropriate web method constant from {@linkplain org.sola.services.boundary.wsclients.SearchClient}.</p>
+ * {@linkplain MockServiceManager} to obtain the appropriate mock response for
+ * each web method. <p>Each method mocked by this class has a public constant
+ * defined that can be used to reference a mock response object from the {@linkplain MockServiceManager}.
+ * To set a response object for a web method, use the {@linkplain MockServiceManager#setResponse(String, Object)}
+ * method referencing the appropriate web method constant from {@linkplain org.sola.services.boundary.wsclients.SearchClient}.</p>
  *
  * @see MockSearchClient
  * @see SearchClient
@@ -59,8 +63,9 @@ public class MockSearchPort implements Search {
     }
 
     /**
-     * Processes the mock response exception and throws the appropriate service exception or a
-     * MockResponseException if the response exception is not a recognized type.
+     * Processes the mock response exception and throws the appropriate service
+     * exception or a MockResponseException if the response exception is not a
+     * recognized type.
      *
      * @param ex The Mock response exception to process
      */
@@ -80,8 +85,9 @@ public class MockSearchPort implements Search {
     }
 
     /**
-     * Processes the mock response exception and throws the appropriate service exception or a
-     * MockResponseException if the response exception is not a recognized type. Extends {@linkplain #processExceptionBasic(java.lang.Exception) processExceptionBasic}
+     * Processes the mock response exception and throws the appropriate service
+     * exception or a MockResponseException if the response exception is not a
+     * recognized type. Extends {@linkplain #processExceptionBasic(java.lang.Exception) processExceptionBasic}
      * to include the SOLAAccessFault;
      *
      * @param ex The Mock response exception to process
@@ -389,7 +395,7 @@ public class MockSearchPort implements Search {
      * @return default = new ArrayList<SourceSearchResultTO>()
      */
     @Override
-    public List<PowerOfAttorneySearchResultTO> searchPowerOfAttorney(PowerOfAttorneySearchParamsTO searchParams) 
+    public List<PowerOfAttorneySearchResultTO> searchPowerOfAttorney(PowerOfAttorneySearchParamsTO searchParams)
             throws SOLAAccessFault, SOLAFault, UnhandledFault {
         List<PowerOfAttorneySearchResultTO> defaultResponse = new ArrayList<PowerOfAttorneySearchResultTO>();
         try {
@@ -405,8 +411,8 @@ public class MockSearchPort implements Search {
     public List<RightsExportResultTO> searchRightsForExport(RightsExportParamsTO searchParams) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
-     @Override
+
+    @Override
     public byte[] getExtentOfPublicDisplayMap(String nameLastPart) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         byte[] defaultResponse = new byte[0];
         try {
@@ -415,6 +421,32 @@ public class MockSearchPort implements Search {
         } catch (Exception ex) {
             processExceptionAccess(ex);
             return null;
-        }    
-     }
+        }
+    }
+
+    /*
+     * LAA addition thoriso
+     */
+    /**
+     * Response Key = SearchClient.SEARCH_DISPUTE
+     *
+     * @return default = new ArrayList<DisputeSearchResultTO>()
+     */
+    @Override
+    public List<DisputeSearchResultTO> searchDispute(DisputeSearchParamsTO searchParams)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<DisputeSearchResultTO> defaultResponse = new ArrayList<DisputeSearchResultTO>();
+        try {
+            return getManager().getResponse(SearchClient.SEARCH_DISPUTE,
+                    List.class, defaultResponse, searchParams);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+
+    @Override
+    public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

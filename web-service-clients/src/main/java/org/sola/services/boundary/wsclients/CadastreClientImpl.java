@@ -360,6 +360,21 @@ public class CadastreClientImpl extends AbstractWSClientImpl implements Cadastre
         return result;
     }
 
+  
+    @Override
+    public CadastreObjectTO getCadastreObject(String id) throws WebServiceClientException {
+        CadastreObjectTO result = null;
+        final String methodName = CadastreClient.GET_CADASTRE_OBJECT;
+        try {
+            beforeWebMethod(methodName, id);
+            result = getPort().getCadastreObject(id);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, id);
+        }
+        return result;
+    }
 
 
 }

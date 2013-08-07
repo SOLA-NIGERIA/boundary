@@ -911,6 +911,143 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<BaUnitRelTypeTO>) result[0];
     }
+    
+    
+    
+    /*
+     * DISPUTE
+     */
+    /**
+     * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeAction(java.lang.String)
+     * AdministrativeEJB.getDisputeAction}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetDisputeAction")
+    public List<DisputeActionTO> GetDisputeAction(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getDisputeAction(languageCodeTmp), DisputeActionTO.class);
+            }
+        });
+
+        return (List<DisputeActionTO>) result[0];
+    }
+
+    /*
+     * See {@linkplain
+     * org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeCategory(java.lang.String)
+     * AdministrativeEJB.getDisputeCategory}
+     *
+     * @throws SOLAFault @throws UnhandledFault @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetDisputeCategory")
+    public List<DisputeCategoryTO> GetDisputeCategory(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getDisputeCategory(languageCodeTmp), DisputeCategoryTO.class);
+            }
+        });
+
+        return (List<DisputeCategoryTO>) result[0];
+    }
+
+    /*
+     * See {@linkplain
+     * org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeStatus(java.lang.String)
+     * AdministrativeEJB.getDisputeStatus}
+     *
+     * @throws SOLAFault @throws UnhandledFault @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetDisputeStatus")
+    public List<DisputeStatusTO> GetDisputeStatus(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getDisputeStatus(languageCodeTmp), DisputeStatusTO.class);
+            }
+        });
+
+        return (List<DisputeStatusTO>) result[0];
+    }
+
+    /*
+     * See {@linkplain
+     * org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeType(java.lang.String)
+     * AdministrativeEJB.getDisputeType}
+     *
+     * @throws SOLAFault @throws UnhandledFault @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetDisputeType")
+    public List<DisputeTypeTO> GetDisputeType(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getDisputeType(languageCodeTmp), DisputeTypeTO.class);
+            }
+        });
+
+        return (List<DisputeTypeTO>) result[0];
+    }
+
+    /*
+     * See {@linkplain
+     * org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getOtherAuthorities(java.lang.String)
+     * AdministrativeEJB.getOtherAuthorities}
+     *
+     * @throws SOLAFault @throws UnhandledFault @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetOtherAuthorities")
+    public List<OtherAuthoritiesTO> GetOtherAuthorities(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getOtherAuthorities(languageCodeTmp), OtherAuthoritiesTO.class);
+            }
+        });
+
+        return (List<OtherAuthoritiesTO>) result[0];
+    }
+
 
     /**
      * Supports saving of all SOLA Reference Data types. <p>Requires the {@linkplain RolesConstants#ADMIN_MANAGE_REFDATA}

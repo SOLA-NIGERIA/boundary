@@ -621,4 +621,62 @@ public class Search extends AbstractWebService {
 
         return (byte[]) result[0];
     }
+    
+     /*
+     * DISPUTE
+     */
+    
+    @WebMethod(operationName = "searchCadastreObjects")
+    public List<CadastreObjectSearchResultTO> searchCadastreObjects(
+            @WebParam(name = "searchParams") final CadastreObjectSearchParamsTO searchParams)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        searchEJB.searchCadastreObjects(GenericTranslator.fromTO(searchParams, 
+                        CadastreObjectSearchParams.class, null)), CadastreObjectSearchResultTO.class);
+            }
+        });
+        return (List<CadastreObjectSearchResultTO>) result[0];
+    }
+    
+    
+    
+        /**
+     * See {@linkplain  org.sola.services.ejb.search.businesslogic.SearchEJB#searchDispute(org.sola.services.ejb.search.repository.entities.DisputeSearchParams)
+     * SearchEJB.searchDispute}
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "searchDispute")
+    public List<DisputeSearchResultTO> searchDipsute(
+            @WebParam(name = "searchParams") DisputeSearchParamsTO searchParams)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] params = {searchParams};
+        //final DisputeSearchParamsTO searchParamsTmp = searchParams;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                DisputeSearchParamsTO searchParams = (DisputeSearchParamsTO) params[0];
+                if (searchParams != null) {
+                    result[0] = GenericTranslator.toTOList(
+                            searchEJB.searchDispute(GenericTranslator.fromTO(
+                            searchParams, DisputeSearchParams.class, null)),
+                            DisputeSearchResultTO.class);
+                }
+            }
+        });
+
+        return (List<DisputeSearchResultTO>) result[0];
+    }
 }

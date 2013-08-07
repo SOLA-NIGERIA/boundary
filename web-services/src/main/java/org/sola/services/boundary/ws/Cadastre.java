@@ -613,5 +613,21 @@ public class Cadastre extends AbstractWebService {
 
         return (List<SpatialUnitGroupTO>) result[0];
     }
-   
+    
+    @WebMethod(operationName = "getCadastreObject")
+    public CadastreObjectTO getCadastreObject(@WebParam(name = "id") final String id)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTO(cadastreEJB.getCadastreObject(id), CadastreObjectTO.class);
+            }
+        });
+
+        return (CadastreObjectTO) result[0];
+    }
 }
