@@ -220,6 +220,12 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * ReferenceData.getDisputeType - Identifier for the getDisputeType method
      */
     public static final String GET_DISPUTE_TYPE = SERVICE_NAME + "getDisputeType";
+    
+    
+    /**
+     * ReferenceData.getDisputeType - Identifier for the getDisputeRoleType method
+     */
+    public static final String GET_DISPUTE_ROLE_TYPE = SERVICE_NAME + "getDisputeRoleType";
     /**
      * ReferenceData.getOtherAuthorities - Identifier for the
      * getOtherAuthorities method
@@ -700,15 +706,30 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     List<DisputeTypeTO> getDisputeType() throws WebServiceClientException;
-
-    /**
+     /**
      * Retrieves all administrative.disputeType code values using the default
      * locale of the client to localize the display values.
      *
      * @throws WebServiceClientException
      */
     List<DisputeTypeTO> getDisputeType(String lang) throws WebServiceClientException;
-
+       /**
+     * Retrieves all administrative.disputeRoleType code values using the default
+     * locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeRoleTypeTO> getDisputeRoleType() throws WebServiceClientException;
+     
+     /**
+     * Retrieves all administrative.disputeRoleType code values using the default
+     * locale of the client to localize the display values.
+     *
+     * @throws WebServiceClientException
+     */
+    List<DisputeRoleTypeTO> getDisputeRoleType(String lang) throws WebServiceClientException;
+    
+   
     /**
      * Retrieves all administrative.otherAuthorities code values using the
      * default locale of the client to localize the display values.

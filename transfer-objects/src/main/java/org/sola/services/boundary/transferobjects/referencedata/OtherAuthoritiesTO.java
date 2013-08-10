@@ -26,7 +26,7 @@
  * *********************************************************************************************
  */
 /*
- * LAA - Addition thoriso
+ * 
  */
 package org.sola.services.boundary.transferobjects.referencedata;
 

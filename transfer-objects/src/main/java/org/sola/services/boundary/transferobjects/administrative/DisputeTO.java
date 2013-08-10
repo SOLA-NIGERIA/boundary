@@ -29,6 +29,8 @@ package org.sola.services.boundary.transferobjects.administrative;
 
 import org.sola.services.common.contracts.AbstractIdTO;
 import java.util.*;
+import org.sola.services.boundary.transferobjects.casemanagement.PartySummaryTO;
+import org.sola.services.boundary.transferobjects.casemanagement.SourceTO;
 
 public class DisputeTO extends AbstractIdTO {
     
@@ -49,8 +51,9 @@ public class DisputeTO extends AbstractIdTO {
     private boolean primaryRespondent;
     private String actionRequired;
     private List<DisputeCommentsTO> disputeCommentsList;
+    private List<SourceTO> sourceList;
     private List<DisputePartyTO> disputePartyList;
-
+    
     public DisputeTO(){
         super();
     }
@@ -140,14 +143,23 @@ public class DisputeTO extends AbstractIdTO {
         }
         disputeCommentsList.add(Comments);
     }
-     public List<DisputePartyTO> getDisputePartyList() {
+    public List<DisputePartyTO> getDisputePartyList() {
+        return disputePartyList;
+    }
+     public List<DisputePartyTO> getDisputeParty() {
         return disputePartyList;
     }
 
-    public void setDisputePartyList(List<DisputePartyTO> disputePartyList) {
-        this.disputePartyList = disputePartyList;
+    public void setDisputePartyList(List<DisputePartyTO> disputeParty) {
+        this.disputePartyList = disputeParty;
     }
 
+    public void addDisputeParty(DisputePartyTO disputePartyTO) {
+        if (disputePartyList == null) {
+            disputePartyList = new ArrayList<DisputePartyTO>();
+        }
+        disputePartyList.add(disputePartyTO);
+    }
     public String getCaseType() {
         return caseType;
     }
@@ -186,6 +198,21 @@ public class DisputeTO extends AbstractIdTO {
 
     public void setServiceId(String serviceId) {
         this.serviceId = serviceId;
+    }
+    
+     public List<SourceTO> getSourceList() {
+        return sourceList;
+    }
+
+    public void setSourceList(List<SourceTO> sourceList) {
+        this.sourceList = sourceList;
+    }
+
+    public void addSource(SourceTO source) {
+        if (sourceList == null) {
+            sourceList = new ArrayList<SourceTO>();
+        }
+        sourceList.add(source);
     }
     
 }

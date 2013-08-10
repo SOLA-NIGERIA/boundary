@@ -26,16 +26,16 @@
  * *********************************************************************************************
  */
 /*
- * DISPUTE
+ * 
  */
 package org.sola.services.boundary.transferobjects.referencedata;
 
 import org.sola.services.common.contracts.AbstractCodeTO;
 
-public class DisputeActionTO extends AbstractCodeTO {
+public class DisputeRoleTypeTO extends AbstractCodeTO {
 
-    public DisputeActionTO() {
+    public DisputeRoleTypeTO() {
         super();
     }
 }
-
+    

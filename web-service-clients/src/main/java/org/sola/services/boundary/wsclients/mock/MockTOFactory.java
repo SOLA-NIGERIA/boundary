@@ -570,6 +570,21 @@ public class MockTOFactory {
         result.add(createCode(DisputeTypeTO.class, "other", "Other"));
         return result;
     }
+    
+     /**
+     * Creates a default list of dispute role type <p> SQL query to generate list
+     * from DB: </p>
+     * <pre>
+     * select 'result.add(createCode(DisputeRoleTypeTO.class, "' || code || '", "' || display_value || '"));'
+     * from administrative.dispute_type
+     * </pre>
+     */
+    public static List<DisputeRoleTypeTO> createDisputeRoleType() {
+        List<DisputeRoleTypeTO> result = new ArrayList<DisputeRoleTypeTO>();
+        result.add(createCode(DisputeRoleTypeTO.class, "complainant", "Complainant"));
+        result.add(createCode(DisputeRoleTypeTO.class, "resistent", "Resistent"));
+        return result;
+    }
 
     /**
      * Creates a default list of other authorities <p> SQL query to generate

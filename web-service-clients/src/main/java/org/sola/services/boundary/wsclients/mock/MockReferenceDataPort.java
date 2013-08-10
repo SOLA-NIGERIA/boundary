@@ -700,6 +700,22 @@ public class MockReferenceDataPort implements ReferenceData {
         }
     }
     
+        /**
+     * Response Key = ReferenceDataClient.GET_DISPUTE_ROLE_TYPE
+     *
+     * @return default = MockTOFactory.createDisputeRoleType()
+     */
+    @Override
+    public List<DisputeRoleTypeTO> getDisputeRoleType(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<DisputeRoleTypeTO> defaultResponse = MockTOFactory.createDisputeRoleType();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_DISPUTE_ROLE_TYPE,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
        /**
      * Response Key = ReferenceDataClient.GET_OTHER_AUTHORITIES
      *

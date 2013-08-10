@@ -52,12 +52,7 @@ import org.sola.services.common.contracts.AbstractCodeTO;
 import org.sola.services.common.faults.*;
 import org.sola.services.common.repository.entities.AbstractCodeEntity;
 import org.sola.services.ejb.administrative.businesslogic.AdministrativeEJBLocal;
-import org.sola.services.ejb.administrative.repository.entities.BaUnitRelType;
-import org.sola.services.ejb.administrative.repository.entities.BaUnitType;
-import org.sola.services.ejb.administrative.repository.entities.MortgageType;
-import org.sola.services.ejb.administrative.repository.entities.RrrGroupType;
-import org.sola.services.ejb.administrative.repository.entities.RrrType;
-import org.sola.services.ejb.administrative.repository.entities.SourceBaUnitRelationType;
+import org.sola.services.ejb.administrative.repository.entities.*;
 import org.sola.services.ejb.application.repository.entities.ApplicationActionType;
 import org.sola.services.ejb.application.repository.entities.ApplicationStatusType;
 import org.sola.services.ejb.application.repository.entities.RequestCategoryType;
@@ -1022,6 +1017,32 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<DisputeTypeTO>) result[0];
     }
+    
+      /*
+     * See {@linkplain
+     * org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeRoleType(java.lang.String)
+     * AdministrativeEJB.getDisputeRoleType}
+     *
+     * @throws SOLAFault @throws UnhandledFault @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetDisputeRoleType")
+    public List<DisputeRoleTypeTO> GetDisputeRoleType(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getDisputeRoleType(languageCodeTmp), DisputeRoleTypeTO.class);
+            }
+        });
+
+        return (List<DisputeRoleTypeTO>) result[0];
+    }
 
     /*
      * See {@linkplain
@@ -1199,6 +1220,14 @@ public class ReferenceData extends AbstractWebService {
                 } else if (refDataTO instanceof BaUnitRelTypeTO) {
                     codeEntity = administrativeEJB.getCodeEntity(BaUnitRelType.class, refDataTO.getCode());
                     codeEntity = GenericTranslator.fromTO(refDataTO, BaUnitRelType.class, codeEntity);
+                    administrativeEJB.saveCodeEntity(codeEntity);
+                } else if (refDataTO instanceof DisputeRoleTypeTO) {
+                    codeEntity = administrativeEJB.getCodeEntity(DisputeRoleType.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, DisputeRoleType.class, codeEntity);
+                    administrativeEJB.saveCodeEntity(codeEntity);
+                } else if (refDataTO instanceof DisputeTypeTO) {
+                    codeEntity = administrativeEJB.getCodeEntity(DisputeType.class, refDataTO.getCode());
+                    codeEntity = GenericTranslator.fromTO(refDataTO, DisputeType.class, codeEntity);
                     administrativeEJB.saveCodeEntity(codeEntity);
                 }
 

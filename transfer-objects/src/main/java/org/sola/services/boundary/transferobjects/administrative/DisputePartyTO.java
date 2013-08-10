@@ -31,7 +31,7 @@ import org.sola.services.common.contracts.AbstractIdTO;
 
 public class DisputePartyTO extends AbstractIdTO{
   
-    private String id;
+//    private String id;
     private String disputeNr;
     private String partyRole;
     private String partyId;

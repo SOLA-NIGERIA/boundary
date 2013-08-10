@@ -28,7 +28,7 @@
 
 /**
  *
- * LAA - thoriso
+ * 
  */
 package org.sola.services.boundary.transferobjects.search;
 
