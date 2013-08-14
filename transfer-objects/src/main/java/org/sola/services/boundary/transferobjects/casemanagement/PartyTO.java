@@ -50,6 +50,35 @@ public class PartyTO extends AbstractIdTO {
     private String genderCode;
     private List<PartyRoleTO> roleList;
     private boolean rightHolder;
+    private String dob;
+    private String state;
+    private String nationality;
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    
     
     private AddressTO address;
 
