@@ -51,6 +51,7 @@ public class ApplicationPropertyTO extends AbstractIdTO {
     private boolean verifiedExists;
     private boolean verifiedHasOwners;
     private boolean verifiedLocation;
+    private String landUseCode;
 
     public ApplicationPropertyTO() {
         super();
@@ -126,5 +127,12 @@ public class ApplicationPropertyTO extends AbstractIdTO {
 
     public void setVerifiedLocation(boolean verifiedLocation) {
         this.verifiedLocation = verifiedLocation;
+    }
+     public String getLandUseCode() {
+        return landUseCode;
+    }
+
+    public void setLandUseCode(String landUseCode) {
+        this.landUseCode = landUseCode;
     }
 }

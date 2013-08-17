@@ -50,6 +50,62 @@ public class BaUnitTO extends AbstractIdTO {
     private List<RelatedBaUnitInfoTO> parentBaUnits;
     private String pendingActionCode;
     private BigDecimal calculatedAreaSize;
+    private boolean isDeveloped;
+    private Integer yearsForDev;
+    private BigDecimal valueToImp;
+    private Integer term;
+    private String landUse;
+    private String location;
+
+    public String getLandUse() {
+        return landUse;
+    }
+
+    public void setLandUse(String landUse) {
+        this.landUse = landUse;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+     }
+
+    public Integer getTerm() {
+        return term;
+    }
+
+    public void setTerm(Integer term) {
+        this.term = term;
+    }
+
+    public BigDecimal getValueToImp() {
+        return valueToImp;
+    }
+
+    public void setValueToImp(BigDecimal valueToImp) {
+        this.valueToImp = valueToImp;
+    }
+
+    public Integer getYearsForDev() {
+        return yearsForDev;
+    }
+
+    public void setYearsForDev(Integer yearsForDev) {
+        this.yearsForDev = yearsForDev;
+     }
+    
+    public boolean isIsDeveloped() {
+        return isDeveloped;
+    }
+
+    public void setIsDeveloped(boolean isDeveloped) {
+        this.isDeveloped = isDeveloped;
+    }
+    
+    
 
     public BigDecimal getCalculatedAreaSize() {
         return calculatedAreaSize;
