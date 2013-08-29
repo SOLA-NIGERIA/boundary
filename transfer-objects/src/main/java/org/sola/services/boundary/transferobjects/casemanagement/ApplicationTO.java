@@ -47,7 +47,8 @@ public class ApplicationTO extends ApplicationSummaryTO {
     private String actionCode;
     private String actionNotes;
     private PartyTO contactPerson;
-    private PartySummaryTO agent;
+//    private PartySummaryTO agent;
+    private PartyTO agent;
     private List<ServiceTO> serviceList;
     private List<ApplicationPropertyTO> propertyList;
     private List<SourceTO> sourceList;
@@ -158,11 +159,13 @@ public class ApplicationTO extends ApplicationSummaryTO {
         sourceList.add(source);
     }
 
-    public PartySummaryTO getAgent() {
+//    public PartySummaryTO getAgent() {
+    public PartyTO getAgent() {
         return agent;
     }
 
-    public void setAgent(PartySummaryTO agent) {
+//    public void setAgent(PartySummaryTO agent) {
+    public void setAgent(PartyTO agent) {
         this.agent = agent;
     }
 

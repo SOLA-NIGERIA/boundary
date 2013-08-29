@@ -289,7 +289,8 @@ public interface CaseManagementClient extends AbstractWSClient {
      *
      * @throws WebServiceClientException
      */
-    List<PartySummaryTO> getAgents() throws WebServiceClientException;
+//    List<PartySummaryTO> getAgents() throws WebServiceClientException;
+     List<PartyTO> getAgents() throws WebServiceClientException;
 
     /**
      * Returns an application based on the id value. <p>Requires the {@linkplain RolesConstants#APPLICATION_VIEW_APPS}

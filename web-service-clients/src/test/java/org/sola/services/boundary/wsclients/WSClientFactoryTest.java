@@ -113,14 +113,17 @@ public class WSClientFactoryTest {
         assertEquals("SomeId", p2.getId());
 
         // Check a default response for a List type
-        List<PartySummaryTO> plist = result.getAgents();
+//        List<PartySummaryTO> plist = result.getAgents();
+        List<PartyTO> plist = result.getAgents();
         assertNotNull(plist);
         assertEquals(0, plist.size());
 
         // Check a setResponse for a list type
-        plist.add(new PartySummaryTO());
+//        plist.add(new PartySummaryTO());
+        plist.add(new PartyTO());
         man.setResponse(MockCaseManagementClient.GET_AGENTS, plist);
-        List<PartySummaryTO> plist2 = result.getAgents();
+//        List<PartySummaryTO> plist2 = result.getAgents();
+        List<PartyTO> plist2 = result.getAgents();
         assertNotNull(plist2);
         assertEquals(1, plist2.size());
 
@@ -182,7 +185,8 @@ public class WSClientFactoryTest {
                 return result;
             }
         });
-        List<PartySummaryTO> plist3 = result.getAgents();
+//        List<PartySummaryTO> plist3 = result.getAgents();
+        List<PartyTO> plist3 = result.getAgents();
         assertNotNull(plist3);
         assertEquals(2, plist3.size());
         assertEquals("mymockpartyid", plist3.get(0).getId());
@@ -191,7 +195,8 @@ public class WSClientFactoryTest {
         // Attempt second call to web method during the same test, but this time an exception
         // will be raised. 
         try {
-            List<PartySummaryTO> plist4 = result.getAgents();
+//            List<PartySummaryTO> plist4 = result.getAgents();
+            List<PartyTO> plist4 = result.getAgents();
             fail("Did not raise exception when testing anonymous inner class");
         } catch (WebServiceClientException e) {
             assertEquals(ServiceMessage.GENERAL_UNEXPECTED_ERROR_DETAILS, e.getMessageCode());

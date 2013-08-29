@@ -375,7 +375,8 @@ public class CaseManagement extends AbstractWebService {
      * @throws SOLAAccessFault
      */
     @WebMethod(operationName = "GetAgents")
-    public List<PartySummaryTO> GetAgents() throws SOLAFault, UnhandledFault, SOLAAccessFault {
+//    public List<PartySummaryTO> GetAgents() throws SOLAFault, UnhandledFault, SOLAAccessFault {
+      public List<PartyTO> GetAgents() throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
         final Object[] result = {null};
 
@@ -384,11 +385,14 @@ public class CaseManagement extends AbstractWebService {
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(partyEJB.getAgents(),
-                        PartySummaryTO.class);
+                         PartyTO.class);
+            
+//                        PartySummaryTO.class);
             }
         });
 
-        return (List<PartySummaryTO>) result[0];
+//        return (List<PartySummaryTO>) result[0];
+        return (List<PartyTO>) result[0];
     }
 
     /**

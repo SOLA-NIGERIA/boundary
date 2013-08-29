@@ -194,8 +194,10 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
     }
 
     @Override
-    public List<PartySummaryTO> getAgents() throws WebServiceClientException {
-        List<PartySummaryTO> result = null;
+//    public List<PartySummaryTO> getAgents() throws WebServiceClientException {
+//        List<PartySummaryTO> result = null;
+     public List<PartyTO> getAgents() throws WebServiceClientException {
+        List<PartyTO> result = null;
         final String methodName = CaseManagementClient.GET_AGENTS;
         try {
             beforeWebMethod(methodName);
