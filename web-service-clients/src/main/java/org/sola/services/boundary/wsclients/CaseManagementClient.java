@@ -79,6 +79,10 @@ public interface CaseManagementClient extends AbstractWSClient {
      */
     public static final String GET_AGENTS = SERVICE_NAME + "getAgents";
     /**
+     * CaseManagement.getRecOfficers - Identifier for the getRecOfficers method
+     */
+    public static final String GET_RECOFFICERS = SERVICE_NAME + "getRecOfficers";
+    /**
      * CaseManagement.getApplication - Identifier for the getApplication method
      */
     public static final String GET_APPLICATION = SERVICE_NAME + "getApplication";
@@ -283,6 +287,16 @@ public interface CaseManagementClient extends AbstractWSClient {
     List<BrReportTO> getAllBrs() throws WebServiceClientException;
 
     /**
+     * Returns all parties that have the recOfficer party role. Note that the address and party
+     * role details for each agent are not loaded. <p>No role is required to execute this
+     * method.</p>
+     *
+     * @throws WebServiceClientException
+     */
+//    List<PartySummaryTO> getAgents() throws WebServiceClientException;
+     List<PartyTO> getRecOfficers() throws WebServiceClientException;
+     
+     /**
      * Returns all parties that have the lodgingAgent party role. Note that the address and party
      * role details for each agent are not loaded. <p>No role is required to execute this
      * method.</p>
@@ -291,6 +305,7 @@ public interface CaseManagementClient extends AbstractWSClient {
      */
 //    List<PartySummaryTO> getAgents() throws WebServiceClientException;
      List<PartyTO> getAgents() throws WebServiceClientException;
+
 
     /**
      * Returns an application based on the id value. <p>Requires the {@linkplain RolesConstants#APPLICATION_VIEW_APPS}

@@ -53,11 +53,22 @@ public class SourceTO extends AbstractIdTO {
     private String version;
     private String description;
     private Date signingDate;
+    private PartyTO recOfficer;
     
     public SourceTO() {
         super();
     }
 
+    public PartyTO getRecOfficer() {
+        return recOfficer;
+    }
+
+    public void setRecOfficer(PartyTO recOfficer) {
+        this.recOfficer = recOfficer;
+    }
+    
+    
+    
     public String getAvailabilityStatusCode() {
         return availabilityStatusCode;
     }

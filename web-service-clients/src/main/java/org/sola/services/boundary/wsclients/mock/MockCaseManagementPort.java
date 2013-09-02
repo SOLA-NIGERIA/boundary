@@ -721,6 +721,25 @@ public class MockCaseManagementPort implements CaseManagement {
             return null;
         }
     }
+    
+       /**
+     * Response Key = CaseManagementClient.GET_RECOFFICERS
+     *
+     * @return default = new ArrayList<PartySummaryTO>()
+     */
+    @Override
+//    public List<PartySummaryTO> getAgents() throws SOLAAccessFault, SOLAFault, UnhandledFault {
+//        List<PartySummaryTO> defaultResponse = new ArrayList<PartySummaryTO>();
+      public List<PartyTO> getRecOfficers() throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<PartyTO> defaultResponse = new ArrayList<PartyTO>();
+        try {
+            return getManager().getResponse(CaseManagementClient.GET_RECOFFICERS,
+                    List.class, defaultResponse);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
 
     /**
      * Response Key = CaseManagementClient.GET_PARTY

@@ -394,7 +394,34 @@ public class CaseManagement extends AbstractWebService {
 //        return (List<PartySummaryTO>) result[0];
         return (List<PartyTO>) result[0];
     }
+        /**
+     * See {@linkplain org.sola.services.ejb.party.businesslogic.PartyEJB#getRecOfficers()
+     * PartyEJB.getRecOfficers}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetRecOfficers")
+//    public List<PartySummaryTO> GetAgents() throws SOLAFault, UnhandledFault, SOLAAccessFault {
+      public List<PartyTO> GetRecOfficers() throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(partyEJB.getRecOfficers(),
+                         PartyTO.class);
+            
+//                        PartySummaryTO.class);
+            }
+        });
+
+//        return (List<PartySummaryTO>) result[0];
+        return (List<PartyTO>) result[0];
+    }
     /**
      * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getUserActions(java.lang.String, java.util.Date, java.util.Date)
      * ApplicationEJB.getUserActions}
