@@ -192,10 +192,23 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
         }
         return result;
     }
-
+    
     @Override
-//    public List<PartySummaryTO> getAgents() throws WebServiceClientException {
-//        List<PartySummaryTO> result = null;
+    public PartyTO getPartyByFullName(String fullName) throws WebServiceClientException {
+        PartyTO result = null;
+        final String methodName = CaseManagementClient.GET_PARTY_BYFULLNAME;
+        try {
+            beforeWebMethod(methodName, fullName);
+            result = getPort().getPartyByFullName(fullName);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, fullName);
+        }
+        return result;
+    }
+    
+    @Override
      public List<PartyTO> getAgents() throws WebServiceClientException {
         List<PartyTO> result = null;
         final String methodName = CaseManagementClient.GET_AGENTS;
@@ -211,8 +224,6 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
     }
     
     @Override
-//    public List<PartySummaryTO> getAgents() throws WebServiceClientException {
-//        List<PartySummaryTO> result = null;
      public List<PartyTO> getRecOfficers() throws WebServiceClientException {
         List<PartyTO> result = null;
         final String methodName = CaseManagementClient.GET_AGENTS;

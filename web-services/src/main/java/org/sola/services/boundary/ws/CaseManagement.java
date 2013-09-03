@@ -365,7 +365,34 @@ public class CaseManagement extends AbstractWebService {
 
         return (PartyTO) result[0];
     }
+    
+     /**
+     * See {@linkplain org.sola.services.ejb.party.businesslogic.PartyEJB#getPartyByFullName(java.lang.String)
+     * PartyEJB.getPartyByFullName}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetPartyByFullName")
+    public PartyTO GetPartyByFullName(@WebParam(name = "fullName") String fullName) throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
+        final String fullNameTmp = fullName;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTO(partyEJB.getPartyByFullName(fullNameTmp), PartyTO.class);
+            }
+        });
+
+        return (PartyTO) result[0];
+    }
+
+    
+    
     /**
      * See {@linkplain org.sola.services.ejb.party.businesslogic.PartyEJB#getAgents()
      * PartyEJB.getAgents}

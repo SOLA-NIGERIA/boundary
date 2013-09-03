@@ -90,6 +90,10 @@ public interface CaseManagementClient extends AbstractWSClient {
      * CaseManagement.getParty - Identifier for the getParty method
      */
     public static final String GET_PARTY = SERVICE_NAME + "getParty";
+     /**
+     * CaseManagement.getPartyByFullName - Identifier for the getParty method
+     */
+    public static final String GET_PARTY_BYFULLNAME = SERVICE_NAME + "getPartyByFullName";
     /**
      * CaseManagement.saveApplication - Identifier for the saveApplication method
      */
@@ -288,12 +292,11 @@ public interface CaseManagementClient extends AbstractWSClient {
 
     /**
      * Returns all parties that have the recOfficer party role. Note that the address and party
-     * role details for each agent are not loaded. <p>No role is required to execute this
+     * role details for each recordation officer are not loaded. <p>No role is required to execute this
      * method.</p>
      *
      * @throws WebServiceClientException
      */
-//    List<PartySummaryTO> getAgents() throws WebServiceClientException;
      List<PartyTO> getRecOfficers() throws WebServiceClientException;
      
      /**
@@ -325,7 +328,17 @@ public interface CaseManagementClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     PartyTO getParty(String id) throws WebServiceClientException;
+    
+     /**
+     * Returns the details for the specified party. <p>No role is required to execute this
+     * method.</p>
+     *
+     * @param id The identifier of the party to retrieve.
+     * @throws WebServiceClientException
+     */
+    PartyTO getPartyByFullName(String fullName) throws WebServiceClientException;
 
+    
     /**
      * Saves changes to the application and child objects. Will also update the completion dates and
      * fees for the application if a new service as been added. <p>Requires the {@linkplain RolesConstants#APPLICATION_CREATE_APPS}
