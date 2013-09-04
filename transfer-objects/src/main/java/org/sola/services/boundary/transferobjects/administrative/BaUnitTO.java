@@ -56,7 +56,18 @@ public class BaUnitTO extends AbstractIdTO {
     private Integer term;
     private String landUse;
     private String location;
+    private Integer floorsNumber;
 
+    
+    public Integer getFloorsNumber() {
+        return floorsNumber;
+    }
+
+    public void setFloorsNumber(Integer floorsNumber) {
+        this.floorsNumber = floorsNumber;
+    }
+    
+    
     public String getLandUse() {
         return landUse;
     }
