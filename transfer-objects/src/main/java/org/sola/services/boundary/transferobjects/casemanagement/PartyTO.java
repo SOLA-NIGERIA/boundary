@@ -50,6 +50,7 @@ public class PartyTO extends AbstractIdTO {
     private String typeCode;
     private String genderCode;
     private List<PartyRoleTO> roleList;
+    private List<SourceTO> sourceList;
     private boolean rightHolder;
     private Date dob;
     private String state;
@@ -86,7 +87,22 @@ public class PartyTO extends AbstractIdTO {
     public PartyTO() {
         super();
     }
+    
+     public void addSource(SourceTO source) {
+        if (sourceList == null) {
+            sourceList = new ArrayList<SourceTO>();
+        }
+        sourceList.add(source);
+    }
+     
+     public List<SourceTO> getSourceList() {
+        return sourceList;
+    }
 
+    public void setSourceList(List<SourceTO> sourceList) {
+        this.sourceList = sourceList;
+    } 
+    
     public String getEmail() {
         return email;
     }

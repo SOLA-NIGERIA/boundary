@@ -31,7 +31,7 @@ package org.sola.services.boundary.transferobjects.casemanagement;
 
 import java.util.Date;
 import org.sola.services.common.contracts.AbstractBasicIdTO;
-import org.sola.services.ejb.party.repository.entities.Party;
+//import org.sola.services.ejb.party.repository.entities.Party;
 
 public class SourceSummaryTO extends AbstractBasicIdTO {
 
@@ -49,21 +49,21 @@ public class SourceSummaryTO extends AbstractBasicIdTO {
     private String version;
     private String description;
     private String transactionId;
-    private PartyTO recOfficer;
+//    private PartyTO recOfficer;
 
 
     public SourceSummaryTO() {
         super();
     }
 
-    public PartyTO getRecOfficer() {
-        return recOfficer;
-    }
-
-    public void setRecOfficer(PartyTO recOfficer) {
-        this.recOfficer = recOfficer;
-    }
-    
+//    public PartyTO getRecOfficer() {
+//        return recOfficer;
+//    }
+//
+//    public void setRecOfficer(PartyTO recOfficer) {
+//        this.recOfficer = recOfficer;
+//    }
+//    
     
     
     public Date getExpirationDate() {
