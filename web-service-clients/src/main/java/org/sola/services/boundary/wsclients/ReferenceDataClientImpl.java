@@ -661,26 +661,6 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
      * DISPUTE
      */
     @Override
-    public List<DisputeActionTO> getDisputeAction() throws WebServiceClientException {
-        return getDisputeAction(getLanguageCode());
-    }
-
-    @Override
-    public List<DisputeActionTO> getDisputeAction(String lang) throws WebServiceClientException {
-        List<DisputeActionTO> result = null;
-        final String methodName = ReferenceDataClient.GET_DISPUTE_ACTION;
-        try {
-            beforeWebMethod(methodName, lang);
-            result = getPort().getDisputeAction(lang);
-        } catch (Exception e) {
-            processException(methodName, e);
-        } finally {
-            afterWebMethod(methodName, result, lang);
-        }
-        return result;
-    }
-
-    @Override
     public List<DisputeCategoryTO> getDisputeCategory() throws WebServiceClientException {
         return getDisputeCategory(getLanguageCode());
     }

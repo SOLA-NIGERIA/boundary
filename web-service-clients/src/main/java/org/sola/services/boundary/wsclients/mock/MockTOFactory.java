@@ -505,22 +505,7 @@ public class MockTOFactory {
        /*
      * DISPUTE
      */
-    /**
-     * Creates a default list of dispute actions <p> SQL query to generate list
-     * from DB: </p>
-     * <pre>
-     * select 'result.add(createCode(DisputeActionTO.class, "' || code || '", "' || display_value || '"));'
-     * from administrative.dispute_action
-     * </pre>
-     */
-    public static List<DisputeActionTO> createDisputeAction() {
-        List<DisputeActionTO> result = new ArrayList<DisputeActionTO>();
-        result.add(createCode(DisputeActionTO.class, "notheard", "Not Heard"));
-        result.add(createCode(DisputeActionTO.class, "awaitinginfo", "Awaiting Information"));
-        result.add(createCode(DisputeActionTO.class, "referredtoadr", "Referred to ADR"));
-        return result;
-    }
-
+  
     /**
      * Creates a default list of dispute category <p> SQL query to generate list
      * from DB: </p>

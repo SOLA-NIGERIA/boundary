@@ -202,11 +202,6 @@ public interface ReferenceDataClient extends AbstractWSClient {
      * DISPUTE
      */
     /**
-     * ReferenceData.getDisputeAction - Identifier for the getDisputeAction
-     * method
-     */
-    public static final String GET_DISPUTE_ACTION = SERVICE_NAME + "getDisputeAction";
-    /**
      * ReferenceData.getDisputeCategory - Identifier for the getDisputeCategory
      * method
      */
@@ -651,22 +646,7 @@ public interface ReferenceDataClient extends AbstractWSClient {
     /*
      * DISPUTE
      */
-    /**
-     * Retrieves all administrative.DisputeAction code values using the default
-     * locale of the client to localize the display values.
-     *
-     * @throws WebServiceClientException
-     */
-    List<DisputeActionTO> getDisputeAction() throws WebServiceClientException;
-
-    /**
-     * Retrieves all administrative.disputeAction code values using the default
-     * locale of the client to localize the display values.
-     *
-     * @throws WebServiceClientException
-     */
-    List<DisputeActionTO> getDisputeAction(String lang) throws WebServiceClientException;
-
+   
     /**
      * Retrieves all administrative.disputeCategory code values using the
      * default locale of the client to localize the display values.

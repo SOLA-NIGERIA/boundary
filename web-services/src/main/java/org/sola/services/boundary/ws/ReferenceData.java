@@ -913,33 +913,7 @@ public class ReferenceData extends AbstractWebService {
     /*
      * DISPUTE
      */
-    /**
-     * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeAction(java.lang.String)
-     * AdministrativeEJB.getDisputeAction}
-     *
-     * @throws SOLAFault
-     * @throws UnhandledFault
-     * @throws SOLAAccessFault
-     */
-    @WebMethod(operationName = "GetDisputeAction")
-    public List<DisputeActionTO> GetDisputeAction(String languageCode)
-            throws SOLAFault, UnhandledFault, SOLAAccessFault {
-
-        final String languageCodeTmp = languageCode;
-        final Object[] result = {null};
-
-        runGeneralQuery(wsContext, new Runnable() {
-
-            @Override
-            public void run() {
-                result[0] = GenericTranslator.toTOList(
-                        administrativeEJB.getDisputeAction(languageCodeTmp), DisputeActionTO.class);
-            }
-        });
-
-        return (List<DisputeActionTO>) result[0];
-    }
-
+    
     /*
      * See {@linkplain
      * org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getDisputeCategory(java.lang.String)

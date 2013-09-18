@@ -630,25 +630,7 @@ public class MockReferenceDataPort implements ReferenceData {
      * DISPUTE
      */
     
-       /**
-     * Response Key = ReferenceDataClient.GET_DISPUTE_ACTIONS
-     *
-     * @return default = MockTOFactory.createDisputeAction()
-     */
-    @Override
-    public List<DisputeActionTO> getDisputeAction(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
-        List<DisputeActionTO> defaultResponse = MockTOFactory.createDisputeAction();
-        try {
-            return getManager().getResponse(ReferenceDataClient.GET_DISPUTE_ACTION,
-                    List.class, defaultResponse, arg0);
-        } catch (Exception ex) {
-            processExceptionAccess(ex);
-          
-            return null;
-            
-        }
-    }
-
+     
        /**
      * Response Key = ReferenceDataClient.GET_DISPUTE_CATEGORY
      *

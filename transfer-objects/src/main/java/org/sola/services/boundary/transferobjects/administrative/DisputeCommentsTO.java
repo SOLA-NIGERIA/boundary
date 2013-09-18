@@ -36,7 +36,6 @@ public class DisputeCommentsTO extends AbstractIdTO {
     private String id;
     private String disputeNr;
     private Date updateDate;
-    private String disputeActionCode;
     private String comments;
     private String updatedBy;
     private String otherAuthoritiesCode;
@@ -61,13 +60,6 @@ public class DisputeCommentsTO extends AbstractIdTO {
         this.disputeNr = disputeNr;
     }
 
-    public String getDisputeActionCode() {
-        return disputeActionCode;
-    }
-
-    public void setDisputeActionCode(String disputeActionCode) {
-        this.disputeActionCode = disputeActionCode;
-    }
 
     public String getOtherAuthoritiesCode() {
         return otherAuthoritiesCode;
