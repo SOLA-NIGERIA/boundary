@@ -226,10 +226,25 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
     @Override
      public List<PartyTO> getRecOfficers() throws WebServiceClientException {
         List<PartyTO> result = null;
-        final String methodName = CaseManagementClient.GET_AGENTS;
+        final String methodName = CaseManagementClient.GET_RECOFFICERS;
         try {
             beforeWebMethod(methodName);
             result = getPort().getRecOfficers();
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result);
+        }
+        return result;
+    }
+    
+    @Override
+     public List<PartyTO> getDemOfficers() throws WebServiceClientException {
+        List<PartyTO> result = null;
+        final String methodName = CaseManagementClient.GET_DEMOFFICERS;
+        try {
+            beforeWebMethod(methodName);
+            result = getPort().getDemOfficers();
         } catch (Exception e) {
             processException(methodName, e);
         } finally {

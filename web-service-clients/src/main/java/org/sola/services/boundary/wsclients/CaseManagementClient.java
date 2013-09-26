@@ -83,6 +83,10 @@ public interface CaseManagementClient extends AbstractWSClient {
      */
     public static final String GET_RECOFFICERS = SERVICE_NAME + "getRecOfficers";
     /**
+     * CaseManagement.getRecOfficers - Identifier for the getRecOfficers method
+     */
+    public static final String GET_DEMOFFICERS = SERVICE_NAME + "getDemOfficers";
+    /**
      * CaseManagement.getApplication - Identifier for the getApplication method
      */
     public static final String GET_APPLICATION = SERVICE_NAME + "getApplication";
@@ -298,6 +302,15 @@ public interface CaseManagementClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
      List<PartyTO> getRecOfficers() throws WebServiceClientException;
+     
+      /**
+     * Returns all parties that have the demOfficer party role. Note that the address and party
+     * role details for each recordation officer are not loaded. <p>No role is required to execute this
+     * method.</p>
+     *
+     * @throws WebServiceClientException
+     */
+     List<PartyTO> getDemOfficers() throws WebServiceClientException;
      
      /**
      * Returns all parties that have the lodgingAgent party role. Note that the address and party

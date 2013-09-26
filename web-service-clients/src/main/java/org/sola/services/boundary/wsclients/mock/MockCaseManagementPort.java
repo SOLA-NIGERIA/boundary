@@ -740,7 +740,26 @@ public class MockCaseManagementPort implements CaseManagement {
             return null;
         }
     }
+    
+          /**
+     * Response Key = CaseManagementClient.GET_DEMOFFICERS
+     *
+     * @return default = new ArrayList<PartySummaryTO>()
+     */
+    @Override
+      public List<PartyTO> getDemOfficers() throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<PartyTO> defaultResponse = new ArrayList<PartyTO>();
+        try {
+            return getManager().getResponse(CaseManagementClient.GET_DEMOFFICERS,
+                    List.class, defaultResponse);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
 
+ 
+    
     /**
      * Response Key = CaseManagementClient.GET_PARTY
      *
