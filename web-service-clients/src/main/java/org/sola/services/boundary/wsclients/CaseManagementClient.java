@@ -230,6 +230,11 @@ public interface CaseManagementClient extends AbstractWSClient {
      * method
      */
     public static final String GET_SYS_REG_CERTIFICATES_APP = SERVICE_NAME + "getSysRegCerificatesByApplication";
+      /**
+     * Application.getSysRegProduction - Identifier for the getSysRegCertificatesApp
+     * method
+     */
+    public static final String GET_SYS_REG_PRODUCTION = SERVICE_NAME + "getSysRegProduction";
     
 
     /**
@@ -755,4 +760,8 @@ public interface CaseManagementClient extends AbstractWSClient {
      */
     List<SysRegCertificatesTO> getSysRegCertificatesByApplication(String searchString, String nr)
             throws WebServiceClientException;
+    
+    List<SysRegProductionTO> getSysRegProduction(LodgementViewParamsTO lodgementViewParamsTO)
+            throws WebServiceClientException ;
+   
 }

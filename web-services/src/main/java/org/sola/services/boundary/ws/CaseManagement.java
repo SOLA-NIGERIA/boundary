@@ -48,9 +48,7 @@ import org.sola.services.ejb.application.repository.entities.Service;
 import org.sola.services.ejb.party.businesslogic.PartyEJBLocal;
 import org.sola.services.common.ServiceConstants;
 import org.sola.services.common.faults.SOLAAccessFault;
-import org.sola.services.ejb.application.repository.entities.LodgementTiming;
-import org.sola.services.ejb.application.repository.entities.LodgementView;
-import org.sola.services.ejb.application.repository.entities.LodgementViewParams;
+import org.sola.services.ejb.application.repository.entities.*;
 import org.sola.services.ejb.party.repository.entities.Party;
 import org.sola.services.ejb.source.businesslogic.SourceEJBLocal;
 import org.sola.services.ejb.source.repository.entities.PowerOfAttorney;
@@ -1434,6 +1432,38 @@ public class CaseManagement extends AbstractWebService {
         });
 
         return (List<SysRegCertificatesTO>) result[0];
+    }
+     /**
+     * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getSysRegProduction(java.lang.String)
+     * AdministrativeEJB.getSysRegProduction}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetSysRegProduction")
+    public List<SysRegProductionTO> GetSysRegProduction(
+            @WebParam(name = "LodgementViewParamsTO") LodgementViewParamsTO paramsTO,
+            @WebParam(name = "languageCode") String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+        final LodgementViewParamsTO paramsTOTmp = paramsTO;
+        final String languageCodeTmp = languageCode;
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                LodgementViewParams params = GenericTranslator.fromTO(paramsTOTmp, LodgementViewParams.class, null);
+                List<SysRegProduction> appList = applicationEJB.getSysRegProduction(params, languageCodeTmp);
+                result[0] = GenericTranslator.toTOList(
+                        appList, SysRegProductionTO.class);
+
+            }
+        });
+
+        return (List<SysRegProductionTO>) result[0];
     }
     
 }

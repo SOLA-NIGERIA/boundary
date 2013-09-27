@@ -754,5 +754,22 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
         }
         return result;
     }
-
+    
+     @Override
+     public List<SysRegProductionTO> getSysRegProduction(LodgementViewParamsTO lodgementViewParamsTO)
+            throws WebServiceClientException {
+        List<SysRegProductionTO> result = null;
+        final String methodName = CaseManagementClient.GET_SYS_REG_PRODUCTION;
+        String languageCode = getLanguageCode();
+        try {
+            beforeWebMethod(methodName, lodgementViewParamsTO,languageCode);
+            result = getPort().getSysRegProduction(lodgementViewParamsTO,languageCode);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lodgementViewParamsTO,languageCode);
+        }
+        return result;
+    } 
+  
 }

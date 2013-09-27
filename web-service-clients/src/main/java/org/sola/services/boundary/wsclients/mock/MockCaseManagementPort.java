@@ -903,5 +903,18 @@ public class MockCaseManagementPort implements CaseManagement {
             return null;
         }
     }
-
+    
+     @Override
+    public List<SysRegProductionTO> getSysRegProduction(LodgementViewParamsTO lodgementViewParamsTO, String languageCode)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<SysRegProductionTO> defaultResponse = new ArrayList<SysRegProductionTO>();
+        try {
+            return getManager().getResponse(CaseManagementClient.GET_SYS_REG_PRODUCTION,
+                    List.class, defaultResponse, lodgementViewParamsTO, languageCode);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+     
 }
