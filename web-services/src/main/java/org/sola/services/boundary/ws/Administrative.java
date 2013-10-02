@@ -275,6 +275,39 @@ public class Administrative extends AbstractWebService {
         });
         return (List<BaUnitTO>) result[0];
     }
+    /**
+     * Retrieves the list of BA Unit associated with the specified String=namefirstpart+namelastpart.
+     *
+     * @param searchString The Property reference namefirstpart+namelastpart
+     * @return The list of BA Unit associated with the service or an empty list
+     * if the service does not have any BA Units associated with it.
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     * @see
+     * org.sola.services.ejb.transaction.businesslogic.TransactionEJB#getTransactionByString(java.lang.String,
+     * boolean, java.lang.Class) TransactionEJB.getTransactionByString
+     * @see AdministrativeEJB#getBaUnitsByTransactionId(java.lang.String)
+     * AdministrativeEJB.getBaUnitsByTransactionId
+     */
+    @WebMethod(operationName = "GetBaUnitsByString")
+    public List<BaUnitTO> GetBaUnitsByString(@WebParam(name = "searchString") String searchString)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] params = {searchString};
+        final Object[] result = {new ArrayList<BaUnitTO>()};
+
+        runOpenQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                String searchString = (String) params[0];
+                List<BaUnit> baUnits = administrativeEJB.getBaUnitsByString(searchString);
+                result[0] = GenericTranslator.toTOList(baUnits, BaUnitTO.class);
+            }
+        });
+        return (List<BaUnitTO>) result[0];
+    }
 
     /**
      * See {@linkplain AdministrativeEJB#getBaUnitByCode(java.lang.String, java.lang.String)

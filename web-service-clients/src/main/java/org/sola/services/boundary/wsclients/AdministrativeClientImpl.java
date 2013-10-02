@@ -170,6 +170,21 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     }
+    
+    @Override
+    public List<BaUnitTO> getBaUnitsByString(String searchString) throws WebServiceClientException {
+        List<BaUnitTO> result = null;
+        final String methodName = AdministrativeClient.GET_BA_UNITS_BY_STRING;
+        try {
+            beforeWebMethod(methodName, searchString);
+            result = getPort().getBaUnitsByString(searchString);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, searchString);
+        }
+        return result;
+    }
 
     @Override
     public BaUnitTO cancelBaUnitTermination(String baUnitId) throws WebServiceClientException {

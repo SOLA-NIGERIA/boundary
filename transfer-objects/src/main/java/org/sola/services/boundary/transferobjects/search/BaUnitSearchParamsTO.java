@@ -34,11 +34,21 @@ public class BaUnitSearchParamsTO extends AbstractTO {
     private String nameFirstPart;
     private String nameLastPart;
     private String ownerName;
+    private String name;
     
     public BaUnitSearchParamsTO(){
         super();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+       
     public String getNameFirstPart() {
         return nameFirstPart;
     }

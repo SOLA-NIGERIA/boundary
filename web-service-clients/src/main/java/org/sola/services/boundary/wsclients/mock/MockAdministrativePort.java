@@ -235,6 +235,23 @@ public class MockAdministrativePort implements Administrative {
             return null;
         }
     }
+    
+    /**
+     * Response Key = AdministrativeClient.GET_BA_UNITS_BY_STRING
+     *
+     * @return default = new BaUnitTO()
+     */
+    @Override
+    public List<BaUnitTO> getBaUnitsByString(String searchString) throws SOLAFault, UnhandledFault {
+        List<BaUnitTO> defaultResponse = new ArrayList<BaUnitTO>();
+         try {
+            return getManager().getResponse(AdministrativeClient.GET_BA_UNITS_BY_STRING,
+                    List.class, defaultResponse, searchString);
+        } catch (Exception ex) {
+            processExceptionBasic(ex);
+            return null;
+        } 
+    }
 
     /**
      * Response Key = AdministrativeClient.GET_BA_UNIT_BY_ID
@@ -331,7 +348,7 @@ public class MockAdministrativePort implements Administrative {
     public List<SysRegPubDisParcelNameTO> getSysRegPubDisParcelNameByLocation(String searchString, String languageCode)
             throws SOLAAccessFault, SOLAFault, UnhandledFault {
         List<SysRegPubDisParcelNameTO> defaultResponse = new ArrayList<SysRegPubDisParcelNameTO>();
-        try {
+        try { 
             return getManager().getResponse(AdministrativeClient.GET_SYS_REG_REGIST_LISTING,
                     List.class, defaultResponse, searchString, languageCode);
         } catch (Exception ex) {

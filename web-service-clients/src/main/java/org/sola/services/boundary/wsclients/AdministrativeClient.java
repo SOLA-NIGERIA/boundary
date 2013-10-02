@@ -76,6 +76,10 @@ public interface AdministrativeClient extends AbstractWSClient {
      */
     public static final String GET_BA_UNITS_BY_SERVICE_ID = SERVICE_NAME + "getBaUnitsByServiceId";
     /**
+     * Administrative.getBaUnitsByString - Identifier for the getBaUnitsByString method
+     */
+    public static final String GET_BA_UNITS_BY_STRING = SERVICE_NAME + "getBaUnitsByString";
+    /**
      * Administrative.cancelBaUnitTermination - Identifier for the cancelBaUnitTermination method
      */
     public static final String CANCEL_BA_UNIT_TERMINIATION = SERVICE_NAME + "cancelBaUnitTermination";
@@ -251,7 +255,19 @@ public interface AdministrativeClient extends AbstractWSClient {
      */
     BaUnitTO getBaUnitByCode(String nameFirstpart, String nameLastpart)
             throws WebServiceClientException;
+    
+    
+     /**
+     * Retrieves the list of BA Unit associated with the specified Service.
+     *
+     * @param searchString The Service identifier
+     * @return The list of BA Unit associated with the service or an empty list if the service does
+     * not have any BA Units associated with it.
+     * @throws WebServiceClientException
+     */
+    List<BaUnitTO> getBaUnitsByString(String searchString) throws WebServiceClientException;
 
+    
     /**
      * Retrieves the list of BA Unit associated with the specified Service.
      *

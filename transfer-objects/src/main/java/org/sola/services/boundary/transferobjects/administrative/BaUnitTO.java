@@ -29,6 +29,7 @@ package org.sola.services.boundary.transferobjects.administrative;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectTO;
 import org.sola.services.boundary.transferobjects.casemanagement.SourceTO;
@@ -57,8 +58,26 @@ public class BaUnitTO extends AbstractIdTO {
     private String landUse;
     private String location;
     private Integer floorsNumber;
+    private Date expirationDate;
+    private Date creationDate;
 
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
+    }
     
+       
     public Integer getFloorsNumber() {
         return floorsNumber;
     }
