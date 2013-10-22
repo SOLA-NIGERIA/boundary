@@ -442,5 +442,17 @@ public class MockSearchPort implements Search {
     public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+	
+	  @Override
+    public String getMapCenterLabel(byte[] mapCenterPoint) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        String defaultResponse = null;
+        try {
+            return getManager().getResponse(SearchClient.GET_MAP_CENTER_LABEL,
+                    String.class, defaultResponse, mapCenterPoint);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }    
+    }
 }
 
