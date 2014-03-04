@@ -33,10 +33,7 @@ import java.util.List;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.cadastre.NewCadastreObjectIdentifier;
 import org.sola.webservices.transferobjects.ValidationResult;
-import org.sola.webservices.transferobjects.cadastre.CadastreObjectNodeTO;
-import org.sola.webservices.transferobjects.cadastre.CadastreObjectTO;
-import org.sola.webservices.transferobjects.cadastre.SpatialUnitGroupTO;
-import org.sola.webservices.transferobjects.cadastre.SpatialValueAreaTO;
+import org.sola.webservices.transferobjects.cadastre.*;
 import org.sola.webservices.transferobjects.search.CadastreObjectSearchParamsTO;
 import org.sola.webservices.transferobjects.search.CadastreObjectSearchResultTO;
 import org.sola.webservices.transferobjects.transaction.TransactionBulkOperationSpatialTO;
@@ -151,6 +148,11 @@ public interface CadastreClient extends AbstractWSClient {
     public static final String GET_SPATIAL_UNIT_GROUPS  = SERVICE_NAME + "getSpatialUnitGroups";
 
     public static final String SAVE_SPATIAL_UNIT_GROUPS  = SERVICE_NAME + "saveSpatialUnitGroups";
+     
+    
+    public static final String GET_SYS_REG_WORK_UNIT  = SERVICE_NAME + "getSysRegWorkUnitByAllParts";
+
+    public static final String SAVE_SYS_REG_WORK_UNIT  = SERVICE_NAME + "saveSysRegWorkUnit";
  
     /**
      * Returns a maximum of 10 cadastre objects that have a name first part and/or name last part
@@ -329,6 +331,28 @@ public interface CadastreClient extends AbstractWSClient {
    void saveSpatialUnitGroups(List<SpatialUnitGroupTO> items);
     
     CadastreObjectTO getCadastreObject(String id) throws WebServiceClientException;
-     
+   
+    
+    
+   /**
+     * Returns  SysRegWorkUnit
+     * that have a name that matches the
+     * specified search string. This method supports partial matches and is case
+     * insensitive.
+     *
+     * @param searchString The search string to use
+     * @return The list of cadastre objects matching the search string
+     * @throws WebServiceClientException
+     */
+    SysRegWorkUnitTO getSysRegWorkUnitByAllParts(String searchString)
+            throws WebServiceClientException;
+ 
+      /**
+    * It saves the list of SysRegWorkUnit.
+    * 
+    * @param items 
+    */
+   SysRegWorkUnitTO saveSysRegWorkUnit(SysRegWorkUnitTO items)throws WebServiceClientException;
+    
 
 }

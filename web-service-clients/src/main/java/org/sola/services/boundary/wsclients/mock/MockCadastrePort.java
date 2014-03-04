@@ -34,10 +34,7 @@ import java.util.List;
 import org.sola.services.boundary.wsclients.CadastreClient;
 import org.sola.webservices.cadastre.*;
 import org.sola.webservices.transferobjects.ValidationResult;
-import org.sola.webservices.transferobjects.cadastre.CadastreObjectNodeTO;
-import org.sola.webservices.transferobjects.cadastre.CadastreObjectTO;
-import org.sola.webservices.transferobjects.cadastre.SpatialUnitGroupTO;
-import org.sola.webservices.transferobjects.cadastre.SpatialValueAreaTO;
+import org.sola.webservices.transferobjects.cadastre.*;
 import org.sola.webservices.transferobjects.transaction.TransactionCadastreChangeTO;
 import org.sola.webservices.transferobjects.transaction.TransactionCadastreRedefinitionTO;
 
@@ -498,10 +495,50 @@ public class MockCadastrePort implements Cadastre {
             throws OptimisticLockingFault, SOLAAccessFault, SOLAFault, 
             SOLAValidationFault, UnhandledFault {
     }
+
+    
     @Override
     public CadastreObjectTO getCadastreObject(String id) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+     /**
+     * Response Key = CadastreClient.GET_SysRegWorkUnit_BY_ALL_PARTS
+     *
+     * @return default = new ArrayList<SysRegWorkUnitTO>()
+     */
+    @Override
+    public SysRegWorkUnitTO getSysRegWorkUnitByAllParts(String searchString)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        SysRegWorkUnitTO defaultResponse = new SysRegWorkUnitTO();
+        try {
+            return getManager().getResponse(CadastreClient.GET_SYS_REG_WORK_UNIT,
+                    SysRegWorkUnitTO.class, defaultResponse, searchString);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+    
+       /**
+     * Response Key = CadastreClient.SAVE_SysRegWorkUnit
+     *
+     */   
+    @Override
+    public SysRegWorkUnitTO saveSysRegWorkUnit(
+            SysRegWorkUnitTO items, String languageCode) 
+            throws OptimisticLockingFault, SOLAAccessFault, SOLAFault, 
+            SOLAValidationFault, UnhandledFault {
+        
+        
+        SysRegWorkUnitTO defaultResponse = items;
+        try {
+            return getManager().getResponse(CadastreClient.SAVE_SYS_REG_WORK_UNIT,
+                    SysRegWorkUnitTO.class, defaultResponse, items);
+        } catch (Exception ex) {
+            processExceptionUpdate(ex);
+            return null;
+        }
+    }
 
 }

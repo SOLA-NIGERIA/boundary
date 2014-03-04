@@ -36,10 +36,7 @@ import org.sola.webservices.cadastre.Cadastre;
 import org.sola.webservices.cadastre.CadastreService;
 import org.sola.webservices.cadastre.NewCadastreObjectIdentifier;
 import org.sola.webservices.transferobjects.ValidationResult;
-import org.sola.webservices.transferobjects.cadastre.CadastreObjectNodeTO;
-import org.sola.webservices.transferobjects.cadastre.CadastreObjectTO;
-import org.sola.webservices.transferobjects.cadastre.SpatialUnitGroupTO;
-import org.sola.webservices.transferobjects.cadastre.SpatialValueAreaTO;
+import org.sola.webservices.transferobjects.cadastre.*;
 import org.sola.webservices.transferobjects.transaction.TransactionCadastreChangeTO;
 import org.sola.webservices.transferobjects.transaction.TransactionCadastreRedefinitionTO;
 
@@ -405,4 +402,39 @@ public class CadastreClientImpl extends AbstractWSClientImpl implements Cadastre
         }
         return result;
     }
+    
+    
+    
+    @Override
+    public SysRegWorkUnitTO getSysRegWorkUnitByAllParts(String searchString)
+            throws WebServiceClientException {
+        SysRegWorkUnitTO result = null;
+        final String methodName = CadastreClient.GET_SYS_REG_WORK_UNIT;
+        try {
+            beforeWebMethod(methodName, searchString);
+            result = getPort().getSysRegWorkUnitByAllParts(searchString);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, searchString);
+        }
+        return result;
+    }
+
+    @Override
+    public SysRegWorkUnitTO saveSysRegWorkUnit(
+            SysRegWorkUnitTO items) throws WebServiceClientException {
+        SysRegWorkUnitTO result = null;
+        final String methodName = CadastreClient.SAVE_SYS_REG_WORK_UNIT;
+        try {
+            beforeWebMethod(methodName,  items);
+            getPort().saveSysRegWorkUnit(items, this.getLanguageCode());
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, items);
+        }
+        return result;
+    }
 }
+   

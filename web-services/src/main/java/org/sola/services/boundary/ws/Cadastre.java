@@ -37,10 +37,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.ws.WebServiceContext;
-import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectNodeTO;
-import org.sola.services.boundary.transferobjects.cadastre.CadastreObjectTO;
-import org.sola.services.boundary.transferobjects.cadastre.SpatialUnitGroupTO;
-import org.sola.services.boundary.transferobjects.cadastre.SpatialValueAreaTO;
+import org.sola.services.boundary.transferobjects.cadastre.*;
 import org.sola.services.boundary.transferobjects.transaction.TransactionBulkOperationSpatialTO;
 import org.sola.services.boundary.transferobjects.transaction.TransactionCadastreChangeTO;
 import org.sola.services.boundary.transferobjects.transaction.TransactionCadastreRedefinitionTO;
@@ -52,6 +49,7 @@ import org.sola.services.common.webservices.AbstractWebService;
 import org.sola.services.ejb.cadastre.businesslogic.CadastreEJBLocal;
 import org.sola.services.ejb.cadastre.repository.entities.NewCadastreObjectIdentifier;
 import org.sola.services.ejb.cadastre.repository.entities.SpatialUnitGroup;
+import org.sola.services.ejb.cadastre.repository.entities.SysRegWorkUnit;
 import org.sola.services.ejb.transaction.businesslogic.TransactionEJBLocal;
 import org.sola.services.ejb.transaction.repository.entities.TransactionBulkOperationSpatial;
 import org.sola.services.ejb.transaction.repository.entities.TransactionCadastreChange;
@@ -708,5 +706,89 @@ public class Cadastre extends AbstractWebService {
 
         return (CadastreObjectTO) result[0];
     }
+         
+         
+         /**
+     * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getSysRegWorkUnitByAllParts(java.lang.String)
+     * CadastreEJB.getSysRegWorkUnitByAllParts}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetSysRegWorkUnitByAllParts")
+    public SysRegWorkUnitTO GetSysRegWorkUnitByAllParts(
+            @WebParam(name = "searchString") String searchString)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String searchStringTmp = searchString;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTO(
+                        cadastreEJB.getSysRegWorkUnitByAllParts(searchStringTmp),
+                        SysRegWorkUnitTO.class);
+            }
+        });
+
+        return (SysRegWorkUnitTO) result[0];
+    }
+   
+
+     /**
+     * See {{@linkplain CadastreEJB#saveSysRegWorkUnit(List<SysRegWorkUnitTO>, String)
+     * CadastreEJB.saveSysRegWorkUnit(byte[], Integer, Integer)}
+     * 
+     * @param items 
+     * @param languageCode 
+     * 
+     * @throws SOLAAccessFault
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws OptimisticLockingFault
+     * @throws SOLAValidationFault
+     */
+
+    @WebMethod(operationName = "SaveSysRegWorkUnit")
+    public SysRegWorkUnitTO SaveSysRegWorkUnit(
+            @WebParam(name = "items") SysRegWorkUnitTO items,
+            @WebParam(name = "languageCode") String languageCode)
+            throws SOLAValidationFault, OptimisticLockingFault,
+            SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final SysRegWorkUnitTO itemsTmp = items;
+        final Object[] params = {items};
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runUpdateValidation(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                SysRegWorkUnitTO workunit = (SysRegWorkUnitTO) params[0];
+                if (workunit != null) {
+
+                    SysRegWorkUnit newWork = cadastreEJB.saveSysRegWorkUnit(
+                            GenericTranslator.fromTO(workunit, SysRegWorkUnit.class,
+                            cadastreEJB.getSysRegWorkUnitByIds(workunit.getId())), languageCodeTmp);
+                    result[0] = GenericTranslator.toTO(newWork, SysRegWorkUnitTO.class);
+                }
+            }
+        });  
+//            @Override
+//            public void run() {
+//                
+//                SysRegWorkUnit sysregWorkUnitListToSave =
+//                        GenericTranslator.fromTO(itemsTmp, SysRegWorkUnit.class, 
+//                        cadastreEJB.getSysRegWorkUnitByIds(itemsTmp.getId()));
+//                SysRegWorkUnit sysregNew = cadastreEJB.saveSysRegWorkUnit(sysregWorkUnitListToSave, languageCodeTmp);
+//                result[0] = GenericTranslator.toTO(sysregWorkUnitListToSave, SysRegWorkUnitTO.class);
+//            }
+//        });
+        return (SysRegWorkUnitTO) result[0];
+    }
+
 }
 

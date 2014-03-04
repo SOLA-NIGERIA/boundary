@@ -125,6 +125,8 @@ public interface AdministrativeClient extends AbstractWSClient {
     
     public static final String GET_SYS_REG_PROGRESS = SERVICE_NAME + "getSysRegProgress";
     
+    public static final String GET_SYS_REG_GENDER = SERVICE_NAME + "getSysRegGender";
+    
     /*
      * DISPUTE
      */
@@ -372,6 +374,9 @@ public interface AdministrativeClient extends AbstractWSClient {
             throws WebServiceClientException;
 
     List<SysRegStatusTO> getSysRegStatus(SysRegManagementParamsTO sysRegManagementParamsTO)
+            throws WebServiceClientException;
+    
+    List<SysRegGenderTO> getSysRegGender(String params)
             throws WebServiceClientException;
     
     List<SysRegProgressTO> getSysRegProgress(SysRegManagementParamsTO sysRegManagementParamsTO)
