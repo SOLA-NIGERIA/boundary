@@ -20,13 +20,28 @@ public class SysRegPubDisOwnerNameTO extends AbstractIdTO {
     private String objections;
     private BigDecimal size;
     private String value;
-    private BigDecimal residential;
-    private BigDecimal commercial;
-    private BigDecimal agricultural;
-    private BigDecimal industrial;
     private String publicNotificationDuration;
     private String name;
+    private String location;
     
+    
+    private String rrr;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getRrr() {
+        return rrr;
+    }
+
+    public void setRrr(String rrr) {
+        this.rrr = rrr;
+    }
 
     public String getPublicNotificationDuration() {
         return publicNotificationDuration;
@@ -70,38 +85,6 @@ public class SysRegPubDisOwnerNameTO extends AbstractIdTO {
 
     public void setNameLastpart(String nameLastpart) {
         this.nameLastpart = nameLastpart;
-    }
-
-    public BigDecimal getAgricultural() {
-        return agricultural;
-    }
-
-    public void setAgricultural(BigDecimal agricultural) {
-        this.agricultural = agricultural;
-    }
-
-    public BigDecimal getCommercial() {
-        return commercial;
-    }
-
-    public void setCommercial(BigDecimal commercial) {
-        this.commercial = commercial;
-    }
-
-    public BigDecimal getIndustrial() {
-        return industrial;
-    }
-
-    public void setIndustrial(BigDecimal industrial) {
-        this.industrial = industrial;
-    }
-
-    public BigDecimal getResidential() {
-        return residential;
-    }
-
-    public void setResidential(BigDecimal residential) {
-        this.residential = residential;
     }
 
     public String getValue() {
