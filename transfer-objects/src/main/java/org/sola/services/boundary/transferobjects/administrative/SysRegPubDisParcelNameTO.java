@@ -23,7 +23,16 @@ public class SysRegPubDisParcelNameTO extends AbstractIdTO {
     private String name;
     private String objections;
     private String concatenatedRrr;
+    private String propertyLocation;
 
+    public String getPropertyLocation() {
+        return propertyLocation;
+    }
+
+    public void setPropertyLocation(String propertyLocation) {
+        this.propertyLocation = propertyLocation;
+    }
+    
     public String getConcatenatedRrr() {
         return concatenatedRrr;
     }
