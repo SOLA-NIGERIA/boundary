@@ -38,10 +38,20 @@ public class ApplicationSearchParamsTO extends AbstractTO {
     private String locale;
     private String documentNumber;
     private String documentReference;
+    private String parcel;
+
 
     public ApplicationSearchParamsTO() {
     }
 
+    public String getParcel() {
+        return parcel;
+    }
+
+    public void setParcel(String parcel) {
+        this.parcel = parcel;
+    }
+    
     public String getContactPerson() {
         return contactPerson;
     }
