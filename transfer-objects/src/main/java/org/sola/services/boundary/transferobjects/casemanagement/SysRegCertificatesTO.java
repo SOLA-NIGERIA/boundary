@@ -27,7 +27,37 @@ public class SysRegCertificatesTO extends AbstractIdTO {
     private BigDecimal groundRent;
     private String owners;
     private String title;
+    private String state;
+    private String ward;
+    private String imageryDate;
 
+    public String getImageryDate() {
+        return imageryDate;
+    }
+
+    public void setImageryDate(String imageryDate) {
+        this.imageryDate = imageryDate;
+    }
+    
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
+    }
+    
+    
+    
+    
     public String getTitle() {
         return title;
     }
