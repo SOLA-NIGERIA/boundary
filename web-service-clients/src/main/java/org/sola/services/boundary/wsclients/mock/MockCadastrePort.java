@@ -540,5 +540,49 @@ public class MockCadastrePort implements Cadastre {
             return null;
         }
     }
+    
+     @Override
+    public List<LevelTO> getLevels(String languageCode) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<LevelTO> defaultResponse = new ArrayList<LevelTO>();
+        
+        try {
+            return getManager().getResponse(CadastreClient.GET_LEVELS,
+                    List.class, defaultResponse);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+   
+       /**
+     * Response Key = CadastreClient.GET_SPATIAL_UNITS
+     *
+     * @return default = new ArrayList<SpatialUnitTO>()
+     */    
+    @Override
+    public List<SpatialUnitTO> getSpatialUnits(
+           byte[] filteringGeometry, String levelId, int srid) 
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<SpatialUnitGroupTO> defaultResponse = new ArrayList<SpatialUnitGroupTO>();
+        
+        try {
+            return getManager().getResponse(CadastreClient.GET_SPATIAL_UNITS,
+                    List.class, defaultResponse, filteringGeometry, levelId, srid);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
+    
+   /**
+     * Response Key = CadastreClient.SAVE_SPATIAL_UNITS
+     *
+     */   
+    @Override
+    public void saveSpatialUnits(
+            List<SpatialUnitTO> items, String languageCode) 
+            throws OptimisticLockingFault, SOLAAccessFault, SOLAFault, 
+            SOLAValidationFault, UnhandledFault {
+    }
 
 }

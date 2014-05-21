@@ -1,6 +1,6 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations (FAO).
+ * Copyright (C) 2014 - Food and Agriculture Organization of the United Nations (FAO).
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -27,6 +27,8 @@
  */
 package org.sola.services.boundary.transferobjects.configuration;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.sola.services.common.contracts.AbstractTO;
 
 /**
@@ -52,6 +54,8 @@ public class ConfigMapLayerTO extends AbstractTO {
     private String securityPassword;
     private boolean showInToc;
     private boolean useInPublicDisplay;
+    private List<ConfigMapLayerMetadataTO> metadataList = new ArrayList<ConfigMapLayerMetadataTO>();
+
 
     public String getId() {
         return id;
@@ -179,6 +183,14 @@ public class ConfigMapLayerTO extends AbstractTO {
 
     public void setUseInPublicDisplay(boolean useInPublicDisplay) {
         this.useInPublicDisplay = useInPublicDisplay;
+    }
+
+    public List<ConfigMapLayerMetadataTO> getMetadataList() {
+        return metadataList;
+    }
+
+    public void setMetadataList(List<ConfigMapLayerMetadataTO> metadataList) {
+        this.metadataList = metadataList;
     }
     
 }

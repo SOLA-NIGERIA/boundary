@@ -33,6 +33,10 @@ import java.util.List;
 import javax.xml.namespace.QName;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.cadastre.Cadastre;
+import org.sola.webservices.transferobjects.cadastre.LevelTO;
+import org.sola.webservices.transferobjects.cadastre.SpatialUnitGroupTO;
+import org.sola.webservices.transferobjects.cadastre.SpatialUnitTO;
+ 
 import org.sola.webservices.cadastre.CadastreService;
 import org.sola.webservices.cadastre.NewCadastreObjectIdentifier;
 import org.sola.webservices.transferobjects.ValidationResult;
@@ -435,6 +439,51 @@ public class CadastreClientImpl extends AbstractWSClientImpl implements Cadastre
             afterWebMethod(methodName, result, items);
         }
         return result;
+    }
+    
+    @Override
+    public List<LevelTO> getLevels() {
+        List<LevelTO> result = null;
+        final String methodName = CadastreClient.GET_LEVELS;
+        String languageCode = this.getLanguageCode();
+        try {
+            beforeWebMethod(methodName);
+            result = getPort().getLevels(languageCode);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result);
+        }
+        return result;
+    }
+     
+    @Override
+    public List<SpatialUnitTO> getSpatialUnits(
+            byte[] filteringGeometry, String levelId, int srid) {
+        List<SpatialUnitTO> result = null;
+        final String methodName = CadastreClient.GET_SPATIAL_UNITS;
+        try {
+            beforeWebMethod(methodName, filteringGeometry, levelId, srid);
+            result = getPort().getSpatialUnits(filteringGeometry, levelId, srid);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, filteringGeometry, levelId, srid);
+        }
+        return result;
+    }
+
+    @Override
+    public void saveSpatialUnits(List<SpatialUnitTO> items) {
+        final String methodName = CadastreClient.SAVE_SPATIAL_UNITS;
+        try {
+            beforeWebMethod(methodName,  items);
+            getPort().saveSpatialUnits(items, this.getLanguageCode());
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, items);
+        }
     }
 }
    

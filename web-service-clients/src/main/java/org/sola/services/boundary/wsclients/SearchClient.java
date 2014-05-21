@@ -30,6 +30,7 @@ import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.search.QueryForSelect;
 import org.sola.webservices.search.ResultForSelectionInfo;
 import org.sola.webservices.search.MapDefinitionTO;
+import org.sola.webservices.search.SpatialResult;
 import org.sola.webservices.transferobjects.search.*;
 
 /**
@@ -129,6 +130,16 @@ public interface SearchClient extends AbstractWSClient {
      */
     public static final String SEARCH_CADASTRE_OBJECTS = SERVICE_NAME + "searchCadastreObjects";
    
+    
+           /**
+     * Search.getPlanCadastreObjects - Identifier for the
+     * getPlanCadastreObjects method
+     */
+    public static final String GET_PLAN_CADASTRE_OBJECTS =
+            SERVICE_NAME + "getPlanCadastreObjects";
+
+    
+    
          /**
      * Search.getExtentOfPublicDisplayMap - Identifier for the
      * getExtentOfPublicDisplayMap method
@@ -309,6 +320,18 @@ public interface SearchClient extends AbstractWSClient {
      * @throws WebServiceClientException
      */
     MapDefinitionTO getMapDefinition() throws WebServiceClientException;
+    
+    
+         /**
+     * It retrieves the cadastre objects that are required for producing a title plan.
+     *
+     * @param cadastreObjectId  The id of the target cadastre object
+     * @return
+     */
+    public List<SpatialResult> getPlanCadastreObjects(String cadastreObjectId);
+
+    
+    
     
     /**
      * Executes a search across all Power of attorney using the search criteria provided. 

@@ -34,6 +34,9 @@ import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.cadastre.NewCadastreObjectIdentifier;
 import org.sola.webservices.transferobjects.ValidationResult;
 import org.sola.webservices.transferobjects.cadastre.*;
+import org.sola.webservices.transferobjects.cadastre.LevelTO;
+import org.sola.webservices.transferobjects.cadastre.SpatialUnitTO;
+ 
 import org.sola.webservices.transferobjects.search.CadastreObjectSearchParamsTO;
 import org.sola.webservices.transferobjects.search.CadastreObjectSearchResultTO;
 import org.sola.webservices.transferobjects.transaction.TransactionBulkOperationSpatialTO;
@@ -153,6 +156,13 @@ public interface CadastreClient extends AbstractWSClient {
     public static final String GET_SYS_REG_WORK_UNIT  = SERVICE_NAME + "getSysRegWorkUnitByAllParts";
 
     public static final String SAVE_SYS_REG_WORK_UNIT  = SERVICE_NAME + "saveSysRegWorkUnit";
+
+    public static final String GET_LEVELS  = SERVICE_NAME + "getLevels";
+
+    public static final String GET_SPATIAL_UNITS  = SERVICE_NAME + "getSpatialUnits";
+
+    public static final String SAVE_SPATIAL_UNITS  = SERVICE_NAME + "saveSpatialUnits";
+
  
     /**
      * Returns a maximum of 10 cadastre objects that have a name first part and/or name last part
@@ -354,5 +364,28 @@ public interface CadastreClient extends AbstractWSClient {
     */
    SysRegWorkUnitTO saveSysRegWorkUnit(SysRegWorkUnitTO items)throws WebServiceClientException;
     
+     /**
+    * Gets the list of editable levels.
+    * @return 
+    */
+   List<LevelTO> getLevels();
 
+   /**
+    * It retrieves the spatial units that intersect with the filteringGeometry
+    * and that are of the type: levelId.
+    * 
+    * @param filteringGeometry
+    * @param levelId
+   * @param srid
+    * @return 
+    */
+   List<SpatialUnitTO> getSpatialUnits(
+            byte[] filteringGeometry, String levelId, int srid);
+
+   /**
+    * It saves the list of spatial units.
+    * 
+    * @param items 
+    */
+   void saveSpatialUnits(List<SpatialUnitTO> items);
 }

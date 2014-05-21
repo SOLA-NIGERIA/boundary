@@ -437,6 +437,20 @@ public class MockSearchPort implements Search {
             return null;
         }
     }
+    
+    
+    
+    @Override
+    public List<SpatialResult> getPlanCadastreObjects(String cadastreObjectId) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<SpatialResult> defaultResponse = new ArrayList<SpatialResult>();
+        try {
+            return getManager().getResponse(SearchClient.GET_PLAN_CADASTRE_OBJECTS,
+                    List.class, defaultResponse, cadastreObjectId);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }    
+    }
 
     @Override
     public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws SOLAAccessFault, SOLAFault, UnhandledFault {

@@ -25,54 +25,45 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
-package org.sola.services.boundary.wsclients.mock;
+package org.sola.services.boundary.transferobjects.cadastre;
 
-import org.sola.services.boundary.wsclients.AdminClient;
-import org.sola.services.boundary.wsclients.AdminClientImpl;
-import org.sola.webservices.admin.Admin;
+import org.sola.services.common.contracts.AbstractIdTO;
 
 /**
- * Mock implementation of the {@linkplain AdminClient} interface that extends the
- * {@linkplain AdminClientImpl}, overriding the getPort method to return a mock port object -
- * {@linkplain MockAdminPort}.
- *
- * <p> Allows testing of the {@linkplain AdminClientImpl} and classes dependent on the {@linkplain AdminClient}
- * interface without deploying the SOLA web services </p>
- *
- * @see AdminClient
- * @see AdminClientImpl
- * @see MockAdminPort
- * @see MockServiceManager
+ * TO for SpatialUnit entity
  */
-public class MockAdminClient extends AdminClientImpl implements AdminClient {
+public class SpatialUnitTO extends AbstractIdTO {
 
-    private MockAdminPort port = new MockAdminPort();
-
-    /**
-     * Constructor for the mock class.
-     */
-    public MockAdminClient() {
-        // The URL is irrelevant for the mock client class
-        super("");
+    private String levelId;
+    private String label;
+    private byte[] geom;
+    
+    public SpatialUnitTO() {
+        super();
     }
 
-    /**
-     * Overrides the default getPort method on {@linkplain AdminClientImpl} to return a mock port
-     * object - {@linkplain MockAdminPort}.
-     *
-     * @return
-     */
-    @Override
-    protected Admin getPort() {
-        return port;
+    public byte[] getGeom() {
+        return geom;
     }
 
-    /**
-     * Overridden to help avoid leakage of password details during testing. i.e. Only username is
-     * saved.
-     */
-    @Override
-    public void setCredentials(String userName, char[] password) {
-        super.setCredentials(userName, null);
+    public void setGeom(byte[] geom) {
+        this.geom = geom;
     }
+
+    public String getLevelId() {
+        return levelId;
+    }
+
+    public void setLevelId(String levelId) {
+        this.levelId = levelId;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
 }

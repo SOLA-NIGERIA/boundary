@@ -648,7 +648,34 @@ public class Search extends AbstractWebService {
         });
         return (List<CadastreObjectSearchResultTO>) result[0];
     }
+
     
+    /**
+     * See {@linkplain org.sola.services.ejb.source.businesslogic.SearchEJB#
+     * getPlanCadastreObjects(
+     * String) SearchEJB.getPlanCadastreObjects}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetPlanCadastreObjects")
+    public List<SpatialResult> GetPlanCadastreObjects(
+            @WebParam(name = "cadastreObjectId") final String cadastreObjectId)
+       throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = searchEJB.getPlanCadastreObjects(cadastreObjectId);
+            }
+        });
+
+        return (List<SpatialResult>)result[0];
+    }
     
     
         /**

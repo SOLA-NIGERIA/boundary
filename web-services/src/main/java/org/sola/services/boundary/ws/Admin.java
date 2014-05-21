@@ -1,26 +1,28 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations (FAO). All rights
- * reserved.
+ * Copyright (C) 2014 - Food and Agriculture Organization of the United Nations (FAO).
+ * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted
- * provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,this list of conditions
- * and the following disclaimer. 2. Redistributions in binary form must reproduce the above
- * copyright notice,this list of conditions and the following disclaimer in the documentation and/or
- * other materials provided with the distribution. 3. Neither the name of FAO nor the names of its
- * contributors may be used to endorse or promote products derived from this software without
- * specific prior written permission.
+ *    1. Redistributions of source code must retain the above copyright notice,this list
+ *       of conditions and the following disclaimer.
+ *    2. Redistributions in binary form must reproduce the above copyright notice,this list
+ *       of conditions and the following disclaimer in the documentation and/or other
+ *       materials provided with the distribution.
+ *    3. Neither the name of FAO nor the names of its contributors may be used to endorse or
+ *       promote products derived from this software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
- * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+ * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
+ * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.services.boundary.ws;
@@ -53,7 +55,8 @@ import org.sola.services.ejbs.admin.businesslogic.repository.entities.Role;
 import org.sola.services.ejbs.admin.businesslogic.repository.entities.User;
 
 /**
- * Provides methods for administrators to manage users, reference data and system settings.
+ * Provides methods for administrators to manage users, reference data and
+ * system settings.
  */
 @WebService(serviceName = "admin-service", targetNamespace = ServiceConstants.ADMIN_WS_NAMESPACE)
 public class Admin extends AbstractWebService {
@@ -90,7 +93,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runOpenQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -116,7 +118,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -142,7 +143,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -168,7 +168,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runOpenQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTO(
@@ -195,7 +194,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runOpenQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTO(
@@ -223,7 +221,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runUpdate(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 User user = adminEJB.getUser(userTOTmp.getUserName());
@@ -258,7 +255,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTO(adminEJB.getGroup(groupIdTmp),
@@ -286,7 +282,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runUpdate(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 Group group = adminEJB.getGroup(groupTOTmp.getId());
@@ -314,7 +309,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -338,7 +332,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runOpenQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -367,7 +360,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runUpdate(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 Role role = adminEJB.getRole(roleTOTmp.getCode());
@@ -398,7 +390,6 @@ public class Admin extends AbstractWebService {
         final boolean[] result = {false};
 
         runUpdate(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = adminEJB.changePassword(userNameTmp, passwordTmp);
@@ -421,7 +412,6 @@ public class Admin extends AbstractWebService {
         final boolean[] result = {false};
 
         runOpenQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = adminEJB.isUserAdmin();
@@ -446,7 +436,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 String id = params[0] == null ? null : params[0].toString();
@@ -476,7 +465,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runUpdateValidation(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 BrTO brTO = (BrTO) params[0];
@@ -505,7 +493,6 @@ public class Admin extends AbstractWebService {
         final Object[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
@@ -533,7 +520,6 @@ public class Admin extends AbstractWebService {
         final String[] result = {null};
 
         runGeneralQuery(wsContext, new Runnable() {
-
             @Override
             public void run() {
                 result[0] = systemEJB.getSetting(params[0], params[1]);
@@ -541,5 +527,58 @@ public class Admin extends AbstractWebService {
         });
 
         return result[0];
+    }
+
+    /**
+     * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#consolidationExtract()
+     * AdminEJB.consolidationExtract}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "ConsolidationExtract")
+    public String ConsolidationExtract(
+            @WebParam(name = "everything") final boolean everything,
+            @WebParam(name = "password") final String password)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                result[0] = adminEJB.consolidationExtract(everything, password);
+            }
+        });
+
+        return (String) result[0];
+    }
+
+    /**
+     * See {@linkplain org.sola.services.ejbs.admin.businesslogic.AdminEJB#consolidationConsolidate()
+     * AdminEJB.consolidationConsolidate}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "ConsolidationConsolidate")
+    public String ConsolidationConsolidate(
+            @WebParam(name = "languageCode") final String languageCode,
+            @WebParam(name = "fileInServer") final String fileInServer,
+            @WebParam(name = "password") final String password)
+            throws SOLAValidationFault, OptimisticLockingFault, SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+        runUpdateValidation(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                result[0] = adminEJB.consolidationConsolidate(languageCode, fileInServer, password);
+            }
+        });
+
+        return (String) result[0];
     }
 }
