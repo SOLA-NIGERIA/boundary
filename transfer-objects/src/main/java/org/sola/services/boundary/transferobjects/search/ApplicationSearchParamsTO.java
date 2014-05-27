@@ -39,7 +39,7 @@ public class ApplicationSearchParamsTO extends AbstractTO {
     private String documentNumber;
     private String documentReference;
     private String parcel;
-
+    private String section;
 
     public ApplicationSearchParamsTO() {
     }
@@ -51,6 +51,16 @@ public class ApplicationSearchParamsTO extends AbstractTO {
     public void setParcel(String parcel) {
         this.parcel = parcel;
     }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+    
+    
     
     public String getContactPerson() {
         return contactPerson;
