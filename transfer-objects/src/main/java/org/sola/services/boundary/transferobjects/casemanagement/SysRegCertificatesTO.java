@@ -30,7 +30,16 @@ public class SysRegCertificatesTO extends AbstractIdTO {
     private String state;
     private String ward;
     private String imageryDate;
+    private Integer CofO;
 
+    public Integer getCofO() {
+        return CofO;
+    }
+
+    public void setCofO(Integer CofO) {
+        this.CofO = CofO;
+    }
+    
     public String getImageryDate() {
         return imageryDate;
     }

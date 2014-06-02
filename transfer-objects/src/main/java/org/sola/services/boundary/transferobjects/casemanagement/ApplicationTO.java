@@ -53,6 +53,15 @@ public class ApplicationTO extends ApplicationSummaryTO {
     private List<ApplicationPropertyTO> propertyList;
     private List<SourceTO> sourceList;
     private List<CadastreObjectTO> cadastreObjectList;
+     private String section;
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
     
     public ApplicationTO() {
         super();
