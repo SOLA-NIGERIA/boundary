@@ -109,6 +109,21 @@ public class MockTOFactory {
         result.add(createCode(GenderTypeTO.class, "male", "Male"));
         return result;
     }
+    
+     /**
+     * Creates a default list of state types <p> SQL query to generate list
+     * from DB: </p>
+     * <pre>
+     * select 'result.add(createCode(StateTypeTO.class, "' || code || '", "' || display_value || '"));'
+     * from party.gender_type
+     * </pre>
+     */
+    public static List<StateTypeTO> createStateTypes() {
+        List<StateTypeTO> result = new ArrayList<StateTypeTO>();
+        result.add(createCode(StateTypeTO.class, "a", "Kano"));
+        result.add(createCode(StateTypeTO.class, "b", "Ondo"));
+        return result;
+    }
 
     /**
      * Creates a RequestTypeTO or a RequestTypeSourceTypesTO

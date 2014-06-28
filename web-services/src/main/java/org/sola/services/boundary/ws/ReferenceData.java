@@ -166,6 +166,34 @@ public class ReferenceData extends AbstractWebService {
 
         return (List<GenderTypeTO>) result[0];
     }
+    
+      /**
+     * See {@linkplain org.sola.services.ejb.party.businesslogic.PartyEJB#getStateTypes(java.lang.String)
+     * PartyEJB.getGenderTypes}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetStateTypes")
+    public List<StateTypeTO> GetStateTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        partyEJB.getStateTypes(languageCodeTmp),
+                        GenderTypeTO.class);
+            }
+        });
+
+        return (List<StateTypeTO>) result[0];
+    }
 
     /**
      * See {@linkplain org.sola.services.ejb.source.businesslogic.SourceEJB#getAvailabilityStatusList(java.lang.String)

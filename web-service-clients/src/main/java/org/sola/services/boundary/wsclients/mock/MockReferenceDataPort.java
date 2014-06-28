@@ -587,6 +587,23 @@ public class MockReferenceDataPort implements ReferenceData {
             return null;
         }
     }
+    
+      /**
+     * Response Key = ReferenceDataClient.GET_STATE_TYPES
+     *
+     * @return default = MockTOFactory.createStateTypes()
+     */
+    @Override
+    public List<StateTypeTO> getStateTypes(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<StateTypeTO> defaultResponse = MockTOFactory.createStateTypes();
+        try {
+            return getManager().getResponse(ReferenceDataClient.GET_STATE_TYPES,
+                    List.class, defaultResponse, arg0);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
 
     /**
      * Response Key = ReferenceDataClient.GET_COMMUNICATION_TYPES
