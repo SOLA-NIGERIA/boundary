@@ -153,7 +153,13 @@ public interface SearchClient extends AbstractWSClient {
      */
      public static final String GET_MAP_CENTER_LABEL =
             SERVICE_NAME + "getMapCenterLabel";
- 
+     
+	    /**
+     * Search.getSridWkt - Identifier for the
+     * getSridWkt method
+     */
+    public static final String TRANSFORM =
+            SERVICE_NAME + "transform";
 
     /**
      * Returns applications that have a lodged or approved status and are assigned to the currently
@@ -379,4 +385,13 @@ public interface SearchClient extends AbstractWSClient {
      * @return
      */
     public String getMapCenterLabel(byte[] mapCenterPoint);
-}
+  /**
+     * Transforms the geometry to the crs with the srid.
+     * The geometry must have also a srid.
+     * 
+     * @param geom
+     * @param srid The srid
+     * @return Transformed geometry
+     */
+    public byte[] transform(byte[] geom, int srid);
+ }

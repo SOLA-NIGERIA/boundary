@@ -739,4 +739,30 @@ public class Search extends AbstractWebService {
 
         return result[0].toString();
     }
-}
+  /**
+     * See {@linkplain org.sola.services.ejb.search.businesslogic.SearchEJB#
+     * transform(
+     * int) SearchEJB.transform}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "Transform")
+    public byte[] Transform(
+            @WebParam(name = "geom") final byte[] geom,
+            @WebParam(name = "srid") final int srid)
+       throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+       runGeneralQuery(wsContext, new Runnable() {
+            @Override
+            public void run() {
+                result[0] = searchEJB.transform(geom, srid);
+            }
+        });
+
+        return (byte[])result[0];
+    }
+ }
