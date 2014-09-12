@@ -142,6 +142,12 @@ public interface CadastreClient extends AbstractWSClient {
      * getSpatialUnitGroupByParts method
      */
     public static final String GET_SPATIAL_UNIT_GROUP_BY_PARTS = SERVICE_NAME + "getSpatialUnitGroupByParts";
+     /**
+     * Cadastre.getSpatialUnitGroupByParts - Identifier for the
+     * getSpatialUnitGroupByParts method
+     */
+    public static final String GET_SPATIAL_UNIT_GROUP_BY_HIERARCHY = SERVICE_NAME + "getSpatialUnitGroupByHierarchy";
+    
     /**
      * Cadastre.getSpatialUnitGroupByParts - Identifier for the
      * getSpatialUnitGroupByParts method
@@ -306,7 +312,19 @@ public interface CadastreClient extends AbstractWSClient {
      */
     List<SpatialUnitGroupTO> getSpatialUnitGroupByParts(String searchString)
             throws WebServiceClientException;
-
+    
+     /**
+     * Returns a maximum of 10 cadastre objects that have a name first part and/or name last part
+     * that matches the specified search string. This method supports partial matches and is case
+     * insensitive.
+     *
+     * @param searchString The search string to use
+     * @return The list of spatial unit group matching the search string
+     * @throws WebServiceClientException
+     */
+    List<SpatialUnitGroupTO> getSpatialUnitGroupByHierarchy(String searchString, Integer hierarchyLevel)
+            throws WebServiceClientException;
+   
     /**
      * Returns a maximum of 10 SpatialUnitGroup 
      * that have a name that matches the

@@ -590,7 +590,35 @@ public class Cadastre extends AbstractWebService {
 
         return (List<SpatialUnitGroupTO>) result[0];
     }
+     /**
+     * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getSpatialUnitGroupByParts(java.lang.String)
+     * CadastreEJB.getCadastreObjectByParts}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetSpatialUnitGroupByHierarchy")
+    public List<SpatialUnitGroupTO> GetSpatialUnitGroupByHierarchy(
+            @WebParam(name = "searchString") String searchString,
+            @WebParam(name = "hierarchyLevel") final Integer hierarchyLevel)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
+        final String searchStringTmp = searchString;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        cadastreEJB.getSpatialUnitGroupByHierarchy(searchStringTmp, hierarchyLevel),
+                        SpatialUnitGroupTO.class);
+            }
+        });
+
+        return (List<SpatialUnitGroupTO>) result[0];
+    }
     /**
      * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getSpatialUnitGroupByAllParts(java.lang.String)
      * CadastreEJB.getCadastreObjectByAllParts}

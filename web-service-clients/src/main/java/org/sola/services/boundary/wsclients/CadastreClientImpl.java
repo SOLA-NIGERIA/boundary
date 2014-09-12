@@ -344,7 +344,21 @@ public class CadastreClientImpl extends AbstractWSClientImpl implements Cadastre
         }
         return result;
     }
-
+    @Override
+    public List<SpatialUnitGroupTO> getSpatialUnitGroupByHierarchy(String searchString, Integer hierarchyLevel)
+            throws WebServiceClientException {
+        List<SpatialUnitGroupTO> result = null;
+        final String methodName = CadastreClient.GET_SPATIAL_UNIT_GROUP_BY_HIERARCHY;
+        try {
+            beforeWebMethod(methodName, searchString, hierarchyLevel);
+            result = getPort().getSpatialUnitGroupByHierarchy(searchString, hierarchyLevel);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, searchString);
+        }
+        return result;
+    }
     @Override
     public List<SpatialUnitGroupTO> getSpatialUnitGroupByAllParts(String searchString)
             throws WebServiceClientException {

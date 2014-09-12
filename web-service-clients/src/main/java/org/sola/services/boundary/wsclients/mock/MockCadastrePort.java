@@ -446,6 +446,25 @@ public class MockCadastrePort implements Cadastre {
             return null;
         }
     }
+    
+    
+      /**
+     * Response Key = CadastreClient.GET_SPATIAL_UNIT_GROUP_BY_HIERARCHY
+     *
+     * @return default = new ArrayList<SpatialUnitGroupTO>()
+     */
+    @Override
+    public List<SpatialUnitGroupTO> getSpatialUnitGroupByHierarchy(String searchString, Integer hierarchyLevel)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<SpatialUnitGroupTO> defaultResponse = new ArrayList<SpatialUnitGroupTO>();
+        try {
+            return getManager().getResponse(CadastreClient.GET_SPATIAL_UNIT_GROUP_BY_HIERARCHY,
+                    List.class, defaultResponse, searchString, hierarchyLevel);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
 
     /**
      * Response Key = CadastreClient.GET_SPATIAL_UNIT_GROUP_BY_ALL_PARTS
