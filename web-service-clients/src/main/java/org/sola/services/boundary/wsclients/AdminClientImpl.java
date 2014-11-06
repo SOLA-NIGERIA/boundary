@@ -1,33 +1,36 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2014 - Food and Agriculture Organization of the United Nations (FAO).
- * All rights reserved.
+ * Copyright (C) 2014 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the name of FAO nor the names of its contributors may be used to endorse or
- *       promote products derived from this software without specific prior written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.services.boundary.wsclients;
 
 import java.util.List;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.admin.*;
@@ -45,7 +48,8 @@ public class AdminClientImpl extends AbstractWSClientImpl implements AdminClient
     private static final String LOCAL_PART = "admin-service";
 
     /**
-     * Creates a web service client class for the web service hosted at the specified URL
+     * Creates a web service client class for the web service hosted at the
+     * specified URL
      *
      * @param url The location of the service WSDL
      */
@@ -340,12 +344,12 @@ public class AdminClientImpl extends AbstractWSClientImpl implements AdminClient
     }
 
     @Override
-    public String consolidationExtract(boolean everything, String password) throws WebServiceClientException {
+    public String consolidationExtract(String processName, boolean everything, String password) throws WebServiceClientException {
         String result = null;
         final String methodName = AdminClient.CONSOLIDATION_EXTRACT;
         try {
             beforeWebMethod(methodName);
-            result = getPort().consolidationExtract(everything, password);
+            result = getPort().consolidationExtract(processName, everything, password);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
@@ -355,20 +359,97 @@ public class AdminClientImpl extends AbstractWSClientImpl implements AdminClient
     }
 
     @Override
-    public String consolidationConsolidate(String pathFileName, String password) throws WebServiceClientException {
-        String result = null;
+    public void consolidationConsolidate(String processName, String pathFileName, String password) throws WebServiceClientException {
+
         final String methodName = AdminClient.CONSOLIDATION_CONSOLIDATE;
         try {
             beforeWebMethod(methodName, pathFileName);
-            result = getPort().consolidationConsolidate(getLanguageCode(), pathFileName, password);
+            getPort().consolidationConsolidate(processName, getLanguageCode(), pathFileName, password);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
             afterWebMethod(methodName, void.class, pathFileName);
         }
-        
-        return result;
+    }   
+        @Override
+        public void startProcessProgress
+        (String processName, int maximumValue
+        ) throws WebServiceClientException {
+            final String methodName = AdminClient.PROCESS_PROGRESS_START;
+            try {
+                beforeWebMethod(methodName, processName, maximumValue);
+                getPort().startProcessProgress(processName, maximumValue);
+            } catch (Exception e) {
+                processException(methodName, e);
+            } finally {
+                afterWebMethod(methodName, void.class, processName, maximumValue);
+            }
+        }
+
+        @Override
+        public void startProcessProgressUsingBr
+        (String processName, String brNameToGenerateMaximumValue
+        ) throws WebServiceClientException {
+            final String methodName = AdminClient.PROCESS_PROGRESS_USING_BR_START;
+            try {
+                beforeWebMethod(methodName, processName, brNameToGenerateMaximumValue);
+                getPort().startProcessProgressUsingBr(processName, brNameToGenerateMaximumValue);
+            } catch (Exception e) {
+                processException(methodName, e);
+            } finally {
+                afterWebMethod(methodName, void.class, processName, brNameToGenerateMaximumValue);
+            }
+        }
+
+        @Override
+        public Integer getProcessProgress
+        (String processName, Boolean inPercentage
+        ) throws WebServiceClientException {
+            Integer result = null;
+            final String methodName = AdminClient.PROCESS_PROGRESS_GET;
+            try {
+                beforeWebMethod(methodName, processName, inPercentage);
+                result = getPort().getProcessProgress(processName, inPercentage);
+            } catch (Exception e) {
+                processException(methodName, e);
+            } finally {
+                afterWebMethod(methodName, Integer.class, processName, inPercentage);
+            }
+            return result;
+        }
+
+        @Override
+        public void setProcessProgress
+        (String processName, int progressValue
+        ) throws WebServiceClientException {
+            final String methodName = AdminClient.PROCESS_PROGRESS_SET;
+            try {
+                beforeWebMethod(methodName, processName, progressValue);
+                getPort().setProcessProgress(processName, progressValue);
+            } catch (Exception e) {
+                processException(methodName, e);
+            } finally {
+                afterWebMethod(methodName, void.class, processName, progressValue);
+            }
+        }
+
+        @Override
+        public String getProcessLog
+        (String processName
+        ) throws WebServiceClientException {
+            String result = null;
+            final String methodName = AdminClient.PROCESS_LOG_GET;
+            try {
+                beforeWebMethod(methodName, processName);
+                result = getPort().getProcessLog(processName);
+            } catch (Exception e) {
+                processException(methodName, e);
+            } finally {
+                afterWebMethod(methodName, String.class, processName);
+            }
+            return result;
+        }
+
+
+
     }
-    
-    
-}
