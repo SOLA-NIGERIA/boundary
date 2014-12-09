@@ -533,7 +533,44 @@ public class Administrative extends AbstractWebService {
 
         return (List<SysRegPubDisStateLandTO>) result[0];
     }
+    
+    
+     /**
+     * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getSysRegSigningList(java.lang.String)
+     * AdministrativeEJB.getSysRegSigningList}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetSysRegSigningList")
+    public List<SysRegSigningListTO> GetSysRegSigningList(
+            @WebParam(name = "searchString") String searchString,
+            @WebParam(name = "languageCode") String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault, SOLAValidationFault, OptimisticLockingFault {
 
+
+        final String searchStringTmp = searchString;
+        final String languageCodeTmp = languageCode;
+
+        final Object[] result = {null};
+
+//        runGeneralQuery(wsContext, new Runnable() {
+        runUpdateValidation(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getSysRegSigningList(searchStringTmp, languageCodeTmp),
+                        SysRegSigningListTO.class);
+            }
+        });
+
+        return (List<SysRegSigningListTO>) result[0];
+    }
+
+    
+    
     /**
      * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#validatePublicDisplay
      * ApplicationEJB.applicationActionWithdraw}

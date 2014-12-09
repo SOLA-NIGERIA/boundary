@@ -298,6 +298,23 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
     }
     
     @Override
+    public List<SysRegSigningListTO> getSysRegSigningList(String searchString)
+            throws WebServiceClientException {
+        List<SysRegSigningListTO> result = null;
+        final String methodName = AdministrativeClient.GET_SYS_REG_SIGNING_LIST;
+        String languageCode = getLanguageCode();
+        try {
+            beforeWebMethod(methodName, searchString,languageCode);
+            result = getPort().getSysRegSigningList(searchString,languageCode);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, searchString,languageCode);
+        }
+        return result;
+    }
+    
+    @Override
     public List<ValidationResult> publicDisplay(String params)
             throws WebServiceClientException {
         List<ValidationResult> result = null;

@@ -127,6 +127,8 @@ public interface AdministrativeClient extends AbstractWSClient {
     
     public static final String GET_SYS_REG_GENDER = SERVICE_NAME + "getSysRegGender";
     
+    public static final String GET_SYS_REG_SIGNING_LIST = SERVICE_NAME + "getSysRegSigningList";
+    
     /*
      * DISPUTE
      */
@@ -361,6 +363,17 @@ public interface AdministrativeClient extends AbstractWSClient {
     List<SysRegPubDisStateLandTO> getSysRegPubDisStateLandByLocation(String searchString)
             throws WebServiceClientException;
     
+    /**
+     * Returns a list of cadastre objects that have a name last part that
+     * matches the specified search string. This method supports partial matches
+     * and is case insensitive.
+     *
+     * @param searchString The search string to use
+     * @return The list of cadastre objects matching the search string
+     * @throws WebServiceClientException
+     */
+    List<SysRegSigningListTO> getSysRegSigningList(String searchString)
+            throws WebServiceClientException;
     
      /* Verifies the brs
      * @param searchString The search string to use

@@ -393,6 +393,23 @@ public class MockAdministrativePort implements Administrative {
         }
     }
     
+     /**
+     * Response Key = AdministratitveCliens.getSysRegSigningList
+     *
+     * @return default = new ArrayList<CadastreObjectTO>()
+     */
+    @Override
+    public List<SysRegSigningListTO> getSysRegSigningList(String searchString, String languageCode)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<SysRegSigningListTO> defaultResponse = new ArrayList<SysRegSigningListTO>();
+        try {
+            return getManager().getResponse(AdministrativeClient.GET_SYS_REG_SIGNING_LIST,
+                    List.class, defaultResponse, searchString, languageCode);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
     
      /**
      * Response Key = CaseManagementClient.APPLICATION_ACTION_WITHDRAW
