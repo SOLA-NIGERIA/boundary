@@ -115,17 +115,17 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
     }
     
     @Override
-    public List<StateTypeTO> getStateTypes() throws WebServiceClientException {
-        return getStateTypes(this.getLanguageCode());
+    public List<NationTypeTO> getNationTypes() throws WebServiceClientException {
+        return getNationTypes(this.getLanguageCode());
     }
 
     @Override
-    public List<StateTypeTO> getStateTypes(String lang) throws WebServiceClientException {
-        List<StateTypeTO> result = null;
-        final String methodName = ReferenceDataClient.GET_STATE_TYPES;
+    public List<NationTypeTO> getNationTypes(String lang) throws WebServiceClientException {
+        List<NationTypeTO> result = null;
+        final String methodName = ReferenceDataClient.GET_nation_typeS;
         try {
             beforeWebMethod(methodName, lang);
-            result = getPort().getStateTypes(lang);
+            result = getPort().getNationTypes(lang);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {

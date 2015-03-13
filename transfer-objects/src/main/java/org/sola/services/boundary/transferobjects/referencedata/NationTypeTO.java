@@ -37,9 +37,9 @@ import org.sola.services.common.contracts.AbstractCodeTO;
  *
  * @author soladev
  */
-public class StateTypeTO extends AbstractCodeTO {
+public class NationTypeTO extends AbstractCodeTO {
 
-    public StateTypeTO() {
+    public NationTypeTO() {
         super();
     }
 }

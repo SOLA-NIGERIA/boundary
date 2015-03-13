@@ -68,9 +68,9 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     public static final String GET_GENDER_TYPES = SERVICE_NAME + "getGenderTypes";
     /**
-     * ReferenceData.getStateTypes - Identifier for the getStateTypes method
+     * ReferenceData.getNationTypes - Identifier for the getNationTypes method
      */
-    public static final String GET_STATE_TYPES = SERVICE_NAME + "getStateTypes";
+    public static final String GET_nation_typeS = SERVICE_NAME + "getNationTypes";
     /**
      * ReferenceData.getApplicationStatusTypes - Identifier for the getApplicationStatusTypes method
      */
@@ -280,20 +280,20 @@ public interface ReferenceDataClient extends AbstractWSClient {
     List<GenderTypeTO> getGenderTypes(String lang) throws WebServiceClientException;
     
      /**
-     * Retrieves all party.state_type code values using the default locale of the client to
+     * Retrieves all party.nation_type code values using the default locale of the client to
      * localize the display values.
      *
      * @throws WebServiceClientException
      */
-    List<StateTypeTO> getStateTypes() throws WebServiceClientException;
+    List<NationTypeTO> getNationTypes() throws WebServiceClientException;
 
     /**
-     * Retrieves all party.state_type code values.
+     * Retrieves all party.nation_type code values.
      *
      * @param languageCode The language code to use for localization of display values.
      * @throws WebServiceClientException
      */
-    List<StateTypeTO> getStateTypes(String lang) throws WebServiceClientException;
+    List<NationTypeTO> getNationTypes(String lang) throws WebServiceClientException;
 
     
     /**

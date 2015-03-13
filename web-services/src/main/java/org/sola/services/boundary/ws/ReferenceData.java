@@ -168,15 +168,15 @@ public class ReferenceData extends AbstractWebService {
     }
     
       /**
-     * See {@linkplain org.sola.services.ejb.party.businesslogic.PartyEJB#getStateTypes(java.lang.String)
+     * See {@linkplain org.sola.services.ejb.party.businesslogic.PartyEJB#getNationTypes(java.lang.String)
      * PartyEJB.getGenderTypes}
      *
      * @throws SOLAFault
      * @throws UnhandledFault
      * @throws SOLAAccessFault
      */
-    @WebMethod(operationName = "GetStateTypes")
-    public List<StateTypeTO> GetStateTypes(String languageCode)
+    @WebMethod(operationName = "GetNationTypes")
+    public List<NationTypeTO> GetNationTypes(String languageCode)
             throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
         final String languageCodeTmp = languageCode;
@@ -187,12 +187,12 @@ public class ReferenceData extends AbstractWebService {
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
-                        partyEJB.getStateTypes(languageCodeTmp),
+                        partyEJB.getNationTypes(languageCodeTmp),
                         GenderTypeTO.class);
             }
         });
 
-        return (List<StateTypeTO>) result[0];
+        return (List<NationTypeTO>) result[0];
     }
 
     /**
