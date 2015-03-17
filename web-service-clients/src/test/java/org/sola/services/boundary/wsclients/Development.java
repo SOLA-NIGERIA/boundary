@@ -68,7 +68,7 @@ public class Development {
 
         // Valid service connection
         System.out.println("Valid Service Connection - Case Management");
-        String url = "http://localhost:8080/sola/webservices/casemanagement-service?wsdl";
+        String url = "http://localhost:8080/sola_sr/webservices/casemanagement-service?wsdl";
         CaseManagementClient result = WSManager.getInstance().getWSClient(
                 CaseManagementClientImpl.class, url, "test", "test".toCharArray());
         System.out.print("Checking connection:");
@@ -90,7 +90,7 @@ public class Development {
 
         // Valid service connection
         System.out.println("Valid Service Connection - Case Management");
-        String url = "http://localhost:8080/sola/webservices/cadastre-service?wsdl";
+        String url = "http://localhost:8080/sola_sr/webservices/cadastre-service?wsdl";
         CadastreClient result = WSManager.getInstance().getWSClient(
                 CadastreClientImpl.class, url, "test", "test".toCharArray());
         System.out.print("Checking connection:");
@@ -111,7 +111,7 @@ public class Development {
 
         // Valid service connection
         System.out.println("Valid Service Connection - Case Management");
-        String url = "http://localhost:8080/sola/webservices/search-service?wsdl";
+        String url = "http://localhost:8080/sola_sr/webservices/search-service?wsdl";
         SearchClient result = WSManager.getInstance().getWSClient(
                 SearchClientImpl.class, url, "test", "test".toCharArray());
         System.out.print("Checking connection:");
@@ -130,7 +130,7 @@ public class Development {
 
         // Valid service connection
         System.out.println("Valid Service Connection - Administrative");
-        String url = "http://localhost:8080/sola/webservices/administrative-service?wsdl";
+        String url = "http://localhost:8080/sola_sr/webservices/administrative-service?wsdl";
         AdministrativeClient result = WSManager.getInstance().getWSClient(
                 AdministrativeClientImpl.class, url, "test", "test".toCharArray());
         System.out.print("Checking connection:");
