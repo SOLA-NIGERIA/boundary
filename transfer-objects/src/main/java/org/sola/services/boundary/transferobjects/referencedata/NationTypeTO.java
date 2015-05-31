@@ -1,6 +1,6 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations (FAO).
+ * Copyright (C) 2015 - Food and Agriculture Organization of the United Nations (FAO).
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -37,9 +37,9 @@ import org.sola.services.common.contracts.AbstractCodeTO;
  *
  * @author soladev
  */
-public class StateTypeTO extends AbstractCodeTO {
+public class NationTypeTO extends AbstractCodeTO {
 
-    public StateTypeTO() {
+    public NationTypeTO() {
         super();
     }
 }

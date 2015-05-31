@@ -1,6 +1,6 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations (FAO).
+ * Copyright (C) 2015 - Food and Agriculture Organization of the United Nations (FAO).
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -28,6 +28,7 @@
 package org.sola.services.boundary.transferobjects.security;
 
 import java.util.List;
+import java.util.Date;
 
 public class UserTO extends UserSummaryTO {
     private String userName;
@@ -35,6 +36,8 @@ public class UserTO extends UserSummaryTO {
     private List<UserGroupTO> userGroups;
     private boolean active;
     private String password;
+    private String lastPwordChangeUser;
+    private Integer pwordExpiryDays;
 
     public String getPassword() {
         return password;
@@ -79,5 +82,21 @@ public class UserTO extends UserSummaryTO {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+    
+     public String getLastPwordChangeUser() {
+        return lastPwordChangeUser;
+    }
+
+    public void setLastPwordChangeUser(String lastPwordChangeUser) {
+        this.lastPwordChangeUser = lastPwordChangeUser;
+    }
+
+    public Integer getPwordExpiryDays() {
+        return pwordExpiryDays;
+    }
+
+    public void setPwordExpiryDays(Integer pwordExpiryDays) {
+        this.pwordExpiryDays = pwordExpiryDays;
     }
 }
