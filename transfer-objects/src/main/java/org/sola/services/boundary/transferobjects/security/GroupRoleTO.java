@@ -1,6 +1,6 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations (FAO).
+ * Copyright (C) 2014 - Food and Agriculture Organization of the United Nations (FAO).
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -27,9 +27,9 @@
  */
 package org.sola.services.boundary.transferobjects.security;
 
-import org.sola.services.common.contracts.AbstractReadWriteTO;
+import org.sola.services.common.contracts.AbstractVersionedTO;
 
-public class GroupRoleTO extends AbstractReadWriteTO {
+public class GroupRoleTO extends AbstractVersionedTO {
     private String roleCode;
     private String groupId;
     

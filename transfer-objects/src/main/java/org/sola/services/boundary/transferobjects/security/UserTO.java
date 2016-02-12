@@ -1,6 +1,6 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations (FAO).
+ * Copyright (C) 2014 - Food and Agriculture Organization of the United Nations (FAO).
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -30,11 +30,17 @@ package org.sola.services.boundary.transferobjects.security;
 import java.util.List;
 
 public class UserTO extends UserSummaryTO {
+
     private String userName;
     private String pasword;
     private List<UserGroupTO> userGroups;
     private boolean active;
     private String password;
+    private String mobileNumber;
+    private String email;
+    private String activationCode;
+    private String lastPwordChangeUser;
+    private Integer pwordExpiryDays;
 
     public String getPassword() {
         return password;
@@ -44,9 +50,32 @@ public class UserTO extends UserSummaryTO {
         this.password = password;
     }
 
-    
     public UserTO() {
         super();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
     }
 
     public List<UserGroupTO> getUserGroups() {
@@ -64,7 +93,7 @@ public class UserTO extends UserSummaryTO {
     public void setPasword(String pasword) {
         this.pasword = pasword;
     }
-    
+
     public String getUserName() {
         return userName;
     }
@@ -72,7 +101,7 @@ public class UserTO extends UserSummaryTO {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    
+
     public boolean isActive() {
         return active;
     }
@@ -80,4 +109,21 @@ public class UserTO extends UserSummaryTO {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    public String getLastPwordChangeUser() {
+        return lastPwordChangeUser;
+    }
+
+    public void setLastPwordChangeUser(String lastPwordChangeUser) {
+        this.lastPwordChangeUser = lastPwordChangeUser;
+    }
+
+    public Integer getPwordExpiryDays() {
+        return pwordExpiryDays;
+    }
+
+    public void setPwordExpiryDays(Integer pwordExpiryDays) {
+        this.pwordExpiryDays = pwordExpiryDays;
+    }
+    
 }
