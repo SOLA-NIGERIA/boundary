@@ -2,12 +2,12 @@ package org.sola.services.boundary.transferobjects.administrative;
 
 import org.sola.services.common.contracts.AbstractIdTO;
 
-public class LeaseConditionForRrrTO extends AbstractIdTO {
+public class ConditionForRrrTO extends AbstractIdTO {
     private String rrrId;
-    private String leaseConditionCode;
+    private String RrrConditionCode;
     private String customConditionText;
     
-    public LeaseConditionForRrrTO(){
+    public ConditionForRrrTO(){
         super();
     }
 
@@ -19,12 +19,12 @@ public class LeaseConditionForRrrTO extends AbstractIdTO {
         this.customConditionText = customConditionText;
     }
 
-    public String getLeaseConditionCode() {
-        return leaseConditionCode;
+    public String getRrrConditionCode() {
+        return RrrConditionCode;
     }
 
-    public void setLeaseConditionCode(String leaseConditionCode) {
-        this.leaseConditionCode = leaseConditionCode;
+    public void setRrrConditionCode(String RrrConditionCode) {
+        this.RrrConditionCode = RrrConditionCode;
     }
 
     public String getRrrId() {

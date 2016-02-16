@@ -623,7 +623,7 @@ public class MockReferenceDataPort implements ReferenceData {
     }
 
     @Override
-    public List<LeaseConditionTO> getLeaseConditions(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+    public List<RrrConditionTO> getRrrConditions(String arg0) throws SOLAAccessFault, SOLAFault, UnhandledFault {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
