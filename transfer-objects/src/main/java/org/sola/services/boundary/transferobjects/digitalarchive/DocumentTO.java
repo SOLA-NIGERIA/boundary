@@ -1,6 +1,6 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations (FAO).
+ * Copyright (C) 2014 - Food and Agriculture Organization of the United Nations (FAO).
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -33,9 +33,18 @@ public class DocumentTO extends AbstractIdTO {
     private String nr;
     private String extension;
     private String description;
+    private String mimeType;
     
     public DocumentTO(){
         super();
+    }
+
+    public String getMimeType() {
+        return mimeType;
+    }
+
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
     }
 
     public String getDescription() {
