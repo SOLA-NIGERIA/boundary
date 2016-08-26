@@ -781,5 +781,92 @@ public class ReferenceDataClientImpl extends AbstractWSClientImpl implements Ref
         }
         return result;
     }
+
+    @Override
+    public List<CofoTypeTO> getCofoTypes() throws WebServiceClientException {
+        return getCofoTypes(this.getLanguageCode());
+    }
+
+    @Override
+    public List<CofoTypeTO> getCofoTypes(String lang) throws WebServiceClientException {
+        List<CofoTypeTO> result = null;
+        final String methodName = ReferenceDataClient.GET_COFO_TYPES;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getCofoTypes(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
+    
+    @Override
+    public List<LgaTypeTO> getLgaTypes()
+            throws WebServiceClientException {
+        return getLgaTypes(getLanguageCode());
+    }
+
+    @Override
+    public List<LgaTypeTO> getLgaTypes(String lang)
+            throws WebServiceClientException {
+        List<LgaTypeTO> result = null;
+        final String methodName = ReferenceDataClient.GET_LGA_TYPES;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getLgaTypes(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
+    
+    
+    
+     @Override
+    public List<RotTypeTO> getRotTypes() throws WebServiceClientException {
+        return getRotTypes(getLanguageCode());
+    }
+
+    @Override
+    public List<RotTypeTO> getRotTypes(String lang) throws WebServiceClientException {
+        List<RotTypeTO> result = null;
+        final String methodName = ReferenceDataClient.GET_ROT_TYPES;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getRotTypes(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
+
+    
+    @Override
+    public List<ZoneTypeTO> getZoneTypes()
+            throws WebServiceClientException {
+        return getZoneTypes(getLanguageCode());
+    }
+
+    @Override
+    public List<ZoneTypeTO> getZoneTypes(String lang)
+            throws WebServiceClientException {
+        List<ZoneTypeTO> result = null;
+        final String methodName = ReferenceDataClient.GET_ZONE_TYPES;
+        try {
+            beforeWebMethod(methodName, lang);
+            result = getPort().getZoneTypes(lang);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, lang);
+        }
+        return result;
+    }
 }
 

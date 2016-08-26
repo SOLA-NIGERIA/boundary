@@ -170,7 +170,7 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     }
-    
+
     @Override
     public List<BaUnitTO> getBaUnitsByString(String searchString) throws WebServiceClientException {
         List<BaUnitTO> result = null;
@@ -253,12 +253,12 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         final String methodName = AdministrativeClient.GET_SYS_REG_REGIST_LISTING;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, searchString,languageCode);
-            result = getPort().getSysRegPubDisParcelNameByLocation(searchString,languageCode);
+            beforeWebMethod(methodName, searchString, languageCode);
+            result = getPort().getSysRegPubDisParcelNameByLocation(searchString, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, searchString,languageCode);
+            afterWebMethod(methodName, result, searchString, languageCode);
         }
         return result;
     }
@@ -271,11 +271,11 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         String languageCode = getLanguageCode();
         try {
             beforeWebMethod(methodName, searchString, languageCode);
-            result = getPort().getSysRegPubDisOwnerNameByLocation(searchString,languageCode);
+            result = getPort().getSysRegPubDisOwnerNameByLocation(searchString, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, searchString,languageCode);
+            afterWebMethod(methodName, result, searchString, languageCode);
         }
         return result;
     }
@@ -287,16 +287,16 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         final String methodName = AdministrativeClient.GET_SYS_REG_STATELAND_LISTING;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, searchString,languageCode);
-            result = getPort().getSysRegPubDisStateLandByLocation(searchString,languageCode);
+            beforeWebMethod(methodName, searchString, languageCode);
+            result = getPort().getSysRegPubDisStateLandByLocation(searchString, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, searchString,languageCode);
+            afterWebMethod(methodName, result, searchString, languageCode);
         }
         return result;
     }
-    
+
     @Override
     public List<SysRegSigningListTO> getSysRegSigningList(String searchString)
             throws WebServiceClientException {
@@ -304,16 +304,16 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         final String methodName = AdministrativeClient.GET_SYS_REG_SIGNING_LIST;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, searchString,languageCode);
-            result = getPort().getSysRegSigningList(searchString,languageCode);
+            beforeWebMethod(methodName, searchString, languageCode);
+            result = getPort().getSysRegSigningList(searchString, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, searchString,languageCode);
+            afterWebMethod(methodName, result, searchString, languageCode);
         }
         return result;
     }
-    
+
     @Override
     public List<ValidationResult> publicDisplay(String params)
             throws WebServiceClientException {
@@ -330,7 +330,7 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     }
-    
+
     @Override
     public List<SysRegManagementTO> getSysRegManagement(SysRegManagementParamsTO sysRegManagementParamsTO)
             throws WebServiceClientException {
@@ -338,33 +338,33 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         final String methodName = AdministrativeClient.GET_SYS_REG_MANAGEMENT;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, sysRegManagementParamsTO,languageCode);
-            result = getPort().getSysRegManagement(sysRegManagementParamsTO,languageCode);
+            beforeWebMethod(methodName, sysRegManagementParamsTO, languageCode);
+            result = getPort().getSysRegManagement(sysRegManagementParamsTO, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, sysRegManagementParamsTO,languageCode);
+            afterWebMethod(methodName, result, sysRegManagementParamsTO, languageCode);
         }
         return result;
     }
 
-     @Override
+    @Override
     public List<SysRegStatusTO> getSysRegStatus(SysRegManagementParamsTO sysRegManagementParamsTO)
             throws WebServiceClientException {
         List<SysRegStatusTO> result = null;
         final String methodName = AdministrativeClient.GET_SYS_REG_STATUS;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, sysRegManagementParamsTO,languageCode);
-            result = getPort().getSysRegStatus(sysRegManagementParamsTO,languageCode);
+            beforeWebMethod(methodName, sysRegManagementParamsTO, languageCode);
+            result = getPort().getSysRegStatus(sysRegManagementParamsTO, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, sysRegManagementParamsTO,languageCode);
+            afterWebMethod(methodName, result, sysRegManagementParamsTO, languageCode);
         }
         return result;
     }
-     
+
     @Override
     public List<SysRegGenderTO> getSysRegGender(String params)
             throws WebServiceClientException {
@@ -372,35 +372,34 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         final String methodName = AdministrativeClient.GET_SYS_REG_GENDER;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, params,languageCode);
-            result = getPort().getSysRegGender(params,languageCode);
+            beforeWebMethod(methodName, params, languageCode);
+            result = getPort().getSysRegGender(params, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, params,languageCode);
+            afterWebMethod(methodName, result, params, languageCode);
         }
         return result;
     }
-     
-     
-     @Override
+
+    @Override
     public List<SysRegProgressTO> getSysRegProgress(SysRegManagementParamsTO sysRegManagementParamsTO)
             throws WebServiceClientException {
         List<SysRegProgressTO> result = null;
         final String methodName = AdministrativeClient.GET_SYS_REG_PROGRESS;
         String languageCode = getLanguageCode();
         try {
-            beforeWebMethod(methodName, sysRegManagementParamsTO,languageCode);
-            result = getPort().getSysRegProgress(sysRegManagementParamsTO,languageCode);
+            beforeWebMethod(methodName, sysRegManagementParamsTO, languageCode);
+            result = getPort().getSysRegProgress(sysRegManagementParamsTO, languageCode);
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result, sysRegManagementParamsTO,languageCode);
+            afterWebMethod(methodName, result, sysRegManagementParamsTO, languageCode);
         }
         return result;
-    } 
-     
-      /*
+    }
+
+    /*
      * DISPUTE
      */
     @Override
@@ -462,7 +461,7 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     }
-    
+
     @Override
     public DisputeTO getDisputeByService(String service) throws WebServiceClientException {
         DisputeTO result = null;
@@ -525,7 +524,7 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     }
-    
+
     @Override
     public DisputePartyTO saveDisputeParty(
             DisputePartyTO disputePartyTO) throws WebServiceClientException {
@@ -541,7 +540,7 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     }
-    
+
     @Override
     public DisputePartyTO getDisputePartyById(String id) throws WebServiceClientException {
         DisputePartyTO result = null;
@@ -556,7 +555,7 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     }
-    
+
     @Override
     public DisputeCommentsTO getDisputeCommentsById(String id) throws WebServiceClientException {
         DisputeCommentsTO result = null;
@@ -571,12 +570,11 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         }
         return result;
     }
-    
-    
-  @Override
-  public DisputeCommentsTO getDisputeCommentsByDispute(String disputeNr) throws WebServiceClientException {
-        
-       DisputeCommentsTO result = null;
+
+    @Override
+    public DisputeCommentsTO getDisputeCommentsByDispute(String disputeNr) throws WebServiceClientException {
+
+        DisputeCommentsTO result = null;
         final String methodName = AdministrativeClient.GET_DISPUTE_COMMENTS_BY_DISPUTE;
         try {
             beforeWebMethod(methodName, disputeNr);
@@ -586,13 +584,13 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         } finally {
             afterWebMethod(methodName, result, disputeNr);
         }
-        return result;    
+        return result;
     }
-  
-  @Override
-  public List<DisputePartyTO> getDisputePartyByDispute(String disputeNr) throws WebServiceClientException {
-        
-       List<DisputePartyTO> result = null;
+
+    @Override
+    public List<DisputePartyTO> getDisputePartyByDispute(String disputeNr) throws WebServiceClientException {
+
+        List<DisputePartyTO> result = null;
         final String methodName = AdministrativeClient.GET_DISPUTE_PARTY_BY_DISPUTE;
         try {
             beforeWebMethod(methodName, disputeNr);
@@ -602,7 +600,21 @@ public class AdministrativeClientImpl extends AbstractWSClientImpl
         } finally {
             afterWebMethod(methodName, result, disputeNr);
         }
-        return result;    
+        return result;
     }
-  
+
+    @Override
+    public LeaseConditionTemplateTO getLeaseConditionTemplate(String id) throws WebServiceClientException {
+        LeaseConditionTemplateTO result = null;
+        final String methodName = AdministrativeClient.GET_LEASE_CONDITION_TEMPLATE;
+        try {
+            beforeWebMethod(methodName, id);
+            result = getPort().getLeaseConditionTemplate(id);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, id);
+        }
+        return result;
+    }
 }

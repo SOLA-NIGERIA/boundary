@@ -118,6 +118,8 @@ public interface SearchClient extends AbstractWSClient {
     
     public static final String SEARCH_RIGHTS_FOR_EXPORT = SERVICE_NAME + "searchRightsForExport";
     
+    public static final String GET_LEASE_CONDITION_TEMPLATES = "getLeaseConditionTemplates";
+    
      /*
      * DISPUTE
      */
@@ -394,4 +396,11 @@ public interface SearchClient extends AbstractWSClient {
      * @return Transformed geometry
      */
     public byte[] transform(byte[] geom, int srid);
+    
+    /** 
+     * Returns lease conditions templates 
+     * @param rrrType RRR type code. If empty, all templates will be returned.
+     * @return 
+     */
+    public List<LeaseConditionTemplateSearchResultsTO> getLeaseConditionTemplates(String rrrType) throws WebServiceClientException;
  }

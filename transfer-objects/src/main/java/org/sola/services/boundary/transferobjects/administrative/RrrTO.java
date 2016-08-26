@@ -56,9 +56,19 @@ public class RrrTO extends AbstractIdTO {
     private List<RrrShareTO> rrrShareList;
     private BaUnitNotationTO notation;
     private List<PartySummaryTO> rightHolderList;
-    private List<ConditionForRrrTO> RrrConditionList;
+    private String leaseConditions;
     private String concatenatedName;
-
+    private String cOfO;
+    private String instrRegNum;
+    private Date dateCommenced;
+    private Date dateSigned;
+    private Integer term;
+    private BigDecimal advancePayment;
+    private BigDecimal yearlyRent;
+    private Integer reviewPeriod;
+    private String zoneCode;
+    private String rotCode;
+    
     public String getConcatenatedName() {
         return concatenatedName;
     }
@@ -208,12 +218,12 @@ public class RrrTO extends AbstractIdTO {
         rrrShareList.add(rrrShareTO);
     }
 
-    public List<ConditionForRrrTO> getRrrConditionList() {
-        return RrrConditionList;
+    public String getLeaseConditions() {
+        return leaseConditions;
     }
 
-    public void setRrrConditionList(List<ConditionForRrrTO> RrrConditionList) {
-        this.RrrConditionList = RrrConditionList;
+    public void setLeaseConditions(String leaseConditions) {
+        this.leaseConditions = leaseConditions;
     }
 
     public String getStatusCode() {
@@ -246,6 +256,86 @@ public class RrrTO extends AbstractIdTO {
 
     public void setLocked(boolean locked) {
         this.locked = locked;
+    }
+
+    public String getcOfO() {
+        return cOfO;
+    }
+
+    public void setcOfO(String cOfO) {
+        this.cOfO = cOfO;
+    }
+
+    public String getInstrRegNum() {
+        return instrRegNum;
+    }
+
+    public void setInstrRegNum(String instrRegNum) {
+        this.instrRegNum = instrRegNum;
+    }
+
+    public Date getDateCommenced() {
+        return dateCommenced;
+    }
+
+    public void setDateCommenced(Date dateCommenced) {
+        this.dateCommenced = dateCommenced;
+    }
+
+    public Date getDateSigned() {
+        return dateSigned;
+    }
+
+    public void setDateSigned(Date dateSigned) {
+        this.dateSigned = dateSigned;
+    }
+
+    public Integer getTerm() {
+        return term;
+    }
+
+    public void setTerm(Integer term) {
+        this.term = term;
+    }
+
+    public BigDecimal getAdvancePayment() {
+        return advancePayment;
+    }
+
+    public void setAdvancePayment(BigDecimal advancePayment) {
+        this.advancePayment = advancePayment;
+    }
+
+    public BigDecimal getYearlyRent() {
+        return yearlyRent;
+    }
+
+    public void setYearlyRent(BigDecimal yearlyRent) {
+        this.yearlyRent = yearlyRent;
+    }
+
+    public Integer getReviewPeriod() {
+        return reviewPeriod;
+    }
+
+    public void setReviewPeriod(Integer reviewPeriod) {
+        this.reviewPeriod = reviewPeriod;
+    }
+
+    public String getZoneCode() {
+        return zoneCode;
+    }
+
+    public void setZoneCode(String zoneCode) {
+        this.zoneCode = zoneCode;
+    }
+
+    public String getRotCode() {
+        return rotCode;
+    }
+
+    public void setRotCode(String rotCode) {
+        this.rotCode = rotCode;
     }
 
 }

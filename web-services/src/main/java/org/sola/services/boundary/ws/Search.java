@@ -53,8 +53,8 @@ import org.sola.services.ejb.search.spatial.QueryForSelect;
 import org.sola.services.ejb.search.spatial.ResultForSelectionInfo;
 
 /**
- * Web Service Boundary class to expose {@linkplain org.sola.services.ejb.search.businesslogic.SearchEJB}
- * methods.
+ * Web Service Boundary class to expose
+ * {@linkplain org.sola.services.ejb.search.businesslogic.SearchEJB} methods.
  */
 @WebService(serviceName = "search-service", targetNamespace = ServiceConstants.SEARCH_WS_NAMESPACE)
 public class Search extends AbstractWebService {
@@ -95,8 +95,8 @@ public class Search extends AbstractWebService {
 
             @Override
             public void run() {
-                PropertyVerifier propertyVerifier =
-                        searchEJB.getPropertyVerifier(applicationNumber, firstPart, lastPart);
+                PropertyVerifier propertyVerifier
+                        = searchEJB.getPropertyVerifier(applicationNumber, firstPart, lastPart);
                 result[0] = GenericTranslator.toTO(
                         propertyVerifier, PropertyVerifierTO.class);
             }
@@ -448,7 +448,7 @@ public class Search extends AbstractWebService {
                 if (searchParams != null) {
                     result[0] = GenericTranslator.toTOList(
                             searchEJB.searchBaUnits(GenericTranslator.fromTO(
-                            searchParams, BaUnitSearchParams.class, null)),
+                                    searchParams, BaUnitSearchParams.class, null)),
                             BaUnitSearchResultTO.class);
                 }
             }
@@ -478,7 +478,7 @@ public class Search extends AbstractWebService {
             public void run() {
                 result[0] = GenericTranslator.toTOList(
                         searchEJB.searchRightsForExport(GenericTranslator.fromTO(
-                        (RightsExportParamsTO) params[0], RightsExportParams.class, null)),
+                                (RightsExportParamsTO) params[0], RightsExportParams.class, null)),
                         RightsExportResultTO.class);
             }
         });
@@ -514,7 +514,7 @@ public class Search extends AbstractWebService {
         return (List<SpatialSearchOptionTO>) result[0];
     }
 
- /**
+    /**
      * See {@linkplain  org.sola.services.ejb.search.businesslogic.SearchEJB#searchSpatialObjects(java.lang.String, java.lang.String)
      * SearchEJB.searchSpatialObjects}
      *
@@ -570,8 +570,8 @@ public class Search extends AbstractWebService {
             @Override
             public void run() {
                 HashMap<String, String> mapSettings = searchEJB.getMapSettingList();
-                List<ConfigMapLayer> configMapLayerList =
-                        searchEJB.getConfigMapLayerList(languageCodeTmp);
+                List<ConfigMapLayer> configMapLayerList
+                        = searchEJB.getConfigMapLayerList(languageCodeTmp);
                 List<Crs> crsList = searchEJB.getCrsList();
                 MapDefinitionTO mapDefinition = new MapDefinitionTO();
                 mapDefinition.setCrsList(GenericTranslator.toTOList(crsList, CrsTO.class));
@@ -594,8 +594,8 @@ public class Search extends AbstractWebService {
 
         return (MapDefinitionTO) result[0];
     }
-    
-     /**
+
+    /**
      * See {@linkplain org.sola.services.ejb.source.businesslogic.SourceEJB#
      * saveTransactionBulkOperation(
      * org.sola.services.ejb.source.repository.entities.TransactionBulkOperationSource,
@@ -624,12 +624,10 @@ public class Search extends AbstractWebService {
 
         return (byte[]) result[0];
     }
-	
-    
-     /*
+
+    /*
      * DISPUTE
      */
-    
     @WebMethod(operationName = "searchCadastreObjects")
     public List<CadastreObjectSearchResultTO> searchCadastreObjects(
             @WebParam(name = "searchParams") final CadastreObjectSearchParamsTO searchParams)
@@ -642,14 +640,13 @@ public class Search extends AbstractWebService {
             @Override
             public void run() {
                 result[0] = GenericTranslator.toTOList(
-                        searchEJB.searchCadastreObjects(GenericTranslator.fromTO(searchParams, 
-                        CadastreObjectSearchParams.class, null)), CadastreObjectSearchResultTO.class);
+                        searchEJB.searchCadastreObjects(GenericTranslator.fromTO(searchParams,
+                                CadastreObjectSearchParams.class, null)), CadastreObjectSearchResultTO.class);
             }
         });
         return (List<CadastreObjectSearchResultTO>) result[0];
     }
 
-    
     /**
      * See {@linkplain org.sola.services.ejb.source.businesslogic.SearchEJB#
      * getPlanCadastreObjects(
@@ -662,7 +659,7 @@ public class Search extends AbstractWebService {
     @WebMethod(operationName = "GetPlanCadastreObjects")
     public List<SpatialResult> GetPlanCadastreObjects(
             @WebParam(name = "cadastreObjectId") final String cadastreObjectId)
-       throws SOLAFault, UnhandledFault, SOLAAccessFault {
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
         final Object[] result = {null};
 
@@ -674,13 +671,13 @@ public class Search extends AbstractWebService {
             }
         });
 
-        return (List<SpatialResult>)result[0];
+        return (List<SpatialResult>) result[0];
     }
-    
-    
-        /**
+
+    /**
      * See {@linkplain  org.sola.services.ejb.search.businesslogic.SearchEJB#searchDispute(org.sola.services.ejb.search.repository.entities.DisputeSearchParams)
      * SearchEJB.searchDispute}
+     *
      * @throws SOLAFault
      * @throws UnhandledFault
      * @throws SOLAAccessFault
@@ -702,7 +699,7 @@ public class Search extends AbstractWebService {
                 if (searchParams != null) {
                     result[0] = GenericTranslator.toTOList(
                             searchEJB.searchDispute(GenericTranslator.fromTO(
-                            searchParams, DisputeSearchParams.class, null)),
+                                    searchParams, DisputeSearchParams.class, null)),
                             DisputeSearchResultTO.class);
                 }
             }
@@ -710,8 +707,8 @@ public class Search extends AbstractWebService {
 
         return (List<DisputeSearchResultTO>) result[0];
     }
-	
-	/**
+
+    /**
      * See {@linkplain org.sola.services.ejb.source.businesslogic.SearchEJB#
      * getMapCenterLabel(
      * byte[]) SearchEJB.getMapCenterLabel}
@@ -739,7 +736,8 @@ public class Search extends AbstractWebService {
 
         return result[0].toString();
     }
-  /**
+
+    /**
      * See {@linkplain org.sola.services.ejb.search.businesslogic.SearchEJB#
      * transform(
      * int) SearchEJB.transform}
@@ -752,17 +750,47 @@ public class Search extends AbstractWebService {
     public byte[] Transform(
             @WebParam(name = "geom") final byte[] geom,
             @WebParam(name = "srid") final int srid)
-       throws SOLAFault, UnhandledFault, SOLAAccessFault {
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
 
         final Object[] result = {null};
 
-       runGeneralQuery(wsContext, new Runnable() {
+        runGeneralQuery(wsContext, new Runnable() {
             @Override
             public void run() {
                 result[0] = searchEJB.transform(geom, srid);
             }
         });
 
-        return (byte[])result[0];
+        return (byte[]) result[0];
     }
- }
+
+    /**
+     * See {@linkplain org.sola.services.ejb.source.businesslogic.SearchEJB#
+     * getLeaseConditionTemplates(String, String) SearchEJB.getLeaseConditionTemplates}
+     *
+     * @param lang Language code
+     * @param rrrType RRR type code
+     * @return
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetLeaseConditionTemplates")
+    public List<LeaseConditionTemplateSearchResultsTO> GetLeaseConditionTemplates(
+            @WebParam(name = "lang") final String lang,
+            @WebParam(name = "rrrType") final String rrrType)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(searchEJB.getLeaseConditionTemplates(lang, rrrType), LeaseConditionTemplateSearchResultsTO.class);
+            }
+        });
+
+        return (List<LeaseConditionTemplateSearchResultsTO>) result[0];
+    }
+}

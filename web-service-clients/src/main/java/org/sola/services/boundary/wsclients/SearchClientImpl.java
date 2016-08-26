@@ -40,7 +40,8 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
     private static final String LOCAL_PART = "search-service";
 
     /**
-     * Creates a web service client class for the web service hosted at the specified URL
+     * Creates a web service client class for the web service hosted at the
+     * specified URL
      *
      * @param url The location of the service WSDL
      */
@@ -314,7 +315,7 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
     }
 
     @Override
-    public List<PowerOfAttorneySearchResultTO> searchPowerOfAttorney(PowerOfAttorneySearchParamsTO searchParams) 
+    public List<PowerOfAttorneySearchResultTO> searchPowerOfAttorney(PowerOfAttorneySearchParamsTO searchParams)
             throws WebServiceClientException {
         List<PowerOfAttorneySearchResultTO> result = null;
         final String methodName = SearchClient.SEARCH_POWER_OF_ATTORNEY;
@@ -346,8 +347,8 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         }
         return result;
     }
-    
-       @Override
+
+    @Override
     public byte[] getExtentOfPublicDisplayMap(String nameLastPart) throws WebServiceClientException {
         byte[] result = null;
         final String methodName = SearchClient.GET_EXTENT_OF_PUBLIC_DISPLAY_MAP;
@@ -361,8 +362,8 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         }
         return result;
     }
- 
-     /*
+
+    /*
      * DISPUTE
      */
     @Override
@@ -379,10 +380,9 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         }
         return result;
     }
-    
 
     @Override
-    public List<SpatialResult> getPlanCadastreObjects(String cadastreObjectId) throws WebServiceClientException{
+    public List<SpatialResult> getPlanCadastreObjects(String cadastreObjectId) throws WebServiceClientException {
         List<SpatialResult> result = null;
         final String methodName = SearchClient.GET_PLAN_CADASTRE_OBJECTS;
         try {
@@ -395,8 +395,8 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         }
         return result;
     }
-    
-     @Override
+
+    @Override
     public List<CadastreObjectSearchResultTO> searchCadastreObjects(CadastreObjectSearchParamsTO searchParams) throws WebServiceClientException {
         List<CadastreObjectSearchResultTO> result = null;
         final String methodName = SearchClient.SEARCH_CADASTRE_OBJECTS;
@@ -410,8 +410,8 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         }
         return result;
     }
-	
-	@Override
+
+    @Override
     public String getMapCenterLabel(byte[] mapCenterPoint) throws WebServiceClientException {
         String result = null;
         final String methodName = SearchClient.GET_MAP_CENTER_LABEL;
@@ -425,7 +425,8 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         }
         return result;
     }
- @Override
+
+    @Override
     public byte[] transform(byte[] geom, int srid) throws WebServiceClientException {
         byte[] result = null;
         final String methodName = SearchClient.TRANSFORM;
@@ -435,7 +436,22 @@ public class SearchClientImpl extends AbstractWSClientImpl implements SearchClie
         } catch (Exception e) {
             processException(methodName, e);
         } finally {
-            afterWebMethod(methodName, result,geom,  srid);
+            afterWebMethod(methodName, result, geom, srid);
+        }
+        return result;
+    }
+
+    @Override
+    public List<LeaseConditionTemplateSearchResultsTO> getLeaseConditionTemplates(String rrrType) throws WebServiceClientException {
+        List<LeaseConditionTemplateSearchResultsTO> result = null;
+        final String methodName = SearchClient.GET_LEASE_CONDITION_TEMPLATES;
+        try {
+            beforeWebMethod(methodName, rrrType);
+            result = getPort().getLeaseConditionTemplates(getLanguageCode(), rrrType);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, rrrType);
         }
         return result;
     }

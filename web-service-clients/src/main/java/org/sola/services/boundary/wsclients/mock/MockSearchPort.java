@@ -479,6 +479,11 @@ public class MockSearchPort implements Search {
             return null;
         }    
     }
+
+    @Override
+    public List<LeaseConditionTemplateSearchResultsTO> getLeaseConditionTemplates(String lang, String rrrType) throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
  }
 
 

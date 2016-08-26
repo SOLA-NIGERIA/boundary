@@ -171,6 +171,45 @@ public interface ReferenceDataClient extends AbstractWSClient {
     public static final String GET_HIERARCHY_LEVELS = SERVICE_NAME + "getHierarchyLevels";
 
     /**
+     * ReferenceData.getCadastreObjectTypes - Identifier for the getCadastreObjectTypes method
+     */
+    public static final String GET_LGA_TYPES = SERVICE_NAME + "getLgaTypes";
+     /**
+     * ReferenceData.getCadastreObjectTypes - Identifier for the getCadastreObjectTypes method
+     */
+    public static final String GET_ZONE_TYPES = SERVICE_NAME + "getZoneTypes";
+    
+     /**
+     * ReferenceData.getMortgageTypes - Identifier for the getMortgageTypes method
+     */
+    public static final String GET_ROT_TYPES = SERVICE_NAME + "getRotTypes";
+    
+    List<LgaTypeTO> getLgaTypes() throws WebServiceClientException;
+
+    /**
+     * Retrieves all cadastre.land_use_type code values.
+     *
+     * @param languageCode The language code to use for localization of display values.
+     * @throws WebServiceClientException
+     */
+    List<LgaTypeTO> getLgaTypes(String lang) throws WebServiceClientException;
+
+   
+    List<ZoneTypeTO> getZoneTypes() throws WebServiceClientException;
+
+    /**
+     * Retrieves all cadastre.land_use_type code values.
+     *
+     * @param languageCode The language code to use for localization of display values.
+     * @throws WebServiceClientException
+     */
+    List<ZoneTypeTO> getZoneTypes(String lang) throws WebServiceClientException;
+    
+    List<RotTypeTO> getRotTypes() throws WebServiceClientException;
+
+    List<RotTypeTO> getRotTypes(String lang) throws WebServiceClientException;
+    
+    /**
      * Retrieves all source.source_type code values using the default locale of the client to
      * localize the display values.
      *
@@ -231,6 +270,7 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     public static final String GET_OTHER_AUTHORITIES = SERVICE_NAME + "getOtherAuthorities";
   
+    public static final String GET_COFO_TYPES = SERVICE_NAME + "getCofoTypes";
     /**
      * Retrieves all application.request_type code values using the default locale of the client to
      * localize the display values.
@@ -747,4 +787,7 @@ public interface ReferenceDataClient extends AbstractWSClient {
      */
     List<OtherAuthoritiesTO> getOtherAuthorities(String lang) throws WebServiceClientException;
 
+    List<CofoTypeTO> getCofoTypes() throws WebServiceClientException;
+
+    List<CofoTypeTO> getCofoTypes(String lang) throws WebServiceClientException;
 }

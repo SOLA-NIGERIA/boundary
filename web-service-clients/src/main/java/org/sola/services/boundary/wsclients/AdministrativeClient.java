@@ -25,13 +25,12 @@
  */
 package org.sola.services.boundary.wsclients;
 
-import java.util.Date;
 import java.util.List;
+import org.sola.common.RolesConstants;
 import org.sola.services.boundary.wsclients.exception.WebServiceClientException;
 import org.sola.webservices.transferobjects.ValidationResult;
 import org.sola.webservices.transferobjects.administrative.*;
-import org.sola.webservices.transferobjects.search.RightsExportParamsTO;
-import org.sola.webservices.transferobjects.search.RightsExportResultTO;
+
 /**
  * Interface for the Administrative Service. Implemented by {@linkplain AdministrativeClientImpl}.
  * To obtain a reference to the Administrative Service, use {@linkplain WSManager#getAdministrative()}
@@ -128,6 +127,8 @@ public interface AdministrativeClient extends AbstractWSClient {
     public static final String GET_SYS_REG_GENDER = SERVICE_NAME + "getSysRegGender";
     
     public static final String GET_SYS_REG_SIGNING_LIST = SERVICE_NAME + "getSysRegSigningList";
+    
+    public static final String GET_LEASE_CONDITION_TEMPLATE = "getLeaseConditionTemplate";
     
     /*
      * DISPUTE
@@ -543,4 +544,10 @@ public interface AdministrativeClient extends AbstractWSClient {
      */
     List<DisputePartyTO> getDisputePartyByDispute(String disputeNr) throws WebServiceClientException;
     
+    /**
+     * Returns lease conditions template by ID
+     * @param id Lease conditions template ID
+     * @return 
+     */
+    LeaseConditionTemplateTO getLeaseConditionTemplate(String id) throws WebServiceClientException;
 }

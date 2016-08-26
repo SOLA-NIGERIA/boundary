@@ -1099,6 +1099,108 @@ public class ReferenceData extends AbstractWebService {
         return (List<HierarchyLevelTO>) result[0];
     }
 
+    @WebMethod(operationName = "GetCofoTypes")
+    public List<CofoTypeTO> GetCofoTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getCofoTypes(languageCodeTmp), CofoTypeTO.class);
+            }
+        });
+
+        return (List<CofoTypeTO>) result[0];
+    }
+    
+     /**
+     * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getLandUseTypes(java.lang.String)
+     * CadastreEJB.getCadastreObjectTypes}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetLgaTypes")
+    public List<LgaTypeTO> GetLgaTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        cadastreEJB.getLgaTypes(languageCodeTmp),
+                        LgaTypeTO.class);
+            }
+        });
+
+        return (List<LgaTypeTO>) result[0];
+    }
+    
+    /**
+     * See {@linkplain org.sola.services.ejb.cadastre.businesslogic.CadastreEJB#getLandUseTypes(java.lang.String)
+     * CadastreEJB.getCadastreObjectTypes}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetZoneTypes")
+    public List<ZoneTypeTO> GetZoneTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        cadastreEJB.getZoneTypes(languageCodeTmp),
+                        LgaTypeTO.class);
+            }
+        });
+
+        return (List<ZoneTypeTO>) result[0];
+    }
+    
+    /**
+     * See {@linkplain org.sola.services.ejb.administrative.businesslogic.AdministrativeEJB#getMortgageTypes(java.lang.String)
+     * AdministrativeEJB.getMortgageTypes}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetRotTypes")
+    public List<RotTypeTO> GetRotTypes(String languageCode)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String languageCodeTmp = languageCode;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        administrativeEJB.getRotTypes(languageCodeTmp), RotTypeTO.class);
+            }
+        });
+
+        return (List<RotTypeTO>) result[0];
+    }
+    
     /**
      * Supports saving of all SOLA Reference Data types. <p>Requires the {@linkplain RolesConstants#ADMIN_MANAGE_REFDATA}
      * role.</p>
