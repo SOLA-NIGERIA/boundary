@@ -787,4 +787,20 @@ public class CaseManagementClientImpl extends AbstractWSClientImpl implements Ca
         }
         return result;
     }
+    
+      @Override
+    public List<SltrStatusTO> getSltrStatus(String searchString)
+            throws WebServiceClientException {
+        List<SltrStatusTO> result = null;
+        final String methodName = CaseManagementClient.GET_SLTR_STATUS;
+        try {
+            beforeWebMethod(methodName, searchString);
+            result = getPort().getSltrStatus(searchString);
+        } catch (Exception e) {
+            processException(methodName, e);
+        } finally {
+            afterWebMethod(methodName, result, searchString);
+        }
+        return result;
+    }
 }

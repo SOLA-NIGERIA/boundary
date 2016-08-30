@@ -225,6 +225,9 @@ public interface CaseManagementClient extends AbstractWSClient {
      */
     public static final String GET_SYS_REG_CERTIFICATES = SERVICE_NAME + "getSysRegCerificatesByLocation";
     
+    
+    public static final String GET_SLTR_STATUS = SERVICE_NAME + "getSltrStatus";
+    
       /**
      * Application.getSysRegCertificates - Identifier for the getSysRegCertificatesApp
      * method
@@ -791,4 +794,7 @@ public interface CaseManagementClient extends AbstractWSClient {
      */
     List<ValidationResult> applicationActionTransfer(
             String applicationId, int rowVersion) throws WebServiceClientException;
+    
+    List<SltrStatusTO> getSltrStatus(String searchString)
+            throws WebServiceClientException;
 }

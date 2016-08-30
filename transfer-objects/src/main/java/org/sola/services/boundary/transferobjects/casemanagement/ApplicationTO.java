@@ -53,8 +53,17 @@ public class ApplicationTO extends ApplicationSummaryTO {
     private List<ApplicationPropertyTO> propertyList;
     private List<SourceTO> sourceList;
     private List<CadastreObjectTO> cadastreObjectList;
-     private String section;
+    private String section;
+    private String sltrStatus;
 
+    public String getSltrStatus() {
+        return sltrStatus;
+    }
+
+    public void setSltrStatus(String sltrStatus) {
+        this.sltrStatus = sltrStatus;
+    }
+    
     public String getSection() {
         return section;
     }

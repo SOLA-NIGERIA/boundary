@@ -886,6 +886,21 @@ public class MockCaseManagementPort implements CaseManagement {
             return null;
         }
     }
+    
+    
+    
+    @Override
+    public List<SltrStatusTO> getSltrStatus(String searchString)
+            throws SOLAAccessFault, SOLAFault, UnhandledFault {
+        List<SltrStatusTO> defaultResponse = new ArrayList<SltrStatusTO>();
+        try {
+            return getManager().getResponse(CaseManagementClient.GET_SLTR_STATUS,
+                    List.class, defaultResponse, searchString);
+        } catch (Exception ex) {
+            processExceptionAccess(ex);
+            return null;
+        }
+    }
         /**
      * Response Key = ApplicationClient.GET_CADASTRE_OBJECT_BY_PARTS
      *

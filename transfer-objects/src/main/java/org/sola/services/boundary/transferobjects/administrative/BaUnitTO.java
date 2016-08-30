@@ -60,7 +60,16 @@ public class BaUnitTO extends AbstractIdTO {
     private Integer floorsNumber;
     private Date expirationDate;
     private Date creationDate;
+    private String addressNotice;
 
+    public String getAddressNotice() {
+        return addressNotice;
+    }
+
+    public void setAddressNotice(String addressNotice) {
+        this.addressNotice = addressNotice;
+    }
+    
     public Date getCreationDate() {
         return creationDate;
     }

@@ -1501,4 +1501,34 @@ public class CaseManagement extends AbstractWebService {
 
         return (List<ValidationResult>) result[0];
     }
+    
+     /**
+     * See {@linkplain org.sola.services.ejb.application.businesslogic.ApplicationEJB#getSysRegCertificatesByLocation(java.lang.String)
+     * CadastreEJB.getSysRegPubDisParcelNameByLocation}
+     *
+     * @throws SOLAFault
+     * @throws UnhandledFault
+     * @throws SOLAAccessFault
+     */
+    @WebMethod(operationName = "GetSltrStatus")
+    public List<SltrStatusTO> GetSltrStatus(
+            @WebParam(name = "searchString") String searchString)
+            throws SOLAFault, UnhandledFault, SOLAAccessFault {
+
+        final String searchStringTmp = searchString;
+        final Object[] result = {null};
+
+        runGeneralQuery(wsContext, new Runnable() {
+
+            @Override
+            public void run() {
+                result[0] = GenericTranslator.toTOList(
+                        applicationEJB.getSltrStatus(searchStringTmp),
+                        SltrStatusTO.class);
+            }
+        });
+
+        return (List<SltrStatusTO>) result[0];
+    }
+    
 }
