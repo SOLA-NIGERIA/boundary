@@ -40,6 +40,15 @@ public class ApplicationSearchResultTO extends ApplicationSummaryTO {
     private String serviceStatusList;
     private String parcel;
     private String section;
+    private String sltrStatus;
+
+    public String getSltrStatus() {
+        return sltrStatus;
+    }
+
+    public void setSltrStatus(String sltrStatus) {
+        this.sltrStatus = sltrStatus;
+    }
     
     public ApplicationSearchResultTO(){
         super();
