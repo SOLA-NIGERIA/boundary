@@ -68,6 +68,15 @@ public class RrrTO extends AbstractIdTO {
     private Integer reviewPeriod;
     private String zoneCode;
     private String rotCode;
+    private String improvementPremium;
+
+    public String getImprovementPremium() {
+        return improvementPremium;
+    }
+
+    public void setImprovementPremium(String improvementPremium) {
+        this.improvementPremium = improvementPremium;
+    }
     
     public String getConcatenatedName() {
         return concatenatedName;
