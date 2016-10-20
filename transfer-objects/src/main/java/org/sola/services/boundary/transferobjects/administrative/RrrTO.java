@@ -68,7 +68,7 @@ public class RrrTO extends AbstractIdTO {
     private Integer reviewPeriod;
     private String zoneCode;
     private String rotCode;
-    private String improvementPremium;
+    private BigDecimal improvementPremium;
     private String cofoType;
     private BigDecimal stampDuty;
 
@@ -87,11 +87,11 @@ public class RrrTO extends AbstractIdTO {
     public void setCofoType(String cofoType) {
         this.cofoType = cofoType;
     }
-    public String getImprovementPremium() {
+    public BigDecimal getImprovementPremium() {
         return improvementPremium;
     }
 
-    public void setImprovementPremium(String improvementPremium) {
+    public void setImprovementPremium(BigDecimal improvementPremium) {
         this.improvementPremium = improvementPremium;
     }
     
