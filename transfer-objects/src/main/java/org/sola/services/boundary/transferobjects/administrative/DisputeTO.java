@@ -53,6 +53,15 @@ public class DisputeTO extends AbstractIdTO {
     private List<DisputeCommentsTO> disputeCommentsList;
     private List<SourceTO> sourceList;
     private List<DisputePartyTO> disputePartyList;
+    private String transactionId;
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
     
     public DisputeTO(){
         super();

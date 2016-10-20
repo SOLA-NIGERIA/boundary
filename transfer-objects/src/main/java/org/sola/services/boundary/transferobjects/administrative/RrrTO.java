@@ -69,7 +69,24 @@ public class RrrTO extends AbstractIdTO {
     private String zoneCode;
     private String rotCode;
     private String improvementPremium;
+    private String cofoType;
+    private BigDecimal stampDuty;
 
+    public BigDecimal getStampDuty() {
+        return stampDuty;
+    }
+
+    public void setStampDuty(BigDecimal stampDuty) {
+        this.stampDuty = stampDuty;
+    }
+    
+    public String getCofoType() {
+        return cofoType;
+    }
+
+    public void setCofoType(String cofoType) {
+        this.cofoType = cofoType;
+    }
     public String getImprovementPremium() {
         return improvementPremium;
     }
