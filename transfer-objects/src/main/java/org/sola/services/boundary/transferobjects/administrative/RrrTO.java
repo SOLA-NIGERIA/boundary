@@ -64,13 +64,57 @@ public class RrrTO extends AbstractIdTO {
     private Date dateSigned;
     private Integer term;
     private BigDecimal advancePayment;
-    private BigDecimal yearlyRent;
     private Integer reviewPeriod;
     private String zoneCode;
     private String rotCode;
-    private BigDecimal improvementPremium;
     private String cofoType;
+    private BigDecimal improvementPremium;
+    private BigDecimal yearlyRent;
     private BigDecimal stampDuty;
+    
+    private BigDecimal improvementPremiumValue;
+    private BigDecimal yearlyRentValue;
+    private BigDecimal stampDutyValue;
+    
+    public BigDecimal getYearlyRentValue() {
+        return yearlyRentValue;
+    }
+
+    public void setYearlyRentValue(BigDecimal yearlyRentValue) {
+        this.yearlyRentValue = yearlyRentValue;
+    }
+
+    public BigDecimal getImprovementPremiumValue() {
+        return improvementPremiumValue;
+    }
+
+    public void setImprovementPremiumValue(BigDecimal improvementPremiumValue) {
+        this.improvementPremiumValue = improvementPremiumValue;
+    }
+
+    public BigDecimal getStampDutyValue() {
+        return stampDutyValue;
+    }
+
+    public void setStampDutyValue(BigDecimal stampDutyValue) {
+        this.stampDutyValue = stampDutyValue;
+    }
+    
+    public BigDecimal getImprovementPremium() {
+        return improvementPremium;
+    }
+
+    public void setImprovementPremium(BigDecimal improvementPremium) {
+        this.improvementPremium = improvementPremium;
+    }
+
+    public BigDecimal getYearlyRent() {
+        return yearlyRent;
+    }
+
+    public void setYearlyRent(BigDecimal yearlyRent) {
+        this.yearlyRent = yearlyRent;
+    }
 
     public BigDecimal getStampDuty() {
         return stampDuty;
@@ -79,6 +123,7 @@ public class RrrTO extends AbstractIdTO {
     public void setStampDuty(BigDecimal stampDuty) {
         this.stampDuty = stampDuty;
     }
+
     
     public String getCofoType() {
         return cofoType;
@@ -86,13 +131,6 @@ public class RrrTO extends AbstractIdTO {
 
     public void setCofoType(String cofoType) {
         this.cofoType = cofoType;
-    }
-    public BigDecimal getImprovementPremium() {
-        return improvementPremium;
-    }
-
-    public void setImprovementPremium(BigDecimal improvementPremium) {
-        this.improvementPremium = improvementPremium;
     }
     
     public String getConcatenatedName() {
@@ -332,14 +370,7 @@ public class RrrTO extends AbstractIdTO {
         this.advancePayment = advancePayment;
     }
 
-    public BigDecimal getYearlyRent() {
-        return yearlyRent;
-    }
-
-    public void setYearlyRent(BigDecimal yearlyRent) {
-        this.yearlyRent = yearlyRent;
-    }
-
+    
     public Integer getReviewPeriod() {
         return reviewPeriod;
     }
